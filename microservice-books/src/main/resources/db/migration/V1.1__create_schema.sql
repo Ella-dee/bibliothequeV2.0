@@ -9,10 +9,10 @@
 ------------------------------------------------------------
 CREATE TABLE public.authors(
                                id            SERIAL NOT NULL ,
-                               birth_date    VARCHAR (50)  ,
+                               birth_date    VARCHAR (50) DEFAULT NULL ,
                                first_name   VARCHAR (50) NOT NULL ,
                                last_name     VARCHAR (50) NOT NULL ,
-                               nationality   VARCHAR (50)   ,
+                               nationality   VARCHAR (50)  DEFAULT NULL ,
                                CONSTRAINT authors_PK PRIMARY KEY (id)
 )WITHOUT OIDS;
 
@@ -34,12 +34,12 @@ CREATE TABLE public.categories(
 CREATE TABLE public.books(
                              id              SERIAL NOT NULL ,
                              edition         VARCHAR (50) NOT NULL ,
-                             pages           INT   ,
+                             pages           INT  DEFAULT NULL ,
                              ref             VARCHAR (50) NOT NULL ,
                              release_date    VARCHAR (50) NOT NULL ,
-                             synopsis        VARCHAR (600),
+                             synopsis        VARCHAR (600) DEFAULT NULL,
                              title           VARCHAR (200) NOT NULL ,
-                             image           VARCHAR (200),
+                             image           VARCHAR (200) DEFAULT NULL,
                              id_author      INT  NOT NULL ,
                              id_category   INT  NOT NULL  ,
                              CONSTRAINT books_PK PRIMARY KEY (id)
@@ -64,7 +64,7 @@ CREATE TABLE public.borrowing_types(
 CREATE TABLE public.borrowings(
                                   id                   SERIAL NOT NULL ,
                                   date_borrowed        VARCHAR (50) NOT NULL ,
-                                  date_returned        VARCHAR (50)  ,
+                                  date_returned        VARCHAR (50) DEFAULT NULL ,
                                   reminder_mail        BOOLEAN  NOT NULL DEFAULT FALSE,
                                   id_user              INTEGER  NOT NULL ,
                                   id_books             INT  NOT NULL ,
