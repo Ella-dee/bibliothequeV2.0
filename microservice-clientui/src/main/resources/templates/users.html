@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>bibliotheque</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+    <h1>Liste utilisteurs</h1>
+    <div class="row">
+        <div th:each="user : ${users}" class="card col-md-4 mt-5">
+           <a th:href="@{/Utilisateurs/__${user.id}__}" >
+               <h5 class="card-header" th:text= "${user.firstName}+' '+${user.lastName}"></h5>
+               <div class="card-body">
+               </div>
+            </a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+</body>
+</html>

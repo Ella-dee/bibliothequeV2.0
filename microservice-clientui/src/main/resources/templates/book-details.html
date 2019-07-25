@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>bibliotheque</title>
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center" th:text= "${book.title}" />
+    <div class="row">
+        <div class="col-md-4 mr-4 mb-5 mx-auto mt-5">
+            <img th:src="${book.bookCover}" />
+        </div>
+            <div class="col-md-8 mt-5">
+                <h5 th:text="${book.author.firstName}+' '+${book.author.lastName}" />
+                <p th:text= "${book.synopsis}"></p>
+                <a th:href="@{|/details-livre/reserver-livre/${book.id}|}" class="font-weight-bold">Réserver</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://localhost:8080/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+</body>
+</html>
