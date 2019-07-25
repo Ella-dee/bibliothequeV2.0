@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class CannotAdddException extends RuntimeException {
+public class CannotAddException extends RuntimeException {
     /**
      * <p>Exception if a query returns "can't add new user"</p>
      * @param s
      */
-    public CannotAdddException(String s) {
+    public CannotAddException(String s) {
         super(s);
     }
 }

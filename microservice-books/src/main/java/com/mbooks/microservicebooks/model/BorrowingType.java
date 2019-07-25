@@ -18,7 +18,7 @@ public class BorrowingType {
     @Column (name="type", unique=true)
     private String type;
 
-    @OneToMany (mappedBy="borrowType")
+    @OneToMany (mappedBy="borrowingType")
     private List<Borrowing> borrowingList;
 
     public BorrowingType() {

@@ -67,12 +67,12 @@ CREATE TABLE public.borrowings(
                                   date_returned        VARCHAR (50) DEFAULT NULL ,
                                   reminder_mail        BOOLEAN  NOT NULL DEFAULT FALSE,
                                   id_user              INTEGER  NOT NULL ,
-                                  id_books             INT  NOT NULL ,
-                                  id_borrowing_types   INT  NOT NULL  ,
+                                  id_book              INT  NOT NULL ,
+                                  id_type              INT  NOT NULL  ,
                                   CONSTRAINT borrowings_PK PRIMARY KEY (id)
 
-    ,CONSTRAINT borrowings_books_FK FOREIGN KEY (id_books) REFERENCES public.books(id)
-    ,CONSTRAINT borrowings_borrowing_types0_FK FOREIGN KEY (id_borrowing_types) REFERENCES public.borrowing_types(id)
+    ,CONSTRAINT borrowings_books_FK FOREIGN KEY (id_book) REFERENCES public.books(id)
+    ,CONSTRAINT borrowings_borrowing_types0_FK FOREIGN KEY (id_type) REFERENCES public.borrowing_types(id)
 )WITHOUT OIDS;
 
 

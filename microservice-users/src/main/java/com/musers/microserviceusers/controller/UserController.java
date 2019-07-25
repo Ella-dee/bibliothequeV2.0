@@ -1,16 +1,14 @@
 package com.musers.microserviceusers.controller;
 
 import com.musers.microserviceusers.dao.UserDao;
+import com.musers.microserviceusers.exceptions.CannotAddException;
 import com.musers.microserviceusers.exceptions.NotFoundException;
 import com.musers.microserviceusers.model.User;
 import com.musers.microserviceusers.utils.Encryption;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import javax.validation.Valid;
-import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 

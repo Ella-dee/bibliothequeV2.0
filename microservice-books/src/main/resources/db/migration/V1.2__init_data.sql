@@ -25,6 +25,13 @@ insert into books (edition, pages, release_date, ref, title, synopsis, image, id
 insert into books (edition, pages, release_date, ref, title, synopsis, image, id_author, id_category) values ('Pocket', null, '15/05/2003', '9782266127035', 'L''âme du mal', 'En Oregon, l''inspecteur Brolin et Juliette une étudiante en psychologie enquêtent sur un secret qui met leur vie en péril : un tueur abattu semble avoir ressuscité. Il mutile ses victimes de manière rituelle, en laissant des indices tirés de la Bible noire. Les investigations des spécialistes de la médecine légale et de la police scientifique, que l''auteur connaît bien, sont décrites en détail. ','https://zupimages.net/up/19/30/ua80.jpg',3, 4);
 
 ------------------------------------------------------------
+-- Tables: borrowing_types
+-- init
+------------------------------------------------------------
+
+insert into borrowing_types(type) values ('en cours'), ('terminé'), ('prolongé'), ('en retard');
+
+------------------------------------------------------------
 -- Tables: borrowings
 -- init
 ------------------------------------------------------------
@@ -32,9 +39,3 @@ insert into books (edition, pages, release_date, ref, title, synopsis, image, id
 insert into borrowings(date_borrowed, date_returned, reminder_mail, id_book, id_type, id_user) values ('13/07/2018', '12/08/2018', false, 1, 1, 1);
 insert into borrowings(date_borrowed, date_returned, reminder_mail, id_book, id_type, id_user) values ('13/07/2019', null, false, 3, 3, 1);
 
-------------------------------------------------------------
--- Tables: borrowing_types
--- init
-------------------------------------------------------------
-
-insert into borrowing_types(type) values ('en cours'), ('terminé'), ('prolongé'), ('en retard');
