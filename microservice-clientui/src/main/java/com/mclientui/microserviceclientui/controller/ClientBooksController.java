@@ -65,6 +65,7 @@ public class ClientBooksController {
     @RequestMapping("/Auteurs/{authorId}")
     public String showAuthor(@PathVariable Integer authorId, Model model){
         AuthorBean author = booksProxy.showAuthor(authorId);
+        System.out.println(author.getBooks());
         model.addAttribute("author", author);
         return "author-details";
     }

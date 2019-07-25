@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
+//avoids an infinite recursion going on since Author refers to Book and Book refer to Author.
 @JsonIgnoreProperties(value = {"books"})
 @Table(name = "authors")
 public class Author {

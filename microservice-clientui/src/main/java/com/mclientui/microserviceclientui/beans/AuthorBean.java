@@ -9,9 +9,17 @@ public class AuthorBean {
     private String lastName;
     private String nationality;
     private String birthDate;
-    //private List<BookBean>books;
+    private List<BookBean> books;
 
     public AuthorBean() {
+    }
+
+    public List<BookBean> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<BookBean> books) {
+        this.books = books;
     }
 
     public Integer getId() {
