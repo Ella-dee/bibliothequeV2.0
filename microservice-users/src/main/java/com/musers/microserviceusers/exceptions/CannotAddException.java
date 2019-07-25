@@ -5,13 +5,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 
-@ResponseStatus(HttpStatus.NOT_FOUND)
-public class NotFoundException extends RuntimeException {
+@ResponseStatus(HttpStatus.BAD_REQUEST)
+public class CannotAdddException extends RuntimeException {
     /**
-     * <p>Exception if a query returns "not found"</p>
+     * <p>Exception if a query returns "can't add new user"</p>
      * @param s
      */
-    public NotFoundException(String s) {
+    public CannotAdddException(String s) {
         super(s);
     }
 }
