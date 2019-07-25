@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css"/>
 </head>
 <body>
+<nav th:insert="fragments/fragments.html :: navbar-public" />
 <div class="container">
     <h2 class="text-center" th:text= "${author.firstName}+' '+${author.lastName}" />
     <div class="row">

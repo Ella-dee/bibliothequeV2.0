@@ -69,6 +69,9 @@ public class AuthorBean {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", nationality='" + nationality + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                ", books=" + books +
                 '}';
     }
 }
