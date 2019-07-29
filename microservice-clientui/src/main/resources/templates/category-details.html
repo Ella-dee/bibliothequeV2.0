@@ -1,12 +1,15 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
 <head>
-    <title>bibliotheque</title>
-    <link rel="stylesheet" type="text/css" href="http://localhost:8080/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css"/>
+    <title th:text="${cat.name}" />
 </head>
 <body>
-<nav th:insert="fragments/fragments.html :: navbar-public" />
-<div class="container">
+<div layout:fragment="content" th:remove="tag" class="container">
+    <div class="in-content">
     <h2 class="text-center" th:text= "${cat.name}" />
     <div class="row">
         <!--<div th:each="book : ${cat.books}" class="card col-md-4 mt-5">
@@ -19,6 +22,6 @@
         </div>-->
     </div>
 </div>
-<script type="text/javascript" src="http://localhost:8080/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+</div>
 </body>
 </html>

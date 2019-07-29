@@ -1,16 +1,17 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{fragments/layout}">
 <head>
-    <title th:text="Mon profil" />
+    <title>Index</title>
 </head>
 <body>
 <div layout:fragment="content" th:remove="tag" class="container">
-    <div class="in-content">
-    <h2 class="text-center" th:text= "${user.firstName}+' '+${user.lastName}" />
+<div class="in-content">
     <div class="row">
-
+        <div class="col-md-4 my-1">
+            <a th:href="@{/Livres}" >Nos livres</a>
+        </div>
     </div>
 </div>
 </div>

@@ -1,4 +1,4 @@
-package com.mclientui.microserviceclientui.controller;
+package com.mclientui.microserviceclientui.web.controller;
 
 import com.mclientui.microserviceclientui.beans.AuthorBean;
 import com.mclientui.microserviceclientui.beans.BookBean;

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<body>
+<th:block th:fragment="footer">
+    <!-- Footer -->
+    <footer class="footer mt-auto py-4 bg-dark small text-center text-white">
+        <div class="container">
+            <h5>Copyright &copy; 2018-2019 Elo Oc</h5>
+        </div>
+    </footer>
+
+  <!--  <footer class="footer mt-auto py-4 bg-dark small text-center text-white">
+        <div class="container">
+            <p>
+                Copyright &copy; 2018-2019 Elo Oc
+                <span sec:authorize="isAuthenticated()" style="display: inline-block;">
+                    | Logged user: <span sec:authentication="name"></span> |
+                    Roles: <span sec:authentication="principal.authorities"></span> |
+                </span>
+            </p>
+        </div>
+    </footer>-->
+
+</th:block>
+</body>
+</html>

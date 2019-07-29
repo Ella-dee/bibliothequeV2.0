@@ -8,8 +8,26 @@ public class UserBean {
     private String email;
     private String password;
     private String passwordConfirm;
+    private RoleBean userRole;
+    private String userName;
 
     public UserBean() {
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public RoleBean getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(RoleBean userRole) {
+        this.userRole = userRole;
     }
 
     public Integer getId() {

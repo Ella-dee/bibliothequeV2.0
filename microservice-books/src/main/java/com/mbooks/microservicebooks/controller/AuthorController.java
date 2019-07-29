@@ -1,6 +1,7 @@
 package com.mbooks.microservicebooks.controller;
 
 import com.mbooks.microservicebooks.dao.AuthorDao;
+import com.mbooks.microservicebooks.dao.BookDao;
 import com.mbooks.microservicebooks.exceptions.NotFoundException;
 import com.mbooks.microservicebooks.model.Author;
 import com.mbooks.microservicebooks.utils.CheckDate;
@@ -21,6 +22,8 @@ import java.util.Optional;
 public class AuthorController {
     @Autowired
     private AuthorDao authorDao;
+    @Autowired
+    private BookDao bookDao;
     /**
      * <p>Lists all authors</p>
      * @return list
@@ -63,6 +66,7 @@ public class AuthorController {
         if(!author.isPresent()) {
             throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
         }
+        bookDao.findBooksByAuthor_Id(id);
         return author;
     }
 }

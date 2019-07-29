@@ -16,6 +16,10 @@ public class User {
     private Integer id;
 
     @NotEmpty
+    @Column (name="username")
+    private String userName;
+
+    @NotEmpty
     @Column (name="first_name")
     private String firstName;
 
@@ -37,7 +41,19 @@ public class User {
     @NotBlank
     private String passwordConfirm;
 
+    @ManyToOne //plusieurs user pour un seul role
+    @JoinColumn(name = "id_role")
+    private Role userRole;
+
     public User() {
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public Integer getId() {
@@ -86,6 +102,14 @@ public class User {
 
     public void setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
+    }
+
+    public Role getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(Role userRole) {
+        this.userRole = userRole;
     }
 
     @Override

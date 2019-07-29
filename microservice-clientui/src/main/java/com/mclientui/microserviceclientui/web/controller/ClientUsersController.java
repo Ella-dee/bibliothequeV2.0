@@ -1,21 +1,15 @@
-package com.mclientui.microserviceclientui.controller;
+package com.mclientui.microserviceclientui.web.controller;
 
-import com.mclientui.microserviceclientui.beans.AuthorBean;
-import com.mclientui.microserviceclientui.beans.BookBean;
 import com.mclientui.microserviceclientui.beans.UserBean;
 import com.mclientui.microserviceclientui.proxies.MicroserviceUsersProxy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -39,6 +33,25 @@ public class ClientUsersController {
         return "users";
     }
 
+    /**
+     * <p>Page that displays a form to login a user</p>
+     * @param model attribute passed to jsp page
+     * @return login page
+     */
+    @GetMapping("/Utilisateurs/connexion")
+    public String loginPage(Model model) {
+        UserBean userBean = new UserBean();
+        model.addAttribute("user", userBean);
+        return "login";
+    }
+
+    @RequestMapping("/Utilisateurs/login")
+    public String login(@ModelAttribute("user") UserBean userBean) {
+        UserBean userToConnect = usersProxy.login(userBean);
+
+        return "login";
+    }
+
  /*   @RequestMapping("/Utilisateurs/add_user")
     public ResponseEntity<UserBean> addUser(@Valid @RequestBody UserBean userBean){
         UserBean newUser = usersProxy.addUser(userBean);
@@ -52,7 +65,7 @@ public class ClientUsersController {
      * @param model
      * @return user-details.html
      */
-    @RequestMapping("/Utilisateurs/{userId}")
+    @RequestMapping("/Utilisateurs/MonProfil/{userId}")
     public String userDetails(@PathVariable Integer userId, Model model){
         UserBean user = usersProxy.showUser(userId);
         model.addAttribute("user", user);
