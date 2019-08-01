@@ -1,5 +1,7 @@
 package com.mbooks.microservicebooks.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,10 +21,12 @@ public class Borrowing {
     @Column(name="reminder_mail")
     private Boolean reminderMail;
 
+    @JsonSerialize(using = BookSerializer.class)
     @ManyToOne
     @JoinColumn(name="id_book")
     private Book book;
 
+    @JsonSerialize(using = BorrowingTypeSerializer.class)
     @ManyToOne
     @JoinColumn(name="id_type")
     private BorrowingType borrowingType;

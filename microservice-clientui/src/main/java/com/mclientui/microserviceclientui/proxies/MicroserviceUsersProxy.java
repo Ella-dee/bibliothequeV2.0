@@ -3,10 +3,7 @@ package com.mclientui.microserviceclientui.proxies;
 import com.mclientui.microserviceclientui.beans.UserBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -21,8 +18,8 @@ public interface MicroserviceUsersProxy {
     @PostMapping(value = "/Utilisateurs/add-user")
     UserBean addUser(@RequestBody UserBean userBean);
 
-    @PostMapping(value = "/Utilisateurs/login")
-    UserBean login(@RequestBody UserBean userBean);
+    @PostMapping(value = "/Utilisateurs/log-user")
+    UserBean logUser(@RequestParam String userName, @RequestParam String password);
 
     @GetMapping( value = "/Utilisateurs/MonProfil/{id}")
     UserBean showUser(@PathVariable("id") Integer id);

@@ -1,14 +1,12 @@
 package com.mbooks.microservicebooks.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties(value = {"borrowingList"})
 @Table(name = "books")
 public class Book {
     @Id
@@ -41,14 +39,17 @@ public class Book {
     @Size(max = 600, message = "maximum 600 caractères")
     private String synopsis;
 
+    @JsonSerialize(using = CategorySerializer.class)
     @ManyToOne
     @JoinColumn(name="id_category")
     private Category category;
 
+    @JsonSerialize(using = AuthorSerializer.class)
     @ManyToOne
     @JoinColumn(name="id_author")
     private Author author;
 
+    @JsonSerialize(using = BorrowingListSerializer.class)
     @OneToMany(mappedBy="book")
     private List<Borrowing> borrowingList;
 

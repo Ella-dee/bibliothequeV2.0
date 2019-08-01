@@ -1,16 +1,15 @@
 package com.mclientui.microserviceclientui.web.controller;
 
 import com.mclientui.microserviceclientui.beans.UserBean;
+import com.mclientui.microserviceclientui.exceptions.BadLoginPasswordException;
 import com.mclientui.microserviceclientui.proxies.MicroserviceUsersProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  * <h2>Controller linking with microservice-users</h2>
@@ -20,18 +19,11 @@ public class ClientUsersController {
 
     @Autowired
     private MicroserviceUsersProxy usersProxy;
-
-    /**
-     * <p>Lists all users</p>
-     * @param model
-     * @return users.html
+    /*
+     **************************************
+     * User login
+     * ************************************
      */
-    @RequestMapping("/Utilisateurs")
-    public String listUsers(Model model){
-        List<UserBean> users =  usersProxy.listUsers();
-        model.addAttribute("users", users);
-        return "users";
-    }
 
     /**
      * <p>Page that displays a form to login a user</p>
@@ -45,19 +37,28 @@ public class ClientUsersController {
         return "login";
     }
 
-    @RequestMapping("/Utilisateurs/login")
-    public String login(@ModelAttribute("user") UserBean userBean) {
-        UserBean userToConnect = usersProxy.login(userBean);
 
-        return "login";
+    @RequestMapping("/Utilisateurs/log-user")
+    public String logUser(@ModelAttribute("user") UserBean userBean, ModelMap model, HttpServletRequest request) {
+        String toBeReturned;
+        HttpSession session = request.getSession();
+        try{
+            UserBean userToConnect = usersProxy.logUser(userBean.getUserName(), userBean.getPassword());
+            String redirectString = "/Utilisateurs/MonProfil/"+userToConnect.getId();
+            session.setAttribute("loggedInUserEmail", userToConnect.getEmail());
+            session.setAttribute("loggedInUserId", userToConnect.getId());
+            session.setAttribute("loggedInUserRole", userToConnect.getUserRole().getRoleName());
+
+            toBeReturned = "redirect:"+redirectString;
+        }catch (Exception e){
+            e.printStackTrace();
+            if(e instanceof BadLoginPasswordException){
+                model.addAttribute("errorMessage", "Login ou Mot de Passe incorrect");
+            }
+            toBeReturned = "login";
+        }
+        return toBeReturned;
     }
-
- /*   @RequestMapping("/Utilisateurs/add_user")
-    public ResponseEntity<UserBean> addUser(@Valid @RequestBody UserBean userBean){
-        UserBean newUser = usersProxy.addUser(userBean);
-        //TODO comment récupérer id???
-        return "user-details/"+usersProxy.showUser(newUser);
-    }*/
 
     /**
      * shows details of particular user with its id
@@ -66,12 +67,38 @@ public class ClientUsersController {
      * @return user-details.html
      */
     @RequestMapping("/Utilisateurs/MonProfil/{userId}")
-    public String userDetails(@PathVariable Integer userId, Model model){
+    public String userDetails(@PathVariable Integer userId, Model model, HttpServletRequest request){
+        HttpSession session = request.getSession();
         UserBean user = usersProxy.showUser(userId);
+
+        if(!session.getAttribute("loggedInUserId").equals(userId)){
+            System.out.println("User trying to access profile is not the owner of the profile");
+            System.out.println("User is: [id:"
+                    +session.getAttribute("loggedInUserId")+ ", email:"
+                    +session.getAttribute("loggedInUserEmail")+", role:"
+                    +session.getAttribute("loggedInUserRole")+"]");
+            return "redirect:/Accueil";
+        }
+
         model.addAttribute("user", user);
+        model.addAttribute("session", session.getAttribute("loggedInUserRole"));
         return "user-details";
     }
-
+    /*
+     **************************************
+     * User logout
+     * ************************************
+     */
+    /**
+     * Process called after the logout button is clicked in navbar
+     * @param session session
+     * @return homepage
+     */
+    @RequestMapping(value = "Utilisateurs/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/Accueil";
+    }
 
 
 }

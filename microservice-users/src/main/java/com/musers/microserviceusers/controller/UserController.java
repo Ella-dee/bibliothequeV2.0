@@ -45,7 +45,7 @@ public class UserController {
     public ResponseEntity<User> addUser(@RequestBody User user) {
         user.setPassword(Encryption.encrypt(user.getPassword()));
         User userAdded =  userDao.save(user);
-        if (userAdded == null) {throw new CannotAddException("Impossible d'ajouter l'utilisateur");}
+        if (userAdded == null) {throw new CannotAddException("User03");}
         return new ResponseEntity<User>(userAdded, HttpStatus.CREATED);
     }
 
@@ -64,24 +64,18 @@ public class UserController {
         return user;
     }
 
+    @PostMapping(value = "/Utilisateurs/log-user")
+    public ResponseEntity<User> logUser(@RequestParam String userName, @RequestParam String password) {
+        User userLogged =  userDao.findByUserName(userName);
+        if (userLogged == null) {throw new CannotAddException("User01");}
 
-    @PostMapping("/Utilisateurs/login")
-    public String login(@ModelAttribute("user") User theUser, BindingResult theBindingResult, HttpServletRequest request) {
-        userLoginValidator.validate(theUser, theBindingResult);
-        HttpSession session = request.getSession();
-
-        if (theBindingResult.hasErrors()) {
-            return "login";
+        String loginPassword = Encryption.encrypt(password);
+        if (!loginPassword.equals(userLogged.getPassword())) {
+            throw new CannotAddException("User02");
         }
-        else{
-            User userToLogIn = userDao.findByUserName(theUser.getUserName());
-            System.out.println("USERTOLOGIN"+userToLogIn);
-            session.setAttribute("loggedInUserEmail", userToLogIn.getEmail());
-            session.setAttribute("loggedInUserId", userToLogIn.getId());
-            session.setAttribute("loggedInUserRole", userToLogIn.getUserRole().getId());
-            String redirectString = "/Utilisateurs/MonProfil/"+userToLogIn.getId();
-            return "redirect:"+redirectString;
-        }
+        return new ResponseEntity<User>(userLogged, HttpStatus.OK);
     }
+
+
    
 }

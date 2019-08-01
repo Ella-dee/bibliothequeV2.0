@@ -1,5 +1,7 @@
 package com.musers.microserviceusers.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -41,6 +43,7 @@ public class User {
     @NotBlank
     private String passwordConfirm;
 
+    @JsonSerialize(using = RoleSerializer.class)
     @ManyToOne //plusieurs user pour un seul role
     @JoinColumn(name = "id_role")
     private Role userRole;

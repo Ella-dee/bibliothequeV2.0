@@ -7,7 +7,6 @@ public class UserBean {
     private String lastName;
     private String email;
     private String password;
-    private String passwordConfirm;
     private RoleBean userRole;
     private String userName;
 
@@ -70,11 +69,4 @@ public class UserBean {
         this.password = password;
     }
 
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
-
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
-    }
 }

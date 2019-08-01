@@ -17,7 +17,18 @@
     <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Bibliotheque</title>
 </head>
 <body>
-<th:block th:replace="fragments/headers/header :: header-public"/>
+    <span th:if="${session.loggedInUserRole eq null}">
+        <th:block th:text="${session.loggedInUserRole}" />
+        <th:block th:replace="fragments/headers/header-public :: header-public"/>
+    </span>
+    <span th:if="${session.loggedInUserRole eq 'ADMIN'}">
+        <th:block th:text="${session.loggedInUserRole}" />
+        <th:block th:replace="fragments/headers/header-admin :: header-admin"/>
+    </span>
+    <span th:if="${session.loggedInUserRole eq 'USER'}">
+        <th:block th:text="${session.loggedInUserRole}" />
+        <th:block th:replace="fragments/headers/header-connected :: header-connected"/>
+    </span>
 <main role="main" class="flex-shrink-0 mt-5">
 <div class="container mt-5" >
 <div class="container">

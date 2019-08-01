@@ -1,13 +1,13 @@
 package com.mbooks.microservicebooks.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
 import java.util.List;
 
 
 @Entity
-@JsonIgnoreProperties(value = {"borrowingList"})
 @Table(name = "borrowing_types")
 public class BorrowingType {
     @Id
@@ -18,6 +18,7 @@ public class BorrowingType {
     @Column (name="type", unique=true)
     private String type;
 
+    @JsonSerialize(using = BorrowingListSerializer.class)
     @OneToMany (mappedBy="borrowingType")
     private List<Borrowing> borrowingList;
 

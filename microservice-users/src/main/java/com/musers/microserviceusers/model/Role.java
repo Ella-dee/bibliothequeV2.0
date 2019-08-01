@@ -1,6 +1,8 @@
 package com.musers.microserviceusers.model;
 
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ public class Role {
     @NotBlank
     private String roleName;
 
-
+    @JsonSerialize(using = UserListSerializer.class)
     @OneToMany (mappedBy = "userRole") //attribut User userRole de User
     private List<User> users = new ArrayList<>();
 

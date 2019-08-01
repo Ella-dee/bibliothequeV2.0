@@ -66,7 +66,7 @@ public class AuthorController {
         if(!author.isPresent()) {
             throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
         }
-        bookDao.findBooksByAuthor_Id(id);
+        System.out.println(bookDao.findBooksByAuthor_Id(id));
         return author;
     }
 }
