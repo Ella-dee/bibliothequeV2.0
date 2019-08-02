@@ -10,18 +10,18 @@
 <body>
 <div layout:fragment="content" th:remove="tag" class="container">
     <div class="in-content">
-    <h2 class="text-center" th:text= "${cat.name}" />
-    <div class="row">
-        <!--<div th:each="book : ${cat.books}" class="card col-md-4 mt-5">
-            <a th:href="@{/Livres/__${book.id}__}" >
-                <h5 class="card-header" th:text= "${book.title}"></h5>
-                <div class="thumbnail">
-                    <img th:src="${book.bookCover}"  class="card-img-top img-thumbnail" />
-                </div>
-            </a>
-        </div>-->
+        <h1 class="text-center" th:text= "${cat.name}" />
+        <div class="row offset-md-1">
+            <div th:each="book : ${cat.books}" class="card col-md-3 mt-5 mr-5 ml-5">
+                <a th:href="@{/Livres/__${book.id}__}" >
+                    <h4 class="card-header" th:text= "${book.title}"></h4>
+                    <div class="thumbnail text-center">
+                        <img th:src="${book.bookCover}"  class="card-img-top img-thumbnail" />
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
-</div>
 </div>
 </body>
 </html>

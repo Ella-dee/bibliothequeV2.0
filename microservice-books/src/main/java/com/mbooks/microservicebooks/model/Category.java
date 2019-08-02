@@ -1,14 +1,13 @@
 package com.mbooks.microservicebooks.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
 @Table(name = "categories")
+@JsonSerialize(using= CategorySerializer.class)
 public class Category {
     @Id
     @Column(name="id")
@@ -19,7 +18,6 @@ public class Category {
     @Column(name="name", unique=true)
     private String name;
 
-    @JsonSerialize(using = BookListSerializer.class)
     @OneToMany(mappedBy="category")
     private List<Book> books;
 

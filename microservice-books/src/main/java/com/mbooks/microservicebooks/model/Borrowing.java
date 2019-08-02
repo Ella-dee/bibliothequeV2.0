@@ -21,12 +21,12 @@ public class Borrowing {
     @Column(name="reminder_mail")
     private Boolean reminderMail;
 
-    @JsonSerialize(using = BookSerializer.class)
+    //@JsonSerialize(using = BookSerializer.class)
     @ManyToOne
     @JoinColumn(name="id_book")
     private Book book;
 
-    @JsonSerialize(using = BorrowingTypeSerializer.class)
+    //@JsonSerialize(using = BorrowingTypeSerializer.class)
     @ManyToOne
     @JoinColumn(name="id_type")
     private BorrowingType borrowingType;

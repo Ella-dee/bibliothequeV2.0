@@ -11,8 +11,8 @@
 <div layout:fragment="content" th:remove="tag" class="container">
     <div class="in-content">
     <h1>Liste genres</h1>
-    <div class="row">
-        <div th:each="cat : ${categories}" class="card col-md-4 mt-5">
+    <div class="row offset-md-1">
+        <div th:each="cat : ${categories}" class="card col-md-3 mt-5 mr-5 ml-5">
            <a th:href="@{/Genres/__${cat.id}__}" >
                <h5 class="card-header" th:text= "${cat.getName()}"></h5>
                <div class="card-body">

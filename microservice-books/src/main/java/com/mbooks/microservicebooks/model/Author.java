@@ -1,16 +1,14 @@
 package com.mbooks.microservicebooks.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "authors")
+@JsonSerialize(using= AuthorSerializer.class)
 public class Author {
     @Id
     @Column(name="id")
@@ -31,7 +29,6 @@ public class Author {
     @Column(name="birth_date")
     private String birthDate;
 
-    @JsonSerialize(using = BookListSerializer.class)
     @OneToMany(mappedBy="author")
     private List<Book> books;
 

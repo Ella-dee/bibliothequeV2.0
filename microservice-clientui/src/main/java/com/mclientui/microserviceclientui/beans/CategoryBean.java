@@ -1,10 +1,12 @@
 package com.mclientui.microserviceclientui.beans;
 
 
+import java.util.List;
+
 public class CategoryBean {
     private Integer id;
     private String name;
-    //private List<BookBean>books;
+    private List<BookBean> books;
 
     public CategoryBean() {
     }
@@ -25,6 +27,13 @@ public class CategoryBean {
         this.name = name;
     }
 
+    public List<BookBean> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<BookBean> books) {
+        this.books = books;
+    }
 
     @Override
     public String toString() {

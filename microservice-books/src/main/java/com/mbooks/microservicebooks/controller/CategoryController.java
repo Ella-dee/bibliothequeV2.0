@@ -47,7 +47,7 @@ public class CategoryController {
                 .toUri();
         return ResponseEntity.created(location).build();
     }
-    //TODO details = list of books?
+
     /**
      * <p>show details of a particular category by its id</p>
      * @param id

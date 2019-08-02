@@ -28,7 +28,7 @@ public interface MicroserviceBooksProxy {
     @GetMapping(value = "/Genres")
     List<CategoryBean> listCategories();
 
-    @GetMapping( value = "/Auteurs/{id}")
+    @GetMapping( value = "/Genres/{id}")
     CategoryBean showCategory(@PathVariable("id") Integer id);
 
     @GetMapping(value = "/Prets")
