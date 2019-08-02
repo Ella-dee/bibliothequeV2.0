@@ -9,12 +9,14 @@
         <module name="microservice-users" />
         <module name="microservice-clientui" />
         <module name="microservice-books" />
+        <module name="zuul-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="microservice-books" target="1.8" />
       <module name="microservice-clientui" target="1.8" />
       <module name="microservice-users" target="1.8" />
+      <module name="zuul-server" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -22,6 +24,7 @@
       <module name="microservice-books" options="-parameters" />
       <module name="microservice-clientui" options="-parameters" />
       <module name="microservice-users" options="-parameters" />
+      <module name="zuul-server" options="-parameters" />
     </option>
   </component>
 </project>

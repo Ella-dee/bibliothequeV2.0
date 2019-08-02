@@ -30,7 +30,9 @@ public class AuthorController {
      */
     @GetMapping(value="/Auteurs")
     public List<Author> listAuthors() {
-        return authorDao.findAll();
+        List<Author> authors = authorDao.findAll();
+        if(authors.isEmpty()) throw new NotFoundException("Aucun auteur n'est enregistré");
+        return authors;
     }
     /**
      * <h2>Not needed for user application => for employees application</h2>

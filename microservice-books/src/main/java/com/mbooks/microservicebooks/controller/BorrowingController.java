@@ -26,7 +26,9 @@ public class BorrowingController {
      */
     @GetMapping(value="/Prets")
     public List<Borrowing> listBorrowings() {
-        return borrowingDao.findAll();
+        List<Borrowing> borrowings = borrowingDao.findAll();
+        if(borrowings.isEmpty()) throw new NotFoundException("Aucun prêt n'est enregistré");
+        return borrowings;
     }
     /**
      * <h2>Not needed for user application => for employees application</h2>
