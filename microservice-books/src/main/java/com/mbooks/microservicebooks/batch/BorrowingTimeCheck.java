@@ -39,6 +39,14 @@ public class BorrowingTimeCheck {
                 borrowing.setBorrowingType(borrowingTypeDao.findBorrowingTypeById(4));
                 //send Mail
             }
+          /* if(limitDate.isAfter(today) && borrowing.getRenewedOrNot == true){
+                borrowing.setBorrowingType(borrowingTypeDao.findBorrowingTypeById(4));
+                //send Mail en retard
+            }*/
+          /* if(limitDate.isAfter(today) && borrowing.getRenewedOrNot == false){
+                borrowing.setBorrowingType(borrowingTypeDao.findBorrowingTypeById(4));
+                //send Mail vous pouvez prolonger de 4 semaines
+            }*/
             //TODO ajouter mail
             //TODO ajouter nbr prolongation dans borrowing
 

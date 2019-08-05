@@ -58,6 +58,7 @@ public class ClientUsersController {
             toBeReturned = "redirect:"+redirectString;
         }catch (Exception e){
             e.printStackTrace();
+            System.out.println("FIELDS: "+userBean.getUserName()+" "+userBean.getPassword());
             if(e instanceof BadLoginPasswordException){
                 model.addAttribute("errorMessage", "Login ou Mot de Passe incorrect");
             }
@@ -93,11 +94,7 @@ public class ClientUsersController {
                 userBorrowings.add(borrowingBean);
             }
         }
-        System.out.println("USERBORROWINGS");
-        System.out.println(userBorrowings.toString());
-      /*  List<BorrowingBean> borrowings = booksProxy.showUserBorrowing(userId);
-        System.out.println("BORROWINGS");
-        System.out.println(borrowings);*/
+      /*  List<BorrowingBean> userBorrowings = booksProxy.showUserBorrowing(userId);*/
 
 
         model.addAttribute("user", user);

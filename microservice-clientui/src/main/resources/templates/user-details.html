@@ -8,24 +8,28 @@
 <body>
 <div layout:fragment="content" th:remove="tag" class="container">
     <div class="in-content">
-    <h1 class="text-center" th:text= "${user.firstName}+' '+${user.lastName}" />
-    <div class="row mt-5">
-        <div th:each="borrowing : ${borrowings}" class="card bg-light mt-5 mr-5 ml-5 col-md-8 offset-md-1">
-            <div class="card-header">
-                <h3 th:utext="${borrowing.book.title}" />
-                <h4 th:utext="${borrowing.book.author.firstName}+ ' '+${borrowing.book.author.lastName}" />
+        <h1 class="text-center" th:text= "${user.firstName}+' '+${user.lastName}" />
+        <div class="row mt-5 offset-md-1">
+            <div th:each="borrowing : ${borrowings}" class="card bg-light col-md-3 mb-5 mr-5 ml-5 ">
+                <div class="card-header">
+                    <h4 th:text="${borrowing.book.title}" />
+                </div>
+                <div class="thumbnail text-center mt-2 mb-2">
+                    <img th:src="${borrowing.book.bookCover}"  class="card-img-top img-thumbnail" />
+                </div>
+                <div class="card-footer" >
+                    <p th:text="'Emprunté le: '+${borrowing.borrowed}" />
+                    <p th:text="'Emprunt '+${borrowing.borrowingType.type}" />
+                    <span th:if="${borrowing.borrowingType.id eq 2}">
+                        <p  th:text="'Rendu le: '+${borrowing.returned}" />
+                    </span>
+                    <span th:unless="${borrowing.borrowingType.id eq 2}">
+                        <strong><p th:text="'Date limite de retour: '+${borrowing.limitDate}" /></strong>
+                    </span>
+                </div>
             </div>
-                <p class="card-body" th:utext="'Emprunté le: '+${borrowing.borrowed}" />
-<!--            <p class="card-body" th:utext="'Etat de l''emprunt: '+${borrowing.borrowingType.type}" />-->
-            <span th:if="${borrowing.borrowingType.id eq 2}">
-                <p class="card-body" th:utext="'Rendu le: '+${borrowing.returned}" />
-            </span>
-            <span th:unless="${borrowing.borrowingType.id eq 2}">
-                <p class="card-body" th:utext="'En attente de retour'" />
-            </span>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>

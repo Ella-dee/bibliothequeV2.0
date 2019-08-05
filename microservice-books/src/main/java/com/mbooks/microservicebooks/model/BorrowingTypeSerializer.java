@@ -26,11 +26,14 @@ public class BorrowingTypeSerializer extends StdSerializer<BorrowingType> {
         jgen.writeStringField("type", value.getType());
         //Iterate List
         jgen.writeArrayFieldStart("borrowingList");
+
         for(Borrowing borrowing: value.getBorrowingList()) {
             jgen.writeStartObject();
             jgen.writeNumberField("id", borrowing.getId());
             jgen.writeStringField("borrowed", borrowing.getBorrowed());
-            jgen.writeStringField("returned", borrowing.getReturned());
+            if(borrowing.getReturned() != null) {
+                jgen.writeStringField("returned", borrowing.getReturned());
+            }
             jgen.writeBooleanField("reminderMail", borrowing.getReminderMail());
             jgen.writeEndObject();
         }

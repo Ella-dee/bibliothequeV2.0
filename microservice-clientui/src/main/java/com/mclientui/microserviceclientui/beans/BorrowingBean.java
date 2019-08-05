@@ -4,6 +4,7 @@ public class BorrowingBean {
 
     private Integer id;
     private String borrowed;
+    private String limitDate;
     private String returned;
     private Boolean reminderMail;
 
@@ -15,12 +16,21 @@ public class BorrowingBean {
     public BorrowingBean() {
     }
 
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getLimitDate() {
+        return limitDate;
+    }
+
+    public void setLimitDate(String limitDate) {
+        this.limitDate = limitDate;
     }
 
     public String getBorrowed() {
