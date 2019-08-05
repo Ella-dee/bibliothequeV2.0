@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * <h2>Proxy links clientui to microservice-books</h2>
  */
-@FeignClient(name = "zuul-server")
+@FeignClient(name = "zuul-server", contextId = "booksProxy", configuration = MicroserviceBooksProxy.class)
 @RibbonClient(name = "microservice-books")
 public interface MicroserviceBooksProxy {
 
@@ -38,6 +38,16 @@ public interface MicroserviceBooksProxy {
 
     @GetMapping( value = "microservice-books/Prets/{id}")
     BorrowingBean showBorrowing(@PathVariable("id") Integer id);
+
+
+    @GetMapping(value = "microservice-books/TypesDePrets")
+    List<BorrowingTypeBean> listBorrowingTypes();
+
+    @GetMapping( value = "microservice-books/TypesDePrets/{id}")
+    BorrowingTypeBean showBorrowingType(@PathVariable("id") Integer id);
+
+   /* @GetMapping( value = "microservice-books/Prets/Utilisateur/{id}")
+    List<BorrowingBean> showUserBorrowing(@PathVariable("id") Integer id);*/
 
 
 

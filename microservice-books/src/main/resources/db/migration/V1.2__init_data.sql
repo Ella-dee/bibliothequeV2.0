@@ -36,6 +36,6 @@ insert into borrowing_types(type) values ('en cours'), ('terminé'), ('prolongé
 -- init
 ------------------------------------------------------------
 
-insert into borrowings(date_borrowed, date_returned, reminder_mail, id_book, id_type, id_user) values ('13/07/2018', '12/08/2018', false, 1, 1, 1);
-insert into borrowings(date_borrowed, date_returned, reminder_mail, id_book, id_type, id_user) values ('13/07/2019', null, false, 3, 3, 1);
+insert into borrowings(date_borrowed, date_limit, date_returned, reminder_mail, id_book, id_type, id_user) values ('13/07/2018', '13/08/2018', '12/08/2018', false, 1, 1, 1);
+insert into borrowings(date_borrowed,date_limit, date_returned, reminder_mail, id_book, id_type, id_user) values ('13/07/2019','13/08/2019', null, false, 3, 3, 1);
 

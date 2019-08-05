@@ -1,7 +1,9 @@
 package com.mclientui.microserviceclientui.web.controller;
 
+import com.mclientui.microserviceclientui.beans.BorrowingBean;
 import com.mclientui.microserviceclientui.beans.UserBean;
 import com.mclientui.microserviceclientui.exceptions.BadLoginPasswordException;
+import com.mclientui.microserviceclientui.proxies.MicroserviceBooksProxy;
 import com.mclientui.microserviceclientui.proxies.MicroserviceUsersProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <h2>Controller linking with microservice-users</h2>
@@ -19,6 +23,8 @@ public class ClientUsersController {
 
     @Autowired
     private MicroserviceUsersProxy usersProxy;
+    @Autowired
+    private MicroserviceBooksProxy booksProxy;
     /*
      **************************************
      * User login
@@ -80,7 +86,22 @@ public class ClientUsersController {
             return "redirect:/Accueil";
         }
 
+        List<BorrowingBean> borrowingBeanList=booksProxy.listBorrowings();
+        List<BorrowingBean> userBorrowings = new ArrayList<>();
+        for(BorrowingBean borrowingBean:borrowingBeanList){
+            if(borrowingBean.getIdUser() == userId){
+                userBorrowings.add(borrowingBean);
+            }
+        }
+        System.out.println("USERBORROWINGS");
+        System.out.println(userBorrowings.toString());
+      /*  List<BorrowingBean> borrowings = booksProxy.showUserBorrowing(userId);
+        System.out.println("BORROWINGS");
+        System.out.println(borrowings);*/
+
+
         model.addAttribute("user", user);
+        model.addAttribute("borrowings", userBorrowings);
         model.addAttribute("session", session);
         return "user-details";
     }

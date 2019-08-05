@@ -64,6 +64,7 @@ CREATE TABLE public.borrowing_types(
 CREATE TABLE public.borrowings(
                                   id                   SERIAL NOT NULL ,
                                   date_borrowed        VARCHAR (50) NOT NULL ,
+                                  date_limit           VARCHAR (50) NOT NULL ,
                                   date_returned        VARCHAR (50) DEFAULT NULL ,
                                   reminder_mail        BOOLEAN  NOT NULL DEFAULT FALSE,
                                   id_user              INTEGER  NOT NULL ,

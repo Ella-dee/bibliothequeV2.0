@@ -27,7 +27,9 @@ public class BorrowingTypeController {
      */
     @GetMapping(value="/TypesDePrets")
     public List<BorrowingType> listBorrowingTypes() {
-        return borrowingTypeDao.findAll();
+        List<BorrowingType> borrowingTypes = borrowingTypeDao.findAll();
+        if(borrowingTypes.isEmpty()) throw new NotFoundException("Aucun type de pret trouvé");
+        return borrowingTypes;
     }
     /**
      * <h2>Not needed for user application => for employees application</h2>

@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BorrowingTypeDao extends JpaRepository<BorrowingType, Integer> {
 
-        
+        BorrowingType findBorrowingTypeById(Integer id);
 }

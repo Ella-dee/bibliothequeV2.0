@@ -1,7 +1,5 @@
 package com.mbooks.microservicebooks.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 import javax.persistence.*;
 
 @Entity
@@ -15,27 +13,35 @@ public class Borrowing {
     @Column (name="date_borrowed")
     private String borrowed;
 
+    @Column (name="date_limit")
+    private String limitDate;
+
     @Column (name="date_returned")
     private String returned;
 
     @Column(name="reminder_mail")
     private Boolean reminderMail;
 
-    //@JsonSerialize(using = BookSerializer.class)
     @ManyToOne
     @JoinColumn(name="id_book")
     private Book book;
 
-    //@JsonSerialize(using = BorrowingTypeSerializer.class)
     @ManyToOne
     @JoinColumn(name="id_type")
     private BorrowingType borrowingType;
-
 
     @Column(name="id_user")
     private Integer idUser;
 
     public Borrowing() {
+    }
+
+    public String getLimitDate() {
+        return limitDate;
+    }
+
+    public void setLimitDate(String limitDate) {
+        this.limitDate = limitDate;
     }
 
     public Integer getId() {

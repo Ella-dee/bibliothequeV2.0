@@ -11,6 +11,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 /**
@@ -38,10 +42,13 @@ public class BorrowingController {
      */
     @PostMapping(value = "/Prets")
     public ResponseEntity<Void> addBorrowing(@Valid @RequestBody Borrowing borrowing) {
-        String dateBorrowed = borrowing.getBorrowed();
-        CheckDate.checkDate(dateBorrowed);
-        String dateReturned = borrowing.getReturned();
-        CheckDate.checkDate(dateReturned);
+        ZoneId zone = ZoneId.of("Europe/Paris");
+        LocalDate today = LocalDate.now(zone);
+        LocalDate oneMonthLater = today.plusMonths( 1 );
+
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        borrowing.setBorrowed(today.format(format));
+        borrowing.setLimitDate(oneMonthLater.format(format));
 
         Borrowing borrowingAdded =  borrowingDao.save(borrowing);
         if (borrowingAdded == null) {
@@ -66,5 +73,18 @@ public class BorrowingController {
             throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
         }
         return borrow;
+    }
+    /**
+     * <p>show details of a particular borrowing by its id</p>
+     * @param id
+     * @return the category
+     */
+    @GetMapping(value = "/Prets/Utilisateur/{id}")
+    public List<Borrowing> showUserBorrowing(@PathVariable Integer id) {
+        List<Borrowing> borrowed = borrowingDao.findBorrowingByIdUser(id);
+        if(!borrowed.isEmpty()) {
+            throw new NotFoundException("Aucun prêt pur l'id " + id + ".");
+        }
+        return borrowed;
     }
 }
