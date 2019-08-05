@@ -81,7 +81,7 @@ public class ClientUsersController {
         }
 
         model.addAttribute("user", user);
-        model.addAttribute("session", session.getAttribute("loggedInUserRole"));
+        model.addAttribute("session", session);
         return "user-details";
     }
     /*

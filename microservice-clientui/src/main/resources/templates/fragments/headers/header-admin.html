@@ -27,7 +27,7 @@
                     <li class="nav-item ml-4">
                         <a class="nav-link js-scroll-trigger" href="#" />A Propos</a>
                     </li>
-                    <li class="nav-item ml-4" ><a class="nav-link js-scroll-trigger" th:href="@{/Utilisateurs/__${userId}__}"><span class="glyphicon glyphicon-user"></span> Mon profil</a></li>
+                    <li class="nav-item ml-4" ><a class="nav-link js-scroll-trigger" th:href="@{/Utilisateurs/MonProfil/__${session.loggedInUserId}__}"><span class="glyphicon glyphicon-user"></span> Mon profil</a></li>
                     <li class="nav-item ml-4">
                         <a class="nav-link js-scroll-trigger" th:href="@{/Utilisateurs/logout}">
                             <span class="glyphicon glyphicon-off"></span>
