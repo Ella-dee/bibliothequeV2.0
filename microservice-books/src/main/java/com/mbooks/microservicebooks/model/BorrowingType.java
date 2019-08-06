@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "borrowing_types")
-@JsonSerialize(using= BorrowingTypeSerializer.class)
+//@JsonSerialize(using= BorrowingTypeSerializer.class)
 public class BorrowingType {
     @Id
     @Column (name="id")
@@ -17,6 +17,7 @@ public class BorrowingType {
     @Column (name="type", unique=true)
     private String type;
 
+    @JsonSerialize(using = BorrowingListSerializer.class)
     @OneToMany (mappedBy="borrowingType")
     private List<Borrowing> borrowingList;
 
