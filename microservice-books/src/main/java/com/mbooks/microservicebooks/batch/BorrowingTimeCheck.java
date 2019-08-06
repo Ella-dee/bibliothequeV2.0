@@ -35,18 +35,14 @@ public class BorrowingTimeCheck {
             ZoneId zone = ZoneId.of("Europe/Paris");
             LocalDate today = LocalDate.now(zone);
 
-            if(limitDate.isAfter(today)){
-                borrowing.setBorrowingType(borrowingTypeDao.findBorrowingTypeById(4));
-                //send Mail
-            }
-          /* if(limitDate.isAfter(today) && borrowing.getRenewedOrNot == true){
+            if(limitDate.isAfter(today) && borrowing.getRenewed() == true){
                 borrowing.setBorrowingType(borrowingTypeDao.findBorrowingTypeById(4));
                 //send Mail en retard
-            }*/
-          /* if(limitDate.isAfter(today) && borrowing.getRenewedOrNot == false){
+            }
+           if(limitDate.isAfter(today) && borrowing.getRenewed() == false){
                 borrowing.setBorrowingType(borrowingTypeDao.findBorrowingTypeById(4));
                 //send Mail vous pouvez prolonger de 4 semaines
-            }*/
+            }
             //TODO ajouter mail
             //TODO ajouter nbr prolongation dans borrowing
 

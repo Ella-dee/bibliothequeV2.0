@@ -28,6 +28,7 @@ public class Author {
     @Column(name="birth_date")
     private String birthDate;
 
+    //@JsonSerialize(using = BookListSerializer.class)
     @OneToMany(mappedBy="author")
     private List<Book> books;
 

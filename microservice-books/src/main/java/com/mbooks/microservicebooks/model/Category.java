@@ -18,6 +18,7 @@ public class Category {
     @Column(name="name", unique=true)
     private String name;
 
+    //@JsonSerialize(using = BookListSerializer.class)
     @OneToMany(mappedBy="category")
     private List<Book> books;
 

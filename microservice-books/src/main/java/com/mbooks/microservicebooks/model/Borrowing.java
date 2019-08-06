@@ -22,6 +22,9 @@ public class Borrowing {
     @Column(name="reminder_mail")
     private Boolean reminderMail;
 
+    @Column(name="renewed")
+    private Boolean renewed;
+
     @ManyToOne
     @JoinColumn(name="id_book")
     private Book book;
@@ -34,6 +37,14 @@ public class Borrowing {
     private Integer idUser;
 
     public Borrowing() {
+    }
+
+    public Boolean getRenewed() {
+        return renewed;
+    }
+
+    public void setRenewed(Boolean renewed) {
+        this.renewed = renewed;
     }
 
     public String getLimitDate() {
