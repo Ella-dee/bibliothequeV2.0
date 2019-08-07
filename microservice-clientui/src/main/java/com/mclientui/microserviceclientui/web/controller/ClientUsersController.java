@@ -94,7 +94,6 @@ public class ClientUsersController {
                 userBorrowings.add(borrowingBean);
             }
         }
-      /*  List<BorrowingBean> userBorrowings = booksProxy.showUserBorrowing(userId);*/
 
 
         model.addAttribute("user", user);

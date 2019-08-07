@@ -1,6 +1,7 @@
 package com.musers.microserviceusers.controller;
 
 import com.musers.microserviceusers.dao.UserDao;
+import com.musers.microserviceusers.exceptions.BadLoginPasswordException;
 import com.musers.microserviceusers.exceptions.CannotAddException;
 import com.musers.microserviceusers.exceptions.NotFoundException;
 import com.musers.microserviceusers.model.User;
@@ -37,6 +38,7 @@ public class UserController {
     }
 
     /**
+     * <h2>Not needed for user application => for employees application</h2>
      * <p>Adds a new user to db, encrypts password before save</p>
      * @param user
      * @return responseEntity
@@ -67,11 +69,11 @@ public class UserController {
     @PostMapping(value = "/Utilisateurs/log-user")
     public ResponseEntity<User> logUser(@RequestParam String userName, @RequestParam String password) {
         User userLogged =  userDao.findByUserName(userName);
-        if (userLogged == null) {throw new CannotAddException("User01");}
+        if (userLogged == null) {throw new BadLoginPasswordException("User01");}
 
         String loginPassword = Encryption.encrypt(password);
         if (!loginPassword.equals(userLogged.getPassword())) {
-            throw new CannotAddException("User02");
+            throw new BadLoginPasswordException("User02");
         }
         return new ResponseEntity<User>(userLogged, HttpStatus.OK);
     }

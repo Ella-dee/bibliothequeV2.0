@@ -22,7 +22,8 @@ public class MicroserviceMailingApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		taskOne.checkAndSend();
+		taskOne.checkAndSendRenewableBorrowings();
+		taskOne.checkAndSendDefoLateBorrowings();
 	}
 
 

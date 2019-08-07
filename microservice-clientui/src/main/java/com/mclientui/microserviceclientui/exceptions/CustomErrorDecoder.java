@@ -26,15 +26,7 @@ public class CustomErrorDecoder implements ErrorDecoder {
             e.printStackTrace();
         }
 
-     /*   if (reponse.status() == 400) {
-            return new BookBadRequestException(
-                    "Requête incorrecte "
-            );
-        } else if (reponse.status() == 404) {
-            return new BookNotFoundException(
-                    "Produit non trouvé "
-            );
-        }*/
+
 
         return defaultErrorDecoder.decode(invoqueur, reponse);
     }

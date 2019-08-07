@@ -51,7 +51,6 @@ public class TaskOne {
                 borrowing.setBorrowingType(borrowingTypeDao.findBorrowingTypeById(4));
                 borrowingDao.save(borrowing);
             }
-            //TODO ajouter mail
 
 
         }

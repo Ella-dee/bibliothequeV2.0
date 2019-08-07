@@ -19,9 +19,9 @@ CREATE TABLE public.mailings(
                                id            SERIAL NOT NULL ,
                                sent_date     VARCHAR (50) NOT NULL,
                                id_user       INTEGER  NOT NULL,
-                               email_user    VARCHAR (50) NOT NULL,
+                               email_user    VARCHAR (100) NOT NULL,
                                id_book       INT  NOT NULL,
-                               title_book    VARCHAR (50) NOT NULL,
+                               title_book    VARCHAR (200) NOT NULL,
                                id_type       INT,
                                CONSTRAINT mailings_PK PRIMARY KEY (id),
     CONSTRAINT mailings_mailing_types0_FK FOREIGN KEY (id_type) REFERENCES public.mailing_types(id)

@@ -17,7 +17,7 @@ public class CustomErrorDecoder implements ErrorDecoder {
         ObjectMapper mapper = new ObjectMapper();
         try{
             ApiError error = mapper.readValue(reponse.body().asInputStream(), ApiError.class);
-           return new CannotSendException("");
+         //  return new CannotSendException("");
         }catch (IOException e){
             e.printStackTrace();
         }
