@@ -18,14 +18,11 @@ public class MailSent {
     @Column(name="id_user")
     private Integer idUser;
 
-    @Column(name="email_user")
-    private String emailUser;
-
     @Column(name="id_book")
     private Integer idBook;
 
-    @Column(name="title_book")
-    private String titleBook;
+    @Column(name="id_borrowing")
+    private Integer idBorrowing;
 
     @ManyToOne
     @JoinColumn(name="id_type")
@@ -66,12 +63,12 @@ public class MailSent {
         this.idUser = idUser;
     }
 
-    public String getEmailUser() {
-        return emailUser;
+    public Integer getIdBorrowing() {
+        return idBorrowing;
     }
 
-    public void setEmailUser(String emailUser) {
-        this.emailUser = emailUser;
+    public void setIdBorrowing(Integer idBorrowing) {
+        this.idBorrowing = idBorrowing;
     }
 
     public Integer getIdBook() {
@@ -82,11 +79,4 @@ public class MailSent {
         this.idBook = idBook;
     }
 
-    public String getTitleBook() {
-        return titleBook;
-    }
-
-    public void setTitleBook(String titleBook) {
-        this.titleBook = titleBook;
-    }
 }

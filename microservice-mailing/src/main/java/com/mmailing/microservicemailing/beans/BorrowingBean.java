@@ -6,7 +6,6 @@ public class BorrowingBean {
     private String borrowed;
     private String limitDate;
     private String returned;
-    private Boolean reminderMail;
     private Boolean renewed;
     private BookBean book;
     private BorrowingTypeBean borrowingType;
@@ -54,14 +53,6 @@ public class BorrowingBean {
 
     public void setReturned(String returned) {
         this.returned = returned;
-    }
-
-    public Boolean getReminderMail() {
-        return reminderMail;
-    }
-
-    public void setReminderMail(Boolean reminderMail) {
-        this.reminderMail = reminderMail;
     }
 
     public BookBean getBook() {

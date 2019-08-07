@@ -39,7 +39,6 @@ public interface MicroserviceBooksProxy {
     @GetMapping( value = "microservice-books/Prets/{id}")
     BorrowingBean showBorrowing(@PathVariable("id") Integer id);
 
-
     @GetMapping(value = "microservice-books/TypesDePrets")
     List<BorrowingTypeBean> listBorrowingTypes();
 

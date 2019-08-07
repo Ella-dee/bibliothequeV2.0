@@ -19,9 +19,6 @@ public class Borrowing {
     @Column (name="date_returned")
     private String returned;
 
-    @Column(name="reminder_mail")
-    private Boolean reminderMail;
-
     @Column(name="renewed")
     private Boolean renewed;
 
@@ -79,13 +76,6 @@ public class Borrowing {
         this.returned = returned;
     }
 
-    public Boolean getReminderMail() {
-        return reminderMail;
-    }
-
-    public void setReminderMail(Boolean reminderMail) {
-        this.reminderMail = reminderMail;
-    }
 
     public Integer getIdUser() {
         return idUser;
