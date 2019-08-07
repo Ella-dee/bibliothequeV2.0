@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="microservice-books" />
         <module name="eureka-server" />
+        <module name="microservice-mailing" />
         <module name="config-server" />
         <module name="microservice-users" />
         <module name="zuul-server" />
@@ -21,6 +22,7 @@
       <module name="eureka-server (2) (com.eureka)" target="1.8" />
       <module name="microservice-books" target="1.8" />
       <module name="microservice-clientui" target="1.8" />
+      <module name="microservice-mailing" target="1.8" />
       <module name="microservice-users" target="1.8" />
       <module name="zuul-server" target="1.8" />
     </bytecodeTargetLevel>
@@ -33,6 +35,7 @@
       <module name="eureka-server (2) (com.eureka)" options="-parameters" />
       <module name="microservice-books" options="-parameters" />
       <module name="microservice-clientui" options="-parameters" />
+      <module name="microservice-mailing" options="-parameters" />
       <module name="microservice-users" options="-parameters" />
       <module name="zuul-server" options="-parameters" />
     </option>

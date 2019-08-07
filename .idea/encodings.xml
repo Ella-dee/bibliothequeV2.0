@@ -6,6 +6,7 @@
     <file url="file://$PROJECT_DIR$/eureka-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-books" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-clientui" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-mailing" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservice-users" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/zuul-server" charset="UTF-8" />
   </component>

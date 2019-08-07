@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * <h2>Proxy links clientui to microservice-users</h2>
  */
-@FeignClient(name = "zuul-server", contextId = "userProxy", configuration = MicroserviceUsersProxy.class)
+@FeignClient(name = "zuul-server", contextId = "usersProxy")
 @RibbonClient(name = "microservice-users")
 public interface MicroserviceUsersProxy {
     @GetMapping(value = "microservice-users/Utilisateurs")

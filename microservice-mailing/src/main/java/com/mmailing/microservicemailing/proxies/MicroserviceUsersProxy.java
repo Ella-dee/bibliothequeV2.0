@@ -1,0 +1,28 @@
+package com.mmailing.microservicemailing.proxies;
+
+import com.mmailing.microservicemailing.beans.UserBean;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+/**
+ * <h2>Proxy links mailing to microservice-users</h2>
+ */
+@FeignClient(name = "zuul-server", contextId = "usersProxyForMailing")
+@RibbonClient(name = "microservice-users")
+public interface MicroserviceUsersProxy {
+    @GetMapping(value = "microservice-users/Utilisateurs")
+    List<UserBean> listUsers();
+
+    @PostMapping(value = "microservice-users/Utilisateurs/add-user")
+    UserBean addUser(@RequestBody UserBean userBean);
+
+    @PostMapping(value = "microservice-users/Utilisateurs/log-user")
+    UserBean logUser(@RequestParam String userName, @RequestParam String password);
+
+    @GetMapping( value = "microservice-users/Utilisateurs/MonProfil/{id}")
+    UserBean showUser(@PathVariable("id") Integer id);
+
+}

@@ -67,6 +67,7 @@ CREATE TABLE public.borrowings(
                                   date_limit           VARCHAR (50) NOT NULL ,
                                   date_returned        VARCHAR (50) DEFAULT NULL ,
                                   reminder_mail        BOOLEAN  NOT NULL DEFAULT FALSE,
+                                  renewed              BOOLEAN  NOT NULL DEFAULT FALSE,
                                   id_user              INTEGER  NOT NULL ,
                                   id_book              INT  NOT NULL ,
                                   id_type              INT  NOT NULL  ,

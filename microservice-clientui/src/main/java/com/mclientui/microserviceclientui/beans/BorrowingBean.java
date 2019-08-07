@@ -7,7 +7,7 @@ public class BorrowingBean {
     private String limitDate;
     private String returned;
     private Boolean reminderMail;
-
+    private Boolean renewed;
     private BookBean book;
     private BorrowingTypeBean borrowingType;
 
@@ -16,6 +16,13 @@ public class BorrowingBean {
     public BorrowingBean() {
     }
 
+    public Boolean getRenewed() {
+        return renewed;
+    }
+
+    public void setRenewed(Boolean renewed) {
+        this.renewed = renewed;
+    }
 
     public Integer getId() {
         return id;
