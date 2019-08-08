@@ -28,6 +28,13 @@ public class ClientController {
         return "index";
     }
 
+    @GetMapping("/APropos")
+    public String about(HttpServletRequest request, Model model){
+        HttpSession session = request.getSession();
+        model.addAttribute("session", session);
+        return "about";
+    }
+
 
 
 }

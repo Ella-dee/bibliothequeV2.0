@@ -1,8 +1,10 @@
 package com.mbooks.microservicebooks.controller;
 
 import com.mbooks.microservicebooks.dao.BookDao;
+import com.mbooks.microservicebooks.dao.BorrowingDao;
 import com.mbooks.microservicebooks.exceptions.NotFoundException;
 import com.mbooks.microservicebooks.model.Book;
+import com.mbooks.microservicebooks.model.Borrowing;
 import com.mbooks.microservicebooks.utils.CheckDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,8 @@ import java.util.Optional;
 public class BookController {
     @Autowired
     private BookDao bookDao;
+    @Autowired
+    private BorrowingDao borrowingDao;
 
     /**
      * <p>Lists all books</p>
@@ -62,11 +66,37 @@ public class BookController {
      * @return the book
      */
     @GetMapping(value = "/Livres/{id}")
-    public Optional<Book> showBook(@PathVariable Integer id) {
-        Optional<Book> book = bookDao.findById(id);
-        if(!book.isPresent()) {
+    public Book showBook(@PathVariable Integer id) {
+        //search for Optional not to get error
+        Optional<Book> bookSearch = bookDao.findById(id);
+        if(!bookSearch.isPresent()) {
             throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
         }
-        return book;
+        //if optional is found, search for object book
+        else {
+            Book book = bookDao.findBookById(id);
+            boolean availableOrNot = true;
+            String bookRef = book.getRef();
+            int count = 0;
+            //list all borrowings with the same book ref
+            List<Borrowing> borrowingsByBook = borrowingDao.findBorrowingByBook_Ref(bookRef);
+            //if there is at least one borrowing with this book ref
+            if (borrowingsByBook.size() > 0) {
+                //count occurences where the book is not returned yet
+                for (Borrowing borrowing : borrowingsByBook) {
+                    if (borrowing.getReturned() == null) {
+                        count++;
+                    }
+                }
+                //if all borrowed books with this ref have not been returned, then not available
+                if (count >= borrowingsByBook.size()) {
+                    availableOrNot=false;
+                }
+            } else {
+                availableOrNot=true;
+            }
+            book.setAvailable(availableOrNot);
+            return book;
+        }
     }
 }

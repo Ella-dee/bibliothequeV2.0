@@ -3,17 +3,19 @@
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{fragments/layout}">
 <head>
-    <title>Index</title>
+    <title>Accueil</title>
 </head>
 <body>
 <div layout:fragment="content" th:remove="tag" class="container">
-<div class="in-content">
-    <div class="row">
-        <div class="col-md-4 my-1">
-            <a th:href="@{/Livres}" >Nos livres</a>
+    <div class="in-content">
+        <div class="row">
+            <div class="mx-auto text-center">
+                <img th:src="@{/img/book-center.png}" alt="image de livre">
+                <h2 class="mx-auto mt-2">Enlivrez-vous !</h2>
+                <a th:href="@{/APropos}" >A propos de nous</a>
+            </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>

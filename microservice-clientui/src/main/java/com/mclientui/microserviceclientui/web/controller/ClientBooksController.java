@@ -53,7 +53,6 @@ public class ClientBooksController {
     @RequestMapping("/Auteurs")
     public String listAuthors(Model model){
         List<AuthorBean> authors = booksProxy.listAuthors();
-        System.out.println(authors);
         model.addAttribute("authors", authors);
         return "authors";
     }

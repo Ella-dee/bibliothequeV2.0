@@ -10,11 +10,19 @@ public class BookBean {
     private Integer pages;
     private String synopsis;
     private String bookCover;
-
+    private Boolean available;
     private CategoryBean category;
     private AuthorBean author;
 
     public BookBean() {
+    }
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 
     public Integer getId() {

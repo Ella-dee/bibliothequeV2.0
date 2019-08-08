@@ -51,7 +51,19 @@ public class Book {
     @OneToMany(mappedBy="book")
     private List<Borrowing> borrowingList;
 
+    @Transient
+    private Boolean available;
+
     public Book() {
+    }
+
+    public Boolean getAvailable() {
+
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 
     public List<Borrowing> getBorrowingList() {

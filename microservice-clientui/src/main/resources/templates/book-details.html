@@ -16,7 +16,12 @@
             <div class="col-md-7 mt-5 ml-4">
                 <h5 th:text="${book.author.firstName}+' '+${book.author.lastName}" />
                 <p th:text= "${book.synopsis}"></p>
-                <a th:href="@{|/details-livre/reserver-livre/${book.id}|}" class="font-weight-bold">Réserver</a>
+                <td th:if="${book.available eq true}">
+                    <p class="font-weight-bold" th:text="Disponible"/>
+                </td>
+                <td th:if="${book.available eq false}">
+                    <p class="font-weight-bold" th:text="Indisponible"/>
+                </td>
             </div>
         </div>
     </div>
