@@ -22,14 +22,14 @@ public class ClientBooksController {
     private MicroserviceBooksProxy booksProxy;
 
     /**
-     * <p>Lists all books</p>
+     * <p>Lists all books by categories</p>
      * @param model
      * @return books.html
      */
     @RequestMapping("/Livres")
     public String listBooks(Model model){
-        List<BookBean> books =  booksProxy.listBooks();
-        model.addAttribute("books", books);
+        List<CategoryBean> categories = booksProxy.listCategories();
+        model.addAttribute("categories", categories);
         return "books";
     }
 
@@ -68,17 +68,7 @@ public class ClientBooksController {
         model.addAttribute("author", author);
         return "author-details";
     }
-    /**
-     * <p>Lists all categories of books</p>
-     * @param model
-     * @return categories.html
-     */
-    @RequestMapping(value = "/Genres")
-    public String listCategories(Model model){
-        List<CategoryBean> categories = booksProxy.listCategories();
-        model.addAttribute("categories", categories);
-        return "categories";
-    }
+
     /**
      * shows details (list of books) of particular category with its id
      * @param catId

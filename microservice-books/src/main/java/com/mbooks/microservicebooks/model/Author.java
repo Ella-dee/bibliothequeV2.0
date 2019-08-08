@@ -3,12 +3,13 @@ package com.mbooks.microservicebooks.model;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Comparator;
 import java.util.List;
 
 @Entity
 @Table(name = "authors")
 @JsonSerialize(using= AuthorSerializer.class)
-public class Author {
+public class Author{
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType. IDENTITY )

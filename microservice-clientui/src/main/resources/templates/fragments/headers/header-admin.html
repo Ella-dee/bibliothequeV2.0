@@ -11,23 +11,20 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item ml-4">
+                    <li class="nav-item ml-4" th:classappend="${#httpServletRequest.getRequestURI() == '/Admin' ? 'active':''}">
                         <a class="nav-link js-scroll-trigger" th:href="@{/Admin}">Infos Admin</a>
                     </li>
-                    <li class="nav-item ml-4">
+                    <li class="nav-item ml-4" th:classappend="${#httpServletRequest.getRequestURI() == '/Livres' ? 'active':''}">
                         <a class="nav-link js-scroll-trigger" th:href="@{/Livres}" >Nos livres</a>
                     </li>
-                    <li class="nav-item ml-4"><a class="nav-link" th:href="@{/Auteurs}">Les Auteurs</a></li>
-                    <li class="nav-item ml-4">
-                        <a class="nav-link js-scroll-trigger" th:href="@{/Genres}">Les Genres</a>
-                    </li>
-                    <li class="nav-item ml-4">
+                    <li class="nav-item ml-4" th:classappend="${#httpServletRequest.getRequestURI() == '/Auteurs' ? 'active':''}"><a class="nav-link" th:href="@{/Auteurs}">Les Auteurs</a></li>
+                    <li class="nav-item ml-4" th:classappend="${#httpServletRequest.getRequestURI() == '/Contact' ? 'active':''}">
                         <a class="nav-link js-scroll-trigger" href="#" />Contact</a>
                     </li>
-                    <li class="nav-item ml-4">
+                    <li class="nav-item ml-4" th:classappend="${#httpServletRequest.getRequestURI() == '/APropos' ? 'active':''}">
                         <a class="nav-link js-scroll-trigger" th:href="@{/APropos}" />A Propos</a>
                     </li>
-                    <li class="nav-item ml-4" ><a class="nav-link js-scroll-trigger" th:href="@{/Utilisateurs/MonProfil/__${session.loggedInUserId}__}"><span class="glyphicon glyphicon-user"></span> Mon profil</a></li>
+                    <li class="nav-item ml-4" th:classappend="${#httpServletRequest.getRequestURI().contains('/Utilisateurs/MonProfil/') ? 'active':''}"><a class="nav-link js-scroll-trigger" th:href="@{/Utilisateurs/MonProfil/__${session.loggedInUserId}__}"><span class="glyphicon glyphicon-user"></span> Mon profil</a></li>
                     <li class="nav-item ml-4">
                         <a class="nav-link js-scroll-trigger" th:href="@{/Utilisateurs/logout}">
                             <span class="glyphicon glyphicon-off"></span>

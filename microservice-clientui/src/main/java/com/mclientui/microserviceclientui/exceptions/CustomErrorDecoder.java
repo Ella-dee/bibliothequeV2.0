@@ -25,9 +25,6 @@ public class CustomErrorDecoder implements ErrorDecoder {
         }catch (IOException e){
             e.printStackTrace();
         }
-
-
-
-        return defaultErrorDecoder.decode(invoqueur, reponse);
+       return defaultErrorDecoder.decode(invoqueur, reponse);
     }
 }

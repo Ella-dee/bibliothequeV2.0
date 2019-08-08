@@ -10,11 +10,13 @@
     <div class="in-content">
     <h1 class="text-center" th:text= "${author.firstName}+' '+${author.lastName}" />
     <div class="row offset-md-1">
-    <div th:each="book : ${author.books}" class="card col-md-3 mt-5 mr-5 ml-5">
+    <div th:each="book : ${author.books}" class="card  bg-secondary col-md-3 mt-5 mr-5 ml-5">
             <a th:href="@{/Livres/__${book.id}__}" >
-                <h4 class="card-header" th:text= "${book.title}"></h4>
-                <div class="thumbnail text-center">
-                    <img th:src="${book.bookCover}"  class="card-img-top img-thumbnail" />
+                <h4 class="card-header text-capitalize" th:text= "${#strings.abbreviate(book.title, 60)}"></h4>
+                <div class="card-body">
+                    <div class="thumbnail text-center mt-2 mb-2">
+                        <img th:src="${book.bookCover}"  class="card-img-top img-thumbnail" />
+                    </div>
                 </div>
             </a>
         </div>

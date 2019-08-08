@@ -8,14 +8,10 @@
 <body>
 <div layout:fragment="content" th:remove="tag" class="container">
     <div class="in-content">
-    <h1>Liste auteurs</h1>
     <div class="row offset-md-1 ">
         <div th:each="author : ${authors}" class="card col-md-3 mt-5 mr-5 ml-5">
            <a th:href="@{/Auteurs/__${author.id}__}" >
-               <h5 class="card-header" th:text= "${author.firstName}+' '+${author.lastName}"></h5>
-               <div class="card-body">
-               <p>Né-e le: <span th:text="${author.getBirthDate()}" />
-               <p>Nationalité: <span th:text="${author.getBirthDate()}" />
+               <h5 class="card-header  bg-secondary text-capitalize" th:text= "${author.firstName}+' '+${author.lastName}"></h5>
                </div>
             </a>
         </div>

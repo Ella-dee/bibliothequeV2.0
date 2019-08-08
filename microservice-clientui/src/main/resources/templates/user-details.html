@@ -8,18 +8,20 @@
 <body>
 <div layout:fragment="content" th:remove="tag" class="container">
     <div class="in-content">
-        <h1 class="text-center mb-5" th:text= "${user.firstName}+' '+${user.lastName}" />
-        <div class="row mt-5 offset-md-1">
-            <h2 th:text="'Mes emprunts'" />
+        <h1 class="text-center mb-5 text-capitalize" th:text= "${user.firstName}+' '+${user.lastName}" />
+        <div class="row mt-5">
+            <h2 th:text="'Mes emprunts'" class="mt-5 mb-5 mx-auto"/>
         </div>
         <div class="row mt-5 offset-md-1">
-            <div th:each="borrowing : ${borrowings}" class="card bg-light col-md-3 mb-5 mr-5 ml-5 ">
+            <div th:each="borrowing : ${borrowings}" id="profileCards" class="card bg-light border-secondary col-md-3 mb-5 mr-5 ml-5 ">
+                <a th:href="@{/Livres/__${borrowing.book.id}__}" >
                 <div class="card-header">
-                    <h4 th:text="${borrowing.book.title}" />
+                    <h4 th:text= "${#strings.abbreviate(borrowing.book.title, 60)}" />
                 </div>
                 <div class="thumbnail text-center mt-2 mb-2">
                     <img th:src="${borrowing.book.bookCover}"  class="card-img-top img-thumbnail" />
                 </div>
+                </a>
                 <div class="card-footer" >
                     <p th:text="'Emprunté le: '+${borrowing.borrowed}" />
                     <p th:text="'Emprunt '+${borrowing.borrowingType.type}" />

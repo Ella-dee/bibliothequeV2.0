@@ -28,8 +28,6 @@ public class BookController {
     @Autowired
     private BorrowingDao borrowingDao;
 
-    Logger log = LoggerFactory.getLogger(this.getClass());
-
     /**
      * <p>Lists all books</p>
      * @return list
@@ -38,7 +36,6 @@ public class BookController {
     public List<Book> listBooks() {
         List<Book> books = bookDao.findAll();
         if(books.isEmpty()) throw new NotFoundException("Aucun livre n'est disponible");
-        log.info("Récupération de la liste des produits");
         return books;
     }
 

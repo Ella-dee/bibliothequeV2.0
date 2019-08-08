@@ -16,7 +16,10 @@ body {
 /*IN PAGE*/
 
 h1 {
-    color: #78ab46;
+    color: #3d7cab;
+}
+h2 {
+    color: #4d98ab;
 }
 
 .in-content{
@@ -24,15 +27,23 @@ h1 {
     margin-bottom: 10vh;
 }
 
-/*IMAGES*/
-.card-header{
-    height: 10vh;
+/*CARDS*/
+.card{
+    padding: 0;
 }
-
 .card-img-top {
     width: 60%;
     height: 10vw;
     object-fit: cover;
+}
+.card a{
+    color: #c7d3c7;
+}
+#profileCards a{
+    color: #161616;
+}
+.card a:hover{
+    color: #2a9fff;
 }
 
 

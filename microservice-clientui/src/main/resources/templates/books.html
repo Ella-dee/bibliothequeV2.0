@@ -5,26 +5,33 @@
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{fragments/layout}">
 <head>
-    <title>Nos Livres</title>
+    <title>Nos Genres</title>
 </head>
 <body>
 <div layout:fragment="content" th:remove="tag" class="container">
     <div class="in-content">
-        <h1>Liste livres</h1>
-        <div class="row offset-md-1 ">
-            <div th:each="book : ${books}" class="card col-md-3 mt-5 mr-5 ml-5">
-                <a th:href="@{/Livres/__${book.id}__}" >
-                    <h4 class="card-header" th:text= "${book.title}"></h4>
-                    <div class="thumbnail text-center mt-2 mb-2">
-                        <img th:src="${book.bookCover}"  class="card-img-top img-thumbnail" />
+        <td th:each="cat : ${categories}" >
+            <div class="row offset-md-1 mt-5 mb-5">
+                <div class="card col-md-11 mb-5">
+                    <div class="card-header bg-secondary text-capitalize">
+                        <p  th:text= "${cat.getName()}" class="text-white d-inline-block col-12 col-md-10"/>
+                        <a th:href="@{/Genres/__${cat.id}__}" th:text="'Plus de livres...'" />
                     </div>
-                    <div class="card-footer">
-                        <p th:text="'Auteur: '+${book.author.firstName}+' '+${book.author.lastName}"/>
-                        <p th:text="'Genre: '+${book.category.getName()}"/>
+                    <div class="card-group">
+                        <div th:each="book, iter : ${cat.books}" th:if="${iter.index}<4" class="card bg-secondary border-light  col-md-3 mt-5 mb-5 mr-3 ml-3">
+                            <a th:href="@{/Livres/__${book.id}__}" >
+                                <div class="card-header" th:text= "${#strings.abbreviate(book.title, 60)}" />
+                                <div class="card-body">
+                                    <div class="thumbnail text-center mt-2 mb-2">
+                                        <img th:src="${book.bookCover}"  class="card-img-top img-thumbnail" />
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </a>
+                </div>
             </div>
-        </div>
+        </td>
     </div>
 </div>
 </body>

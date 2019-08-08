@@ -8,53 +8,48 @@
 <body>
 <div layout:fragment="content" th:remove="tag" class="container">
     <div class="in-content">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h1>Login page</h1>
-            <form th:action="@{/Utilisateurs/log-user}" method="post">
-                <td th:if="${errorMessage ne null}">
-                    <div class="alert alert-danger">
-                        <span  th:text="${errorMessage}"/>
+        <div class="row mt-5">
+            <h2 class="mb-5 mt-5 mx-auto">Connexion</h2>
+        </div>
+        <div class="row">
+            <div class="mx-auto col-md-6 mt-4">
+                <form th:action="@{/Utilisateurs/log-user}" method="post">
+                    <td th:if="${errorMessage ne null}">
+                        <div class="alert alert-danger">
+                            <span  th:text="${errorMessage}"/>
+                        </div>
+                    </td>
+                    <div class="form-group">
+                        <label for="userName">Pseudo</label>:
+                        <input type="text"
+                               id="userName"
+                               name="userName"
+                               class="form-control"
+                               autofocus="autofocus"
+                               placeholder="Pseudo">
                     </div>
-                </td>
-                <div th:if="${param.logout}">
-                    <div class="alert alert-info">
-                        You have been logged out.
+                    <div class="form-group">
+                        <label for="password">Mot de Passe</label>:
+                        <input type="password"
+                               id="password"
+                               name="password"
+                               class="form-control"
+                               placeholder="Mot de passe">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="userName">Username</label>:
-                    <input type="text"
-                           id="userName"
-                           name="userName"
-                           class="form-control"
-                           autofocus="autofocus"
-                           placeholder="Username">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>:
-                    <input type="password"
-                           id="password"
-                           name="password"
-                           class="form-control"
-                           placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
-                            <input type="submit"
-                                   name="login-submit"
-                                   id="login-submit"
-                                   class="form-control btn btn-info"
-                                   value="Log In">
+                    <div class="form-group mt-5">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-3  mx-auto">
+                                <input type="submit"
+                                       name="login-submit"
+                                       id="login-submit"
+                                       class="form-control btn btn-lg btn-info"
+                                       value="Connexion">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
-
-    <p><a href="/" th:href="@{/}">Back to home page</a></p>
     </div>
 </div>
 </body>

@@ -6,12 +6,14 @@ import com.mbooks.microservicebooks.exceptions.NotFoundException;
 import com.mbooks.microservicebooks.model.Author;
 import com.mbooks.microservicebooks.utils.CheckDate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +32,8 @@ public class AuthorController {
      */
     @GetMapping(value="/Auteurs")
     public List<Author> listAuthors() {
-        List<Author> authors = authorDao.findAll();
+        List<Author> authors = authorDao.findAll(new Sort(Sort.Direction.ASC, "lastName"));
+        System.out.println(authors);
         if(authors.isEmpty()) throw new NotFoundException("Aucun auteur n'est enregistré");
         return authors;
     }
