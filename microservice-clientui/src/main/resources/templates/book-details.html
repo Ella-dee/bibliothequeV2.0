@@ -14,7 +14,7 @@
             <img class="py-4 img-fluid" th:src="${book.bookCover}" />
         </div>
             <div class="col-md-7 mt-5 ml-4">
-                <h5 th:text="${book.author.firstName}+' '+${book.author.lastName}" />
+                <h3 th:text="${book.author.firstName}+' '+${book.author.lastName}" />
                 <p th:text= "${book.synopsis}"></p>
                 <td th:if="${book.available eq true}">
                     <p class="font-weight-bold" th:text="Disponible"/>
