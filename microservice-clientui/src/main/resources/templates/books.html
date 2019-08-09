@@ -12,15 +12,15 @@
     <div class="in-content">
         <td th:each="cat : ${categories}" >
             <div class="row offset-md-1 mt-5 mb-5">
-                <div class="card col-md-11 mb-5">
-                    <div class="card-header bg-secondary text-capitalize">
-                        <p  th:text= "${cat.getName()}" class="text-white d-inline-block col-12 col-md-10"/>
-                        <a th:href="@{/Genres/__${cat.id}__}" th:text="'Plus de livres...'" />
+                <div class="card border-secondary col-md-11 mb-5">
+                    <div class="card-header bg-secondary text-white text-capitalize">
+                        <p  th:text= "${cat.getName()}" class="d-inline-block col-12 col-md-10"/>
+                        <a id="moreLink" th:href="@{/Genres/__${cat.id}__}" th:text="'Plus de livres...'" />
                     </div>
                     <div class="card-group">
-                        <div th:each="book, iter : ${cat.books}" th:if="${iter.index}<4" class="card bg-secondary border-light  col-md-3 mt-5 mb-5 mr-3 ml-3">
+                        <div th:each="book, iter : ${cat.books}" th:if="${iter.index}<4" class="card bg-light border-light col-6 col-md-3 ml-3 mr-3 mt-3">
                             <a th:href="@{/Livres/__${book.id}__}" >
-                                <div class="card-header" th:text= "${#strings.abbreviate(book.title, 60)}" />
+                                <div class="card-header bg-darkened" th:text= "${#strings.abbreviate(book.title, 55)}" />
                                 <div class="card-body">
                                     <div class="thumbnail text-center mt-2 mb-2">
                                         <img th:src="${book.bookCover}"  class="card-img-top img-thumbnail" />

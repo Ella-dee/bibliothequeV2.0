@@ -10,13 +10,15 @@
 <body>
 <div layout:fragment="content" th:remove="tag" class="container">
     <div class="in-content">
-        <h1 class="text-center" th:text= "${cat.name}" />
-        <div class="row offset-md-1">
-            <div th:each="book : ${cat.books}" class="card col-md-3 mt-5 mr-5 ml-5">
+        <h1 class="text-center text-capitalize" th:text= "${cat.name}" />
+        <div class="card-group mt-5 offset-md-1">
+            <div th:each="book : ${cat.books}" class="card bg-light border-light col-6 col-md-3 ml-3 mr-3 mt-3">
                 <a th:href="@{/Livres/__${book.id}__}" >
-                    <h4 class="card-header" th:text= "${book.title}"></h4>
+                    <h4 class="card-header bg-darkened" th:text= "${#strings.abbreviate(book.title, 55)}"></h4>
+                    <div class="card-body">
                     <div class="thumbnail text-center">
                         <img th:src="${book.bookCover}"  class="card-img-top img-thumbnail" />
+                    </div>
                     </div>
                 </a>
             </div>

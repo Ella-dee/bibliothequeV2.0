@@ -9,10 +9,10 @@
 <div layout:fragment="content" th:remove="tag" class="container">
     <div class="in-content">
     <h1 class="text-center" th:text= "${author.firstName}+' '+${author.lastName}" />
-    <div class="row offset-md-1">
-    <div th:each="book : ${author.books}" class="card  bg-secondary col-md-3 mt-5 mr-5 ml-5">
+    <div class="card-group offset-md-1 mt-5">
+    <div th:each="book : ${author.books}" class="card bg-light border-light col-6 col-md-3 ml-3 mr-3 mt-3">
             <a th:href="@{/Livres/__${book.id}__}" >
-                <h4 class="card-header text-capitalize" th:text= "${#strings.abbreviate(book.title, 60)}"></h4>
+                <div class="card-header bg-darkened" th:text= "${#strings.abbreviate(book.title, 55)}" />
                 <div class="card-body">
                     <div class="thumbnail text-center mt-2 mb-2">
                         <img th:src="${book.bookCover}"  class="card-img-top img-thumbnail" />
