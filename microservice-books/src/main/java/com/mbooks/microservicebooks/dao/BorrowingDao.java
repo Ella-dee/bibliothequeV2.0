@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface BorrowingDao extends JpaRepository<Borrowing, Integer> {
     List<Borrowing> findBorrowingByIdUser (Integer id);
-    List<Borrowing> findBorrowingByBook_Ref (String ref);
+    List<Borrowing> findBorrowingByBook_Id(Integer id);
 
 }

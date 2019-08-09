@@ -8,19 +8,22 @@
 <body>
 <div layout:fragment="content" th:remove="tag" class="container">
     <div class="in-content">
-    <h1 class="text-center mb-5" th:text= "${book.title}" />
-    <div class="row">
-        <div class="card col-md-4 mr-4 mb-5 mt-5">
-            <img class="py-4 img-fluid" th:src="${book.bookCover}" />
-        </div>
+        <h1 class="text-center mb-5" th:text= "${book.title}" />
+        <div class="row">
+            <div class="card col-md-4 mr-4 mb-5 mt-5">
+                <img class="py-4 img-fluid" th:src="${book.bookCover}" />
+            </div>
             <div class="col-md-7 mt-5 ml-4">
                 <h3 th:text="${book.author.firstName}+' '+${book.author.lastName}" />
                 <p th:text= "${book.synopsis}"></p>
-                <td th:if="${book.available eq true}">
-                    <p class="font-weight-bold" th:text="Disponible"/>
+                <td th:if="${book.availableBooksNbr > 1}">
+                    <p class="font-weight-bold" th:text="${book.availableBooksNbr}+' exemplaires disponibles'"/>
                 </td>
-                <td th:if="${book.available eq false}">
-                    <p class="font-weight-bold" th:text="Indisponible"/>
+                <td th:if="${book.availableBooksNbr == 1}">
+                    <p class="font-weight-bold" th:text="${book.availableBooksNbr}+' exemplaire disponible'"/>
+                </td>
+                <td th:if="${book.availableBooksNbr < 1}">
+                    <p class="font-weight-bold" th:text="'Aucun exemplaire disponible'"/>
                 </td>
             </div>
         </div>

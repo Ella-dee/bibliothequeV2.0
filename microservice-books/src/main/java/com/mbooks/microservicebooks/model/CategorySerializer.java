@@ -30,9 +30,12 @@ public class CategorySerializer extends StdSerializer<Category> {
             jgen.writeStartObject();
             jgen.writeNumberField("id", book.getId());
             jgen.writeStringField("title", book.getTitle());
+            jgen.writeStringField("ref", book.getRef());
             jgen.writeStringField("bookCover", book.getBookCover());
             jgen.writeEndObject();
         }
+
+
         jgen.writeEndArray();
 
         jgen.writeEndObject();

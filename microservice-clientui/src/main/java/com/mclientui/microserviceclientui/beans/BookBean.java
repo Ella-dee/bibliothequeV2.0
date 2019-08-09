@@ -13,8 +13,18 @@ public class BookBean {
     private Boolean available;
     private CategoryBean category;
     private AuthorBean author;
+    private Integer availableBooksNbr;
+    private Integer nbr;
 
     public BookBean() {
+    }
+
+    public Integer getNbr() {
+        return nbr;
+    }
+
+    public void setNbr(Integer nbr) {
+        this.nbr = nbr;
     }
 
     public Boolean getAvailable() {
@@ -23,6 +33,14 @@ public class BookBean {
 
     public void setAvailable(Boolean available) {
         this.available = available;
+    }
+
+    public Integer getAvailableBooksNbr() {
+        return availableBooksNbr;
+    }
+
+    public void setAvailableBooksNbr(Integer availableBooksNbr) {
+        this.availableBooksNbr = availableBooksNbr;
     }
 
     public Integer getId() {

@@ -11,11 +11,28 @@ public class BookBean {
     private String synopsis;
     private String bookCover;
     private Boolean available;
-
+    private Integer availableBooksNbr;
+    private Integer nbr;
     private CategoryBean category;
     private AuthorBean author;
 
     public BookBean() {
+    }
+
+    public Integer getNbr() {
+        return nbr;
+    }
+
+    public void setNbr(Integer nbr) {
+        this.nbr = nbr;
+    }
+
+    public Integer getAvailableBooksNbr() {
+        return availableBooksNbr;
+    }
+
+    public void setAvailableBooksNbr(Integer availableBooksNbr) {
+        this.availableBooksNbr = availableBooksNbr;
     }
 
     public Boolean getAvailable() {

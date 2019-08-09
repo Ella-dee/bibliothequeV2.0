@@ -57,7 +57,7 @@ public class TaskOne {
                 //checks if for each late borrowing an email has already been sent in the past week
                 List<MailSent> thisMailSentList = mailSentDao.findMailSentByIdBorrowing(borrowing.getId());
                 if(!thisMailSentList.isEmpty()){
-                    sentLately = lastMailSentIsOneWeekOld(thisMailSentList);
+                    sentLately = lastMailSentIsOneDayOld(thisMailSentList);
                 }
                 //if last email sent is > 1 week or if no email has been sent for this borrowing, get info and send email
                 if (thisMailSentList.isEmpty() || sentLately == false){
@@ -99,18 +99,18 @@ public class TaskOne {
      */
     public void checkAndSendDefoLateBorrowings(){
         List<BorrowingBean> borrowings = booksProxy.listBorrowings();
-        boolean sentLately = false;
+        boolean sentYesterday = false;
 
         for(BorrowingBean borrowing:borrowings) {
             //get each late borrowing that cannot be renewed
             if (borrowing.getBorrowingType().getId() == 4 && borrowing.getRenewed() == true) {
-                //checks if for each late borrowing an email has already been sent in the past week
+                //checks if for each late borrowing an email has already been sent in the day before
                 List<MailSent> thisMailSentList = mailSentDao.findMailSentByIdBorrowing(borrowing.getId());
                 if(!thisMailSentList.isEmpty()){
-                    sentLately = lastMailSentIsOneWeekOld(thisMailSentList);
+                    sentYesterday = lastMailSentIsOneDayOld(thisMailSentList);
                 }
-                //if last email sent is > 1 week or if no email has been sent for this borrowing, get info and send email
-                if (thisMailSentList.isEmpty() || sentLately == false) {
+                //if last email sent is > 1 day or if no email has been sent for this borrowing, get info and send email
+                if (thisMailSentList.isEmpty() || sentYesterday == false) {
                     UserBean user = usersProxy.showUser(borrowing.getIdUser());
                     BookBean book = booksProxy.showBook(borrowing.getBook().getId());
                     String subject = "Retour du livre " + book.getTitle();
@@ -194,7 +194,7 @@ public class TaskOne {
      * @param mailSentList
      * @return boolean
      */
-    public boolean lastMailSentIsOneWeekOld(List<MailSent> mailSentList){
+    public boolean lastMailSentIsOneDayOld(List<MailSent> mailSentList){
         boolean sentLately = false;
         for(MailSent mail:mailSentList){
             String sentDate = mail.getSentDate();
@@ -203,7 +203,7 @@ public class TaskOne {
                 LocalDate lastSentDate = convertToLocalDateViaInstant(date);
                 ZoneId zone = ZoneId.of("Europe/Paris");
                 LocalDate today = LocalDate.now(zone);
-                if(lastSentDate.plusWeeks(1).compareTo(today) >= 0){
+                if(lastSentDate.plusDays(1).compareTo(today) >= 0){
                     sentLately = true;
                 }
             }catch (ParseException e) {

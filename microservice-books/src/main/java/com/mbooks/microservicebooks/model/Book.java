@@ -36,6 +36,9 @@ public class Book {
     @Column(name="pages")
     private Integer pages;
 
+    @Column(name="nbr")
+    private Integer nbr;
+
     @Column(name="synopsis")
     @Size(max = 600, message = "maximum 600 caractères")
     private String synopsis;
@@ -54,12 +57,31 @@ public class Book {
     @Transient
     private Boolean available;
 
+    @Transient
+    private int availableBooksNbr;
+
     public Book() {
     }
 
     public Boolean getAvailable() {
 
         return available;
+    }
+
+    public Integer getNbr() {
+        return nbr;
+    }
+
+    public void setNbr(Integer nbr) {
+        this.nbr = nbr;
+    }
+
+    public int getAvailableBooksNbr() {
+        return availableBooksNbr;
+    }
+
+    public void setAvailableBooksNbr(int availableBooksNbr) {
+        this.availableBooksNbr = availableBooksNbr;
     }
 
     public void setAvailable(Boolean available) {

@@ -35,6 +35,7 @@ CREATE TABLE public.books(
                              id              SERIAL NOT NULL ,
                              edition         VARCHAR (50) NOT NULL ,
                              pages           INT  DEFAULT NULL ,
+                             nbr             INT  DEFAULT NULL ,
                              ref             VARCHAR (50) NOT NULL ,
                              release_date    VARCHAR (50) NOT NULL ,
                              synopsis        VARCHAR (600) DEFAULT NULL,

@@ -54,7 +54,7 @@ public class CategoryController {
      * @return the category
      */
     @GetMapping(value = "/Genres/{id}")
-    public Optional<Category> showCategory(@PathVariable Integer id) {
+    public Optional<Category>  showCategory(@PathVariable Integer id) {
         Optional<Category> category = categoryDao.findById(id);
         if(!category.isPresent()) {
             throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");

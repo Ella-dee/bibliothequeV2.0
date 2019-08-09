@@ -79,25 +79,29 @@ public class BookController {
             Book book = bookDao.findBookById(id);
             boolean availableOrNot = true;
             String bookRef = book.getRef();
-            int count = 0;
-            //list all borrowings with the same book ref
-            List<Borrowing> borrowingsByBook = borrowingDao.findBorrowingByBook_Ref(bookRef);
+            int notReturnedYet = 0;
+            int booksAvailable = book.getNbr();
+            //list all borrowings for this book
+            List<Borrowing> borrowingsByBook = borrowingDao.findBorrowingByBook_Id(id);
             //if there is at least one borrowing with this book ref
             if (borrowingsByBook.size() > 0) {
-                //count occurences where the book is not returned yet
+                //notReturnedYet occurences where the book is not returned yet
                 for (Borrowing borrowing : borrowingsByBook) {
                     if (borrowing.getReturned() == null) {
-                        count++;
+                        notReturnedYet++;
                     }
                 }
-                //if all borrowed books with this ref have not been returned, then not available
-                if (count >= borrowingsByBook.size()) {
+                //available books minus those borrowed that have not been returned
+                booksAvailable -= notReturnedYet;
+                //if all borrowed books with this ref have not been returned, then this book is not available
+                if (notReturnedYet >= borrowingsByBook.size()) {
                     availableOrNot=false;
                 }
             } else {
                 availableOrNot=true;
             }
             book.setAvailable(availableOrNot);
+            book.setAvailableBooksNbr(booksAvailable);
             return book;
         }
     }
