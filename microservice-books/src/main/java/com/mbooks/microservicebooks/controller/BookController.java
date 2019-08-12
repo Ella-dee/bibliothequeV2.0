@@ -36,7 +36,15 @@ public class BookController {
         if(books.isEmpty()) throw new NotFoundException("Aucun livre n'est disponible");
         return books;
     }
-
+    /**
+     * <p>Lists all books by titre like %</p>
+     * @return list
+     */
+    @PostMapping("/Livres/rechercheParTitre")
+    public List<Book> searchBooksByTitle(String title){
+        List<Book> books = bookDao.findBooksByTitleContainingIgnoreCase(title);
+        return books;
+    }
     /**
      * <h2>Not needed for user application => for employees application</h2>
      * <p>adds a new book in db, checks if the date is valid before save</p>

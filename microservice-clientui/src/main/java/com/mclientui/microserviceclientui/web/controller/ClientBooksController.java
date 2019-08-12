@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,6 +37,18 @@ public class ClientBooksController {
         List<CategoryBean> categories = booksProxy.listCategories();
         model.addAttribute("categories", categories);
         return "books";
+    }
+
+    /**
+     * <p>Lists all books by titre like %</p>
+     * @param model
+     * @return books.html
+     */
+    @RequestMapping("/Livres/rechercheParTitre")
+    public String searchBooksByTitle(@ModelAttribute("book") BookBean bookBean, Model model){
+        List<BookBean> books = booksProxy.searchBooksByTitle(bookBean.getTitle());
+        model.addAttribute("books", books);
+        return "booksByTitle";
     }
 
     /**

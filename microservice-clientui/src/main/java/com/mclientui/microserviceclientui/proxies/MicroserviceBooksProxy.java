@@ -6,6 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -18,6 +19,9 @@ public interface MicroserviceBooksProxy {
 
     @GetMapping(value = "microservice-books/Livres")
     List<BookBean> listBooks();
+
+    @PostMapping(value = "microservice-books/Livres/rechercheParTitre")
+    List<BookBean> searchBooksByTitle(@RequestParam  String title);
 
     @GetMapping( value = "microservice-books/Livres/{id}")
     BookBean showBook(@PathVariable("id") Integer id);

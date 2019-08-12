@@ -73,6 +73,7 @@ h2 {
 .card-group{
     margin-bottom: 5em;
 }
+
 /*MOBILE*/
 @media only screen and (max-width: 768px) {
     h1{

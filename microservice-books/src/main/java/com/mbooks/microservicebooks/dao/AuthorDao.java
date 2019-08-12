@@ -10,4 +10,5 @@ import java.util.List;
 
 @Repository
 public interface AuthorDao extends JpaRepository<Author, Integer> {
+    List <Author> findAllByLastNameLike (String lastName);
 }
