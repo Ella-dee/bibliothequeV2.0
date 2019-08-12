@@ -10,66 +10,6 @@
 <body>
 <div layout:fragment="content" th:remove="tag" class="container">
     <div class="in-content">
-        <div class="row text-center">
-            <div class="mt-5 mb-5 col-4 card mr-5 ml-5 mx-auto">
-                <div class="card-header bg-secondary text-white">
-                    <button class="navbar-toggler " type="button" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <strong>Recherche par auteur</strong>
-                </div>
-                <div class="card-body">
-                    <form th:action="@{/Livres/rechercheParAuteur}" method="post">
-                        <div class="form-group">
-                            <label for="author">Par auteur</label>:
-                            <input type="text"
-                                   id="author"
-                                   name="author"
-                                   class="form-control"
-                                   placeholder="Par auteur">
-                        </div>
-                        <div class="form-group mt-2">
-                            <div class="row">
-                                <div class="col-sm-6 col-sm-offset-3  mx-auto">
-                                    <input type="submit"
-                                           class="form-control btn btn-lg btn-info"
-                                           value="Recherche">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div> <div class="mt-5 mb-5 col-4 card mr-5 ml-5 mx-auto">
-            <div class="card-header bg-secondary text-white">
-                <button class="navbar-toggler " type="button" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <strong>Recherche par titre</strong>
-            </div>
-            <div class="card-body">
-                <form th:action="@{/Livres/rechercheParTitre}" method="post">
-                    <div class="form-group">
-                        <label for="title">Par titre</label>:
-                        <input type="text"
-                               id="title"
-                               name="title"
-                               class="form-control"
-                               autofocus="autofocus"
-                               placeholder="Par titre">
-                    </div>
-                    <div class="form-group mt-2">
-                        <div class="row">
-                            <div class="col-sm-6 col-sm-offset-3  mx-auto">
-                                <input type="submit"
-                                       class="form-control btn btn-lg btn-info"
-                                       value="Recherche">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        </div>
         <td th:each="cat : ${categories}" >
             <div class="row offset-md-1 mt-5 mb-5">
                 <div class="card border-secondary col-md-11 mb-5">
