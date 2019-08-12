@@ -4,7 +4,7 @@ import com.mbooks.microservicebooks.dao.AuthorDao;
 import com.mbooks.microservicebooks.dao.BookDao;
 import com.mbooks.microservicebooks.exceptions.NotFoundException;
 import com.mbooks.microservicebooks.model.Author;
-import com.mbooks.microservicebooks.utils.CheckDate;
+import com.mbooks.microservicebooks.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,7 +45,7 @@ public class AuthorController {
     @PostMapping(value = "/Auteurs")
     public ResponseEntity<Void> addAuthor(@Valid @RequestBody Author author) {
         String date = author.getBirthDate();
-        CheckDate.checkDate(date);
+        DateUtils.checkDate(date);
 
         Author authorAdded =  authorDao.save(author);
         if (authorAdded == null) {

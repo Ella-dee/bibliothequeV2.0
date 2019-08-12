@@ -177,7 +177,7 @@ public class TaskOne {
     }
 
     /**
-     * <p>Parses string to LocalDate</p>
+     * <p>Parses Date to LocalDate</p>
      * @param dateToConvert
      * @return localDate
      */

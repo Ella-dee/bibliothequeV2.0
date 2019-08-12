@@ -94,8 +94,6 @@ public class ClientUsersController {
                 userBorrowings.add(borrowingBean);
             }
         }
-
-
         model.addAttribute("user", user);
         model.addAttribute("borrowings", userBorrowings);
         model.addAttribute("session", session);

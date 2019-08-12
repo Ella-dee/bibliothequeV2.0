@@ -5,6 +5,7 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -38,6 +39,9 @@ public interface MicroserviceBooksProxy {
 
     @GetMapping( value = "microservice-books/Prets/{id}")
     BorrowingBean showBorrowing(@PathVariable("id") Integer id);
+
+    @GetMapping( value = "microservice-books/Prets/renew/{id}")
+    BorrowingBean renewBorrowing(@PathVariable("id") Integer id);
 
 
     @GetMapping(value = "microservice-books/TypesDePrets")

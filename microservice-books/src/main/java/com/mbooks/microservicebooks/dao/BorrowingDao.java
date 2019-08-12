@@ -11,5 +11,6 @@ import java.util.List;
 public interface BorrowingDao extends JpaRepository<Borrowing, Integer> {
     List<Borrowing> findBorrowingByIdUser (Integer id);
     List<Borrowing> findBorrowingByBook_Id(Integer id);
+    Borrowing findBorrowingById(Integer id);
 
 }

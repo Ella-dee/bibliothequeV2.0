@@ -1,15 +1,18 @@
 package com.mclientui.microserviceclientui.web.controller;
 
-import com.mclientui.microserviceclientui.beans.AuthorBean;
-import com.mclientui.microserviceclientui.beans.BookBean;
-import com.mclientui.microserviceclientui.beans.CategoryBean;
+import com.mclientui.microserviceclientui.beans.*;
 import com.mclientui.microserviceclientui.proxies.MicroserviceBooksProxy;
+import com.mclientui.microserviceclientui.proxies.MicroserviceUsersProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -20,6 +23,8 @@ public class ClientBooksController {
 
     @Autowired
     private MicroserviceBooksProxy booksProxy;
+    @Autowired
+    private MicroserviceUsersProxy usersProxy;
 
     /**
      * <p>Lists all books by categories</p>
@@ -81,4 +86,11 @@ public class ClientBooksController {
         model.addAttribute("cat", cat);
         return "category-details";
     }
+
+    @RequestMapping(value = "/Prets/renew/{borrowId}")
+        public String renewBorrowing (@PathVariable Integer borrowId){
+        BorrowingBean borrowingBean = booksProxy.renewBorrowing(borrowId);
+        return "renewed-borrowing";
+        //return "redirect: /Utilisateurs/MonProfil/"+borrowingBean.getIdUser();
+        }
 }

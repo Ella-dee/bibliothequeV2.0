@@ -26,11 +26,18 @@
                 </a>
                 <div class="card-footer bg-darkened" >
                     <p th:text="'Emprunté le: '+${borrowing.borrowed}" />
+
                     <span th:if="${borrowing.borrowingType.id eq 4}">
                         <strong><p class="error" th:text="'Emprunt '+${borrowing.borrowingType.type}" /></strong>
                     </span>
-                    <span th:if="${borrowing.borrowingType.id ne 4}">
+                    </span>
+                    <span th:if="${borrowing.borrowingType.id ne 4 && borrowing.borrowingType.id ne 1 }">
                     <p th:text="'Emprunt '+${borrowing.borrowingType.type}" />
+                    </span>
+                    <span th:if="${borrowing.borrowingType.id eq 1 || borrowing.borrowingType.id eq 4 && borrowing.renewed eq false}">
+                        <a th:href="@{/Prets/renew/__${borrowing.id}__}">
+                            <p>Prolongez le prêt</p>
+                        </a>
                     </span>
                     <span th:if="${borrowing.borrowingType.id eq 2}">
                         <p  th:text="'Rendu le: '+${borrowing.returned}" />

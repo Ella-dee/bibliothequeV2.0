@@ -1,9 +1,11 @@
 package com.mbooks.microservicebooks.controller;
 
 import com.mbooks.microservicebooks.dao.BorrowingDao;
+import com.mbooks.microservicebooks.dao.BorrowingTypeDao;
+import com.mbooks.microservicebooks.exceptions.InvalidRequestException;
 import com.mbooks.microservicebooks.exceptions.NotFoundException;
 import com.mbooks.microservicebooks.model.Borrowing;
-import com.mbooks.microservicebooks.utils.CheckDate;
+import com.mbooks.microservicebooks.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +13,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 /**
@@ -24,6 +27,8 @@ import java.util.Optional;
 public class BorrowingController {
     @Autowired
     private BorrowingDao borrowingDao;
+    @Autowired
+    private BorrowingTypeDao borrowingTypeDao;
     /**
      * <p>Lists all borrowings</p>
      * @return list
@@ -73,6 +78,39 @@ public class BorrowingController {
             throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
         }
         return borrow;
+    }
+
+    /**
+     * <p>show details of a particular borrowing by its id</p>
+     * @param id
+     * @return the category
+     */
+    @GetMapping(value = "/Prets/renew/{id}")
+    public Borrowing renewBorrowing(@PathVariable Integer id) {
+        Optional<Borrowing> borrowSearch = borrowingDao.findById(id);
+        if(!borrowSearch.isPresent()) {
+            throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
+        }
+        Borrowing borrow = borrowingDao.findBorrowingById(id);
+        if(borrow.getRenewed() == true){
+            throw new InvalidRequestException("Le prêt avec l'id "+borrow.getId()+" a déjà été renouvelé une fois");
+        }
+        borrow.setRenewed(true);
+        String getdate = borrow.getLimitDate();
+        try{
+            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(getdate);
+            LocalDate limitDate = DateUtils.convertToLocalDateViaInstant(date);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            borrow.setLimitDate(limitDate.plusMonths(1).format(formatter));
+            borrow.setBorrowingType(borrowingTypeDao.findBorrowingTypeById(3));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        Borrowing borrowingAdded =  borrowingDao.save(borrow);
+        if (borrowingAdded == null) {
+            throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
+        }
+        return borrowingAdded;
     }
     /**
      * <p>show details of a particular borrowing by its id</p>

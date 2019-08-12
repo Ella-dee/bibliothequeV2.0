@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title>Accueil</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag" class="container">
+    <div class="in-content">
+        <div class="col-10 mx-auto ">
+<!--            <input type="hidden" id="sessionId" th:value="${session.loggedInUserId}" />-->
+            <div class="text-center alert alert-success" role="alert">
+                Votre prêt a bien été prolongé.
+            </div>
+            <script th:inline="javascript">
+                var userId = [[${session.loggedInUserId}]];
+                setTimeout("location.href = '/Utilisateurs/MonProfil/'+userId;", 1500);
+            </script>
+        </div>
+    </div>
+</div>
+</body>
+</html>

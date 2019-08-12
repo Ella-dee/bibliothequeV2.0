@@ -2,8 +2,12 @@ package com.mbooks.microservicebooks.utils;
 
 import com.mbooks.microservicebooks.exceptions.InvalidDateException;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
-public class CheckDate {
+
+public class DateUtils {
     /**
      * <p>method checks if date is right format, and if it is valid</p>
      * @param date
@@ -14,5 +18,15 @@ public class CheckDate {
         if (!date.matches(datecheckRegex)) {
             throw new InvalidDateException("Le format de la date est invalide, merci d'entrer un format dd/mm/yyyy");
         }
+    }
+    /**
+     * <p>Parses string to LocalDate</p>
+     * @param dateToConvert
+     * @return localDate
+     */
+    public static LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
+        return dateToConvert.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
     }
 }
