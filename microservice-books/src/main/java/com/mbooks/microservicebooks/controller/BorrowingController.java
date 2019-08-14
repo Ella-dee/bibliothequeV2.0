@@ -45,7 +45,7 @@ public class BorrowingController {
      * @param borrowing
      * @return responseEntity
      */
-    @PostMapping(value = "/Prets")
+    @PostMapping(value = "/Prets/out")
     public ResponseEntity<Void> addBorrowing(@Valid @RequestBody Borrowing borrowing) {
         ZoneId zone = ZoneId.of("Europe/Paris");
         LocalDate today = LocalDate.now(zone);
@@ -65,6 +65,30 @@ public class BorrowingController {
                 .buildAndExpand(borrowingAdded.getId())
                 .toUri();
         return ResponseEntity.created(location).build();
+    }
+    /**
+     * <h2>Not needed for user application => for employees application</h2>
+     * <p>sets a borrowing in db to returned</p>
+     * @param id
+     * @return borrowing
+     */
+    @PostMapping(value = "/Prets/return/{id}")
+    public Borrowing returnBorrowing(@PathVariable Integer id) {
+        Optional<Borrowing> borrow = borrowingDao.findById(id);
+        if(!borrow.isPresent()) {
+            throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
+        }
+        Borrowing borrowing = borrowingDao.findBorrowingById(id);
+        ZoneId zone = ZoneId.of("Europe/Paris");
+        LocalDate today = LocalDate.now(zone);
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        borrowing.setReturned(today.format(format));
+        borrowing.setBorrowingType(borrowingTypeDao.findBorrowingTypeById(2));
+        Borrowing borrowingAdded =  borrowingDao.save(borrowing);
+        if (borrowingAdded == null) {
+            throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
+        }
+        return borrowing;
     }
     /**
      * <p>show details of a particular borrowing by its id</p>
