@@ -12,6 +12,7 @@
         <div class="row mt-5">
             <h2 th:text="'Mes emprunts'" class="mb-5 mx-auto"/>
         </div>
+        <td th:if="${!borrowings.isEmpty()}">
         <div class="card-group mt-5 offset-md-1">
             <div th:each="borrowing : ${borrowings}" class="card bg-light border-light col-6 col-md-3 ml-3 mr-3 mt-3">
                 <a th:href="@{/Livres/__${borrowing.book.id}__}" >
@@ -48,6 +49,10 @@
                 </div>
             </div>
         </div>
+        </td>
+        <td th:if="${borrowings.isEmpty()}">
+            <h4 th:text="'Je n\'ai pas encore emprunté de livre'" />
+        </td>
     </div>
 </div>
 </body>

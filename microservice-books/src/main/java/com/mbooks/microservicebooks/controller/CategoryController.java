@@ -1,7 +1,9 @@
 package com.mbooks.microservicebooks.controller;
 
+import com.mbooks.microservicebooks.dao.BookService;
 import com.mbooks.microservicebooks.dao.CategoryDao;
 import com.mbooks.microservicebooks.exceptions.NotFoundException;
+import com.mbooks.microservicebooks.model.Book;
 import com.mbooks.microservicebooks.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +28,8 @@ public class CategoryController {
      */
     @GetMapping(value="/Genres")
     public List<Category> listCategories() {
-        return categoryDao.findAll();
+        List<Category> categories = categoryDao.findAll();
+        return categories;
     }
     /**
      * <h2>Not needed for user application => for employees application</h2>

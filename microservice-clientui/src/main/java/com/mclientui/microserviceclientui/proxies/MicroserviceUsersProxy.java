@@ -1,6 +1,7 @@
 package com.mclientui.microserviceclientui.proxies;
 
 import com.mclientui.microserviceclientui.beans.UserBean;
+import com.mclientui.microserviceclientui.config.FeignConfig;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.validation.BindingResult;
@@ -11,7 +12,7 @@ import java.util.List;
 /**
  * <h2>Proxy links clientui to microservice-users</h2>
  */
-@FeignClient(name = "zuul-server", contextId = "usersProxy")
+@FeignClient(name = "zuul-server", contextId = "usersProxy", configuration = FeignConfig.class)
 @RibbonClient(name = "microservice-users")
 public interface MicroserviceUsersProxy {
     @GetMapping(value = "microservice-users/Utilisateurs")

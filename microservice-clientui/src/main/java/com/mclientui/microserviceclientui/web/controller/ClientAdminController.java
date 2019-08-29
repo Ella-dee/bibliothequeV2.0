@@ -1,19 +1,15 @@
 package com.mclientui.microserviceclientui.web.controller;
 
+import com.mclientui.microserviceclientui.beans.BorrowingBean;
 import com.mclientui.microserviceclientui.beans.UserBean;
-import com.mclientui.microserviceclientui.exceptions.BadLoginPasswordException;
+import com.mclientui.microserviceclientui.proxies.MicroserviceBooksProxy;
 import com.mclientui.microserviceclientui.proxies.MicroserviceUsersProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,17 +20,29 @@ public class ClientAdminController {
 
     @Autowired
     private MicroserviceUsersProxy usersProxy;
-
+    @Autowired
+    private MicroserviceBooksProxy booksProxy;
+//TODO reset password
     /**
      * <p>Lists all users</p>
      * @param model
-     * @return users.html
+     * @return admin-infos.html
      */
-    @RequestMapping("/admin/Utilisateurs")
+    @RequestMapping("/Admin")
     public String adminListUsers(Model model){
         List<UserBean> users =  usersProxy.listUsers();
         model.addAttribute("users", users);
-        return "users";
+
+        List<BorrowingBean> borrowingBeans = booksProxy.listBorrowings();
+        List<BorrowingBean> lates = new ArrayList<>();
+        for(BorrowingBean b: borrowingBeans){
+            if (b.getBorrowingType().getId() == 4){
+                lates.add(b);
+            }
+        }
+        model.addAttribute("borrowings", lates);
+
+        return "admin-infos";
     }
 
 }

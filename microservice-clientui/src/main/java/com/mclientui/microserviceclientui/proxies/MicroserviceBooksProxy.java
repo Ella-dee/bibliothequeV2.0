@@ -1,6 +1,7 @@
 package com.mclientui.microserviceclientui.proxies;
 
 import com.mclientui.microserviceclientui.beans.*;
+import com.mclientui.microserviceclientui.config.FeignConfig;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,7 @@ import java.util.List;
 /**
  * <h2>Proxy links clientui to microservice-books</h2>
  */
-@FeignClient(name = "zuul-server", contextId = "booksProxy")
+@FeignClient(name = "zuul-server", contextId = "booksProxy", configuration = FeignConfig.class)
 @RibbonClient(name = "microservice-books")
 public interface MicroserviceBooksProxy {
 

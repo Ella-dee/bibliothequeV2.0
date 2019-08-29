@@ -1,10 +1,10 @@
 package com.mbooks.microservicebooks.controller;
 
 import com.mbooks.microservicebooks.dao.BookDao;
+import com.mbooks.microservicebooks.dao.BookService;
 import com.mbooks.microservicebooks.dao.BorrowingDao;
 import com.mbooks.microservicebooks.exceptions.NotFoundException;
 import com.mbooks.microservicebooks.model.Book;
-import com.mbooks.microservicebooks.model.Borrowing;
 import com.mbooks.microservicebooks.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +25,8 @@ public class BookController {
     private BookDao bookDao;
     @Autowired
     private BorrowingDao borrowingDao;
+    @Autowired
+    private BookService bookService;
 
     /**
      * <p>Lists all books</p>
@@ -34,6 +36,10 @@ public class BookController {
     public List<Book> listBooks() {
         List<Book> books = bookDao.findAll();
         if(books.isEmpty()) throw new NotFoundException("Aucun livre n'est disponible");
+        for (Book b: books){
+            bookService.setBookAvailability(b);
+            bookDao.save(b);
+        }
         return books;
     }
     /**
@@ -83,31 +89,7 @@ public class BookController {
         //if optional is found, search for object book
         else {
             Book book = bookDao.findBookById(id);
-            boolean availableOrNot = true;
-            String bookRef = book.getRef();
-            int notReturnedYet = 0;
-            int booksAvailable = book.getNbr();
-            //list all borrowings for this book
-            List<Borrowing> borrowingsByBook = borrowingDao.findBorrowingByBook_Id(id);
-            //if there is at least one borrowing with this book ref
-            if (borrowingsByBook.size() > 0) {
-                //notReturnedYet occurences where the book is not returned yet
-                for (Borrowing borrowing : borrowingsByBook) {
-                    if (borrowing.getReturned() == null) {
-                        notReturnedYet++;
-                    }
-                }
-                //available books minus those borrowed that have not been returned
-                booksAvailable -= notReturnedYet;
-                //if all borrowed books with this ref have not been returned, then this book is not available
-                if (notReturnedYet >= borrowingsByBook.size()) {
-                    availableOrNot=false;
-                }
-            } else {
-                availableOrNot=true;
-            }
-            book.setAvailable(availableOrNot);
-            book.setAvailableBooksNbr(booksAvailable);
+            bookService.setBookAvailability(book);
             return book;
         }
     }

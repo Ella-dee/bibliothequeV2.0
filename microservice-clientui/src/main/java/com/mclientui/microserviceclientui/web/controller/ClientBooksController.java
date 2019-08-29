@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,6 +36,12 @@ public class ClientBooksController {
     @RequestMapping("/Livres")
     public String listBooks(Model model){
         List<CategoryBean> categories = booksProxy.listCategories();
+        List<BookBean> books = booksProxy.listBooks();
+
+        //TODO set max cards displayed in categories
+
+
+        model.addAttribute("books", books);
         model.addAttribute("categories", categories);
         return "books";
     }
@@ -100,10 +107,14 @@ public class ClientBooksController {
         return "category-details";
     }
 
+    /**
+     * renews a borrowing if possible
+     * @param borrowId id of the borrowing
+     * @return profile page of borrowing's user
+     */
     @RequestMapping(value = "/Prets/renew/{borrowId}")
         public String renewBorrowing (@PathVariable Integer borrowId){
         BorrowingBean borrowingBean = booksProxy.renewBorrowing(borrowId);
-        return "renewed-borrowing";
-        //return "redirect: /Utilisateurs/MonProfil/"+borrowingBean.getIdUser();
+        return "redirect:/Utilisateurs/MonProfil/"+borrowingBean.getIdUser();
         }
 }
