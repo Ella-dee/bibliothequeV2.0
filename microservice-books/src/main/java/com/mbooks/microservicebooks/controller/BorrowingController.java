@@ -45,7 +45,7 @@ public class BorrowingController {
      * @param borrowing
      * @return responseEntity
      */
-    @PostMapping(value = "/Prets/out")
+    @PostMapping(value = "/Prets/add-borrowing")
     public ResponseEntity<Void> addBorrowing(@Valid @RequestBody Borrowing borrowing) {
         ZoneId zone = ZoneId.of("Europe/Paris");
         LocalDate today = LocalDate.now(zone);
@@ -72,7 +72,7 @@ public class BorrowingController {
      * @param id
      * @return borrowing
      */
-    @PostMapping(value = "/Prets/return/{id}")
+    @PostMapping(value = "/Prets/{id}/return")
     public Borrowing returnBorrowing(@PathVariable Integer id) {
         Optional<Borrowing> borrow = borrowingDao.findById(id);
         if(!borrow.isPresent()) {
@@ -109,7 +109,7 @@ public class BorrowingController {
      * @param id
      * @return the category
      */
-    @GetMapping(value = "/Prets/renew/{id}")
+    @GetMapping(value = "/Prets/{id}/renew")
     public Borrowing renewBorrowing(@PathVariable Integer id) {
         Optional<Borrowing> borrowSearch = borrowingDao.findById(id);
         if(!borrowSearch.isPresent()) {

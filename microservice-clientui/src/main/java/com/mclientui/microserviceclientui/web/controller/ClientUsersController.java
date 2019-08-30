@@ -179,14 +179,9 @@ public class ClientUsersController {
     @RequestMapping(value = "/Utilisateurs/MotDePasseResetForm")
     public String resetPasswordForm(Model model, @RequestParam("token") String token) {
         UserBean userBean = new UserBean();
-        try{
-            userBean = usersProxy.findUserByToken(token);
-            System.out.println(userBean.getEmail());
-            model.addAttribute("user", userBean);
-        }catch (Exception e){
-            e.printStackTrace();
-            System.out.println(userBean.getEmail());
-        }
+        userBean = usersProxy.findUserByToken(token);
+        System.out.println(userBean.getEmail());
+        model.addAttribute("user", userBean);
         return "password-reset";
     }
 
@@ -199,18 +194,14 @@ public class ClientUsersController {
      */
     @RequestMapping (value = "/Utilisateurs/MotDePasseReset")
     public String resetPassword(@ModelAttribute("user") UserBean userBean, @RequestParam("token") String token, ModelMap theModel){
-        System.out.println("INSIDE CLIENT METHOD FOR RESET");
         int success = 0;
         try{
-            System.out.println("INSIDE USER PROXY, INSIDE TRY");
             UserBean userToresetPassword = usersProxy.findUserByTokenAndSetsNewPassword(token, userBean.getPassword());
             success = 1;
             theModel.addAttribute("success", success);
         }catch (Exception e){
-            System.out.println("INSIDE USER PROXY, INSIDE CATCH");
             e.printStackTrace();
         }
-        System.out.println("INSIDE USER PROXY, OUT OF LOOP");
         return "password-reset";
     }
 

@@ -45,7 +45,7 @@ public interface MicroserviceBooksProxy {
     @GetMapping( value = "microservice-books/Prets/{id}")
     BorrowingBean showBorrowing(@PathVariable("id") Integer id);
 
-    @GetMapping( value = "microservice-books/Prets/renew/{id}")
+    @GetMapping( value = "microservice-books/Prets/{id}/renew")
     BorrowingBean renewBorrowing(@PathVariable("id") Integer id);
 
 

@@ -112,7 +112,7 @@ public class ClientBooksController {
      * @param borrowId id of the borrowing
      * @return profile page of borrowing's user
      */
-    @RequestMapping(value = "/Prets/renew/{borrowId}")
+    @RequestMapping(value = "/Prets/{borrowId}/renew")
         public String renewBorrowing (@PathVariable Integer borrowId){
         BorrowingBean borrowingBean = booksProxy.renewBorrowing(borrowId);
         return "redirect:/Utilisateurs/MonProfil/"+borrowingBean.getIdUser();

@@ -20,7 +20,11 @@ public class CustomErrorDecoder implements ErrorDecoder {
             switch (error.getMessage()){
                 case "User03":
                     return new CannotAddException("");
-                default: return new BadLoginPasswordException("");
+                case "User01":
+                    return new BadLoginPasswordException("");
+                case "User02":
+                    return new BadLoginPasswordException("");
+                default: return defaultErrorDecoder.decode(invoqueur, reponse);
             }
         }catch (IOException e){
             e.printStackTrace();
