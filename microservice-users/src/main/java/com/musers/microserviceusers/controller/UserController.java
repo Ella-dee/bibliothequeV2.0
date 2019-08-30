@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -85,7 +88,7 @@ public class UserController {
         }
         return new ResponseEntity<User>(userLogged, HttpStatus.OK);
     }
-//TODO routes: id/action
+
     /**
      * <p>finds a user by mail to reset a password (sets a token in db)</p>
      * @param email from form
@@ -100,7 +103,11 @@ public class UserController {
                 throw new NotFoundException("L'utilisateur avec l'id " + userToFind.getId() + " est INTROUVABLE.");
             }
             userToFind.setResetToken(UUID.randomUUID().toString());
-            //TODO reset token to null after some time
+            ZoneId zone = ZoneId.of("Europe/Paris");
+            LocalDate today = LocalDate.now(zone);
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            //set token valid for 1 day
+            userToFind.setTokenDate(today.format(format));
             userDao.save(userToFind);
             return userToFind;
         }catch (Exception e){

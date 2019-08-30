@@ -42,12 +42,23 @@ public class User {
     @Column(name = "reset_token")
     private String resetToken;
 
+    @Column(name = "token_date")
+    private String tokenDate;
+
     @JsonSerialize(using = RoleSerializer.class)
     @ManyToOne //plusieurs user pour un seul role
     @JoinColumn(name = "id_role")
     private Role userRole;
 
     public User() {
+    }
+
+    public String getTokenDate() {
+        return tokenDate;
+    }
+
+    public void setTokenDate(String tokenDate) {
+        this.tokenDate = tokenDate;
     }
 
     public String getResetToken() {

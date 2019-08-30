@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e68f727-18a3-47ba-bbb7-06b3fc3c36d3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BorrowingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BorrowingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/config/FeignExceptionConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/config/FeignExceptionConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/exceptions/CustomErrorDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/exceptions/CustomErrorDecoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/proxies/MicroserviceBooksProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/proxies/MicroserviceBooksProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientBooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientBooksController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientUsersController.java" afterDir="false" />
-    </list>
+    <list default="true" id="7e68f727-18a3-47ba-bbb7-06b3fc3c36d3" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/microservice-books/target/" />
     <ignored path="$PROJECT_DIR$/microservice-clientui/target/" />
     <ignored path="$PROJECT_DIR$/microservice-users/target/" />
@@ -101,32 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BorrowingController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="155">
               <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BorrowingTypeController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="408">
-                <caret line="55" column="35" lean-forward="true" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
-              </first_editor>
-              <second_editor />
             </state>
           </provider>
         </entry>
@@ -309,6 +281,51 @@
               <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
               <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="microservice-users" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="microservice-users" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="microservice-users" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="microservice-users" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="microservice-users" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliotheque" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="microservice-users" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+              <item name="migration" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -459,12 +476,12 @@
       <option name="presentableId" value="Default" />
       <updated>1564060438956</updated>
       <workItem from="1564060444982" duration="40598000" />
-      <workItem from="1564423022606" duration="242060000" />
+      <workItem from="1564423022606" duration="242452000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="282658000" />
+    <option name="totallyTimeSpent" value="283050000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -477,9 +494,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49818182" visible="true" weight="0.2677761" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49818182" visible="true" weight="0.2677761" />
       <window_info id="Structure" order="1" sideWeight="0.5018182" side_tool="true" weight="0.2677761" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -495,7 +511,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.3289689" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.5908347" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.5908347" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3289689" />
@@ -656,13 +672,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/microservice-mailing/src/main/resources/bootstrap.properties">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-users/src/main/resources/db/migration/V1.2__init_data.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/9.0.21/tomcat-embed-core-9.0.21.jar!/org/apache/catalina/connector/RequestFacade.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -888,13 +897,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BorrowingController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BorrowingTypeController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -902,13 +904,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-users/src/main/resources/db/migration/V1.2__init_data.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="408">
-            <caret line="55" column="35" lean-forward="true" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
+          <first_editor relative-caret-position="496">
+            <caret line="61" column="120" selection-start-line="61" selection-start-column="120" selection-end-line="61" selection-end-column="120" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BorrowingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
         </state>
       </provider>
     </entry>

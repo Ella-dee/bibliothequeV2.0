@@ -10,6 +10,7 @@ public class UserBean {
     private RoleBean userRole;
     private String userName;
     private String resetToken;
+    private String tokenDate;
 
     public UserBean() {
     }
@@ -20,6 +21,14 @@ public class UserBean {
 
     public void setResetToken(String resetToken) {
         this.resetToken = resetToken;
+    }
+
+    public String getTokenDate() {
+        return tokenDate;
+    }
+
+    public void setTokenDate(String tokenDate) {
+        this.tokenDate = tokenDate;
     }
 
     public String getUserName() {
