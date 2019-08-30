@@ -22,7 +22,7 @@ public class ClientAdminController {
     private MicroserviceUsersProxy usersProxy;
     @Autowired
     private MicroserviceBooksProxy booksProxy;
-//TODO reset password
+
     /**
      * <p>Lists all users</p>
      * @param model

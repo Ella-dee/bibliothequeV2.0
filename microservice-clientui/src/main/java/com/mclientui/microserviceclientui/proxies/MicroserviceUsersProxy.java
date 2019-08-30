@@ -24,6 +24,15 @@ public interface MicroserviceUsersProxy {
     @PostMapping(value = "microservice-users/Utilisateurs/log-user")
     UserBean logUser(@RequestParam String userName, @RequestParam String password);
 
+    @PostMapping(value = "microservice-users/Utilisateurs/forgot-password")
+    UserBean findUserForPassword(@RequestParam String email);
+
+    @GetMapping(value = "microservice-users/Utilisateurs/MotDePasseResetForm")
+    UserBean findUserByToken(@RequestParam String token);
+
+    @PostMapping(value = "microservice-users/Utilisateurs/MotDePasseReset")
+    UserBean findUserByTokenAndSetsNewPassword(@RequestParam String token, @RequestParam String password);
+
     @GetMapping( value = "microservice-users/Utilisateurs/MonProfil/{id}")
     UserBean showUser(@PathVariable("id") Integer id);
 

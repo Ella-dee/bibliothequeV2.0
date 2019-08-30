@@ -9,8 +9,17 @@ public class UserBean {
     private String password;
     private RoleBean userRole;
     private String userName;
+    private String resetToken;
 
     public UserBean() {
+    }
+
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
     }
 
     public String getUserName() {

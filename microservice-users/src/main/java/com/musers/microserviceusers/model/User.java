@@ -39,9 +39,8 @@ public class User {
     @Column(name="password")
     private String password;
 
-    @Transient
-    @NotBlank
-    private String passwordConfirm;
+    @Column(name = "reset_token")
+    private String resetToken;
 
     @JsonSerialize(using = RoleSerializer.class)
     @ManyToOne //plusieurs user pour un seul role
@@ -49,6 +48,14 @@ public class User {
     private Role userRole;
 
     public User() {
+    }
+
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
     }
 
     public String getUserName() {
@@ -99,13 +106,6 @@ public class User {
         this.password = password;
     }
 
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
-
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
-    }
 
     public Role getUserRole() {
         return userRole;

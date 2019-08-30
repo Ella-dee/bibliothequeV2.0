@@ -1,15 +1,16 @@
 package com.mmailing.microservicemailing.controller;
 
+import com.mmailing.microservicemailing.beans.UserBean;
 import com.mmailing.microservicemailing.dao.MailSentDao;
 import com.mmailing.microservicemailing.exceptions.NotFoundException;
+import com.mmailing.microservicemailing.mailing.MailService;
 import com.mmailing.microservicemailing.model.MailSent;
+import com.mmailing.microservicemailing.proxies.MicroserviceUsersProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
@@ -24,6 +25,10 @@ import java.util.Optional;
 public class MailSentController {
     @Autowired
     private MailSentDao mailSentDao;
+    @Autowired
+    private MicroserviceUsersProxy usersProxy;
+    @Autowired
+    private MailService mailService;
 
     /**
      * <p>Lists all reminder mails that were sent</p>
@@ -68,5 +73,16 @@ public class MailSentController {
             throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
         }
         return mailSent;
+    }
+
+    @PostMapping(value = "/Utilisateurs/forgot-password")
+    public void   sendLinkForPassword(@RequestParam String email, @RequestParam String token, @RequestParam String appUrl){
+        String subject = "Réinitialisation Mot de Passe";
+        String message = "Pour réinitialiser votre mdp, cliquer sur le lien suivant:\n" + appUrl+"/Utilisateurs/MotDePasseResetForm?token="+token;
+        try{
+            mailService.sendSimpleMessage(email, subject, message);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

@@ -14,6 +14,7 @@ public interface UserDao extends JpaRepository<User, Integer> {
 
     Optional<User> findFirstByEmail (String email);
     Optional<User> findFirstByUserName (String username);
+    Optional<User> findByResetToken (String resetToken);
 
 
 }

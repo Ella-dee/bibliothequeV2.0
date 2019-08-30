@@ -10,6 +10,7 @@ import com.musers.microserviceusers.utils.validators.UserLoginValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * <h2>Controller for Model User</h2>
@@ -66,6 +68,12 @@ public class UserController {
         return user;
     }
 
+    /**
+     * <p>method to log users</p>
+     * @param userName from form
+     * @param password from form
+     * @return response entity of user
+     */
     @PostMapping(value = "/Utilisateurs/log-user")
     public ResponseEntity<User> logUser(@RequestParam String userName, @RequestParam String password) {
         User userLogged =  userDao.findByUserName(userName);
@@ -76,6 +84,66 @@ public class UserController {
             throw new BadLoginPasswordException("User02");
         }
         return new ResponseEntity<User>(userLogged, HttpStatus.OK);
+    }
+//TODO routes: id/action
+    /**
+     * <p>finds a user by mail to reset a password (sets a token in db)</p>
+     * @param email from form
+     * @return a user
+     */
+    @PostMapping(value = "/Utilisateurs/forgot-password")
+    public User findUserForPassword(@RequestParam String email) {
+        try{
+            User userToFind = userDao.findByEmail(email);
+            Optional<User> user = userDao.findById(userToFind.getId());
+            if(!user.isPresent()) {
+                throw new NotFoundException("L'utilisateur avec l'id " + userToFind.getId() + " est INTROUVABLE.");
+            }
+            userToFind.setResetToken(UUID.randomUUID().toString());
+            //TODO reset token to null after some time
+            userDao.save(userToFind);
+            return userToFind;
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new NotFoundException("L'utilisateur avec l'email " + email + " est INTROUVABLE.");
+        }
+    }
+
+    /**
+     * <p>finds a user by token set to reset a password</p>
+     * @param token
+     * @return a user
+     */
+    @GetMapping (value = "/Utilisateurs/MotDePasseResetForm")
+    public ResponseEntity<User> findUserByToken(@RequestParam String token) {
+            Optional<User> user = userDao.findByResetToken(token);
+            if(!user.isPresent()) {
+                throw new NotFoundException("L'utilisateur avec le token " + token+ " est INTROUVABLE.");
+            }
+            User userToFind = user.get();
+        return new ResponseEntity<User>(userToFind, HttpStatus.OK);
+    }
+
+    /**
+     * <p>resets a user's password</p>
+     * @param token reset token
+     * @param password new password
+     * @return user
+     */
+    @PostMapping(value = "/Utilisateurs/MotDePasseReset")
+    public Optional<User> findUserByTokenAndSetsNewPassword(@RequestParam String token, @RequestParam String password) {
+        System.out.println("INSIDE USER PROXY, METHOD FOR RESET");
+        Optional<User> user = userDao.findByResetToken(token);
+        if(!user.isPresent()) {
+            throw new NotFoundException("L'utilisateur avec le token " + token+ " est INTROUVABLE.");
+        }
+        else {
+            User resetUser = user.get();
+            resetUser.setPassword(Encryption.encrypt(password));
+            resetUser.setResetToken(null);
+            userDao.save(resetUser);
+        }
+        return user;
     }
 
 
