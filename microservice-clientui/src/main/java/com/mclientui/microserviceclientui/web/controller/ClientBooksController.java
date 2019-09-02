@@ -38,8 +38,8 @@ public class ClientBooksController {
         List<CategoryBean> categories = booksProxy.listCategories();
         List<BookBean> books = booksProxy.listBooks();
 
-        //TODO set max cards displayed in categories
 
+        //TODO set max cards displayed in categories
 
         model.addAttribute("books", books);
         model.addAttribute("categories", categories);

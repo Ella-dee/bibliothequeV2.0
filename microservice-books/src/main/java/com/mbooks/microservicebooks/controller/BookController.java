@@ -13,8 +13,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 /**
  * <h2>Controller for model Book</h2>
@@ -42,6 +44,8 @@ public class BookController {
         }
         return books;
     }
+
+
     /**
      * <p>Lists all books by titre like %</p>
      * @return list

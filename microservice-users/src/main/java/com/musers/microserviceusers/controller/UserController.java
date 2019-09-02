@@ -121,7 +121,7 @@ public class UserController {
      * @param token
      * @return a user
      */
-    @GetMapping (value = "/Utilisateurs/MotDePasseResetForm")
+    @GetMapping (value = "/Utilisateurs/MotDePasseReset")
     public ResponseEntity<User> findUserByToken(@RequestParam String token) {
             Optional<User> user = userDao.findByResetToken(token);
             if(!user.isPresent()) {
@@ -148,6 +148,7 @@ public class UserController {
             User resetUser = user.get();
             resetUser.setPassword(Encryption.encrypt(password));
             resetUser.setResetToken(null);
+            resetUser.setTokenDate(null);
             userDao.save(resetUser);
         }
         return user;

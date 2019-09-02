@@ -27,6 +27,7 @@ public interface MicroserviceBooksProxy {
     @GetMapping( value = "microservice-books/Livres/{id}")
     BookBean showBook(@PathVariable("id") Integer id);
 
+
     @GetMapping(value = "microservice-books/Auteurs")
     List<AuthorBean> listAuthors();
 

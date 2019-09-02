@@ -78,7 +78,7 @@ public class MailSentController {
     @PostMapping(value = "/Utilisateurs/forgot-password")
     public void   sendLinkForPassword(@RequestParam String email, @RequestParam String token, @RequestParam String appUrl){
         String subject = "Réinitialisation Mot de Passe";
-        String message = "Pour réinitialiser votre mdp, cliquer sur le lien suivant:\n" + appUrl+"/Utilisateurs/MotDePasseResetForm?token="+token;
+        String message = "Pour réinitialiser votre mdp, cliquer sur le lien suivant:\n" + appUrl+"/Utilisateurs/MotDePasseReset?token="+token;
         try{
             mailService.sendSimpleMessage(email, subject, message);
         }catch (Exception e){

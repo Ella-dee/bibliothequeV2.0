@@ -176,32 +176,33 @@ public class ClientUsersController {
      * @param model model form
      * @return page form
      */
-    @RequestMapping(value = "/Utilisateurs/MotDePasseResetForm")
+  @RequestMapping(value = "/Utilisateurs/MotDePasseReset", method = RequestMethod.GET)
     public String resetPasswordForm(Model model, @RequestParam("token") String token) {
-        UserBean userBean = new UserBean();
-        userBean = usersProxy.findUserByToken(token);
-        System.out.println(userBean.getEmail());
-        model.addAttribute("user", userBean);
-        return "password-reset";
-    }
+      String redirectPage = "";
+      try {
+          UserBean userBean = usersProxy.findUserByToken(token);
+          model.addAttribute("user", userBean);
+          model.addAttribute("resetToken", token);
+          redirectPage = "password-reset";
+      } catch (Exception e) {
+          e.printStackTrace();
+          redirectPage = "redirect:/Utilisateurs/connexion";
+      }
+      return redirectPage;
+  }
 
     /**
      * <p>process called after password is reset</p>
      * @param userBean user
-     * @param token reset token
      * @param theModel modelpage
      * @return modelandview
      */
-    @RequestMapping (value = "/Utilisateurs/MotDePasseReset")
-    public String resetPassword(@ModelAttribute("user") UserBean userBean, @RequestParam("token") String token, ModelMap theModel){
+    @RequestMapping (value = "/Utilisateurs/MotDePasseReset", method = RequestMethod.POST)
+    public String resetPassword(@ModelAttribute("user") UserBean userBean, ModelMap theModel){
         int success = 0;
-        try{
-            UserBean userToresetPassword = usersProxy.findUserByTokenAndSetsNewPassword(token, userBean.getPassword());
-            success = 1;
-            theModel.addAttribute("success", success);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        UserBean userToresetPassword = usersProxy.findUserByTokenAndSetsNewPassword(userBean.getResetToken(), userBean.getPassword());
+        success = 1;
+        theModel.addAttribute("success", success);
         return "password-reset";
     }
 
