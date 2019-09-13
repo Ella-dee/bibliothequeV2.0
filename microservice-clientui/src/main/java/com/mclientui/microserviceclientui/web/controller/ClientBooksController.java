@@ -36,12 +36,6 @@ public class ClientBooksController {
     @RequestMapping("/Livres")
     public String listBooks(Model model){
         List<CategoryBean> categories = booksProxy.listCategories();
-        List<BookBean> books = booksProxy.listBooks();
-
-
-        //TODO set max cards displayed in categories
-
-        model.addAttribute("books", books);
         model.addAttribute("categories", categories);
         return "books";
     }
@@ -104,6 +98,8 @@ public class ClientBooksController {
     public String showCategory(@PathVariable Integer catId, Model model){
         CategoryBean cat = booksProxy.showCategory(catId);
         model.addAttribute("cat", cat);
+        List<BookBean> books = booksProxy.listBooks();
+        model.addAttribute("books", books);
         return "category-details";
     }
 

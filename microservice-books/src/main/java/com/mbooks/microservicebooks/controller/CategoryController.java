@@ -1,5 +1,6 @@
 package com.mbooks.microservicebooks.controller;
 
+import com.mbooks.microservicebooks.config.CustomConfigurations;
 import com.mbooks.microservicebooks.dao.BookService;
 import com.mbooks.microservicebooks.dao.CategoryDao;
 import com.mbooks.microservicebooks.exceptions.NotFoundException;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +24,8 @@ import java.util.Optional;
 public class CategoryController {
     @Autowired
     private CategoryDao categoryDao;
+    @Autowired
+    private CustomConfigurations customConfigurations;
     /**
      * <p>Lists all categories</p>
      * @return list
@@ -29,7 +33,16 @@ public class CategoryController {
     @GetMapping(value="/Genres")
     public List<Category> listCategories() {
         List<Category> categories = categoryDao.findAll();
-        return categories;
+        List<Category> editedCategoryList = new ArrayList<>();
+        for (Category cat:categories) {
+            List<Book> catBooks = cat.getBooks();
+            if(catBooks.size()>3) {
+                List<Book> limitBooks = catBooks.subList(0, customConfigurations.getLimitBooksInCategoryBookList());
+                cat.setBooks(limitBooks);
+            }
+            editedCategoryList.add(cat);
+        }
+        return editedCategoryList;
     }
     /**
      * <h2>Not needed for user application => for employees application</h2>

@@ -43,7 +43,7 @@
                     <span th:if="${borrowing.borrowingType.id eq 2}">
                         <p  th:text="'Rendu le: '+${borrowing.returned}" />
                     </span>
-                    <span th:unless="${borrowing.borrowingType.id eq 2}">
+                    <span th:unless="${borrowing.borrowingType.id eq 2 || borrowing.borrowingType.id eq 4}">
                         <strong><p th:text="'Date limite: '+${borrowing.limitDate}" /></strong>
                     </span>
                 </div>

@@ -12,13 +12,17 @@
     <div class="in-content">
         <h1 class="text-center text-capitalize" th:text= "${cat.name}" />
         <div class="card-group mt-5 offset-md-1">
-            <div th:each="book : ${cat.books}" class="card bg-light border-light col-6 col-md-3 ml-3 mr-3 mt-3">
+            <div th:each="book :${books}" th:if="${book.category.id eq cat.id}" class="card bg-light border-light col-6 col-md-3 ml-3 mr-3 mt-3">
                 <a th:href="@{/Livres/__${book.id}__}" >
-                    <h4 class="card-header bg-darkened" th:text= "${#strings.abbreviate(book.title, 55)}"></h4>
+                    <div class="card-header bg-darkened" th:text= "${#strings.abbreviate(book.title, 55)}" />
                     <div class="card-body">
-                    <div class="thumbnail text-center">
-                        <img th:src="${book.bookCover}"  class="card-img-top img-thumbnail" />
+                        <div class="thumbnail text-center mt-2 mb-2">
+                            <img th:src="${book.bookCover}"  class="card-img-top img-thumbnail" />
+                        </div>
                     </div>
+                    <div class="card-footer">
+                        <span th:if="${book.availableBooksNbr < 1}" class="badge badge-danger" th:text="'Indisponible'" />
+                        <span th:unless="${book.availableBooksNbr < 1}" class="badge badge-info" th:text="'Disponible'" />
                     </div>
                 </a>
             </div>

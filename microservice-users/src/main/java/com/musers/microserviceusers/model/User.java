@@ -35,7 +35,6 @@ public class User {
     private String email;
 
     @NotEmpty
-    @Size(min=8, message="Veuillez saisir un mot de passe d'au moins 8 caractères")
     @Column(name="password")
     private String password;
 

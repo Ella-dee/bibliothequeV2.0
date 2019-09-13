@@ -56,7 +56,7 @@
       <li>microservice-users</li>
       <li>microservice-mailing</li>
       <li>microservice-clientui</li>
-   </ul>
+  </ul>
  </li>
  <li>Dans un navigateur rendez vous sur http://localhost:8080/</li>
  <li>Vous pouvez vous connecter avec le pseudo et mot de passe que vous avez créé dans le init_data.sql du service users</li>
