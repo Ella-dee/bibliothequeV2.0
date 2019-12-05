@@ -93,7 +93,7 @@ public class BorrowingController {
     /**
      * <p>show details of a particular borrowing by its id</p>
      * @param id
-     * @return the category
+     * @return the borrowing
      */
     @GetMapping(value = "/Prets/{id}")
     public Optional<Borrowing> showBorrowing(@PathVariable Integer id) {
@@ -105,9 +105,9 @@ public class BorrowingController {
     }
 
     /**
-     * <p>show details of a particular borrowing by its id</p>
+     * <p>process called to renew a borrowing/p>
      * @param id
-     * @return the category
+     * @return the borrowing
      */
     @GetMapping(value = "/Prets/{id}/renew")
     public Borrowing renewBorrowing(@PathVariable Integer id) {
@@ -137,9 +137,9 @@ public class BorrowingController {
         return borrowingAdded;
     }
     /**
-     * <p>show details of a particular borrowing by its id</p>
+     * <p>show list of borrowings by user id</p>
      * @param id
-     * @return the category
+     * @return list of borrowings
      */
     @GetMapping(value = "/Prets/Utilisateur/{id}")
     public List<Borrowing> showUserBorrowing(@PathVariable Integer id) {

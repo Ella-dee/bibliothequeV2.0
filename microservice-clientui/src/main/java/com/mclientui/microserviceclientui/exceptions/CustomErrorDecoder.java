@@ -21,9 +21,9 @@ public class CustomErrorDecoder implements ErrorDecoder {
                 case "User03":
                     return new CannotAddException("");
                 case "User01":
-                    return new BadLoginPasswordException("");
+                    return new BadLoginPasswordException("L'utilisateur n'existe pas");
                 case "User02":
-                    return new BadLoginPasswordException("");
+                    return new BadLoginPasswordException("L'association login/mot de passe est invalide");
                 default: return defaultErrorDecoder.decode(invoqueur, reponse);
             }
         }catch (IOException e){

@@ -36,7 +36,7 @@
                     <p th:text="'Emprunt '+${borrowing.borrowingType.type}" />
                     </span>
                     <span th:if="${borrowing.borrowingType.id eq 1 || borrowing.borrowingType.id eq 4 && borrowing.renewed eq false}">
-                        <a th:href="@{/Prets/renew/__${borrowing.id}__}">
+                        <a th:href="@{/Prets/__${borrowing.id}__/renew}">
                             <p>Prolongez le prêt</p>
                         </a>
                     </span>

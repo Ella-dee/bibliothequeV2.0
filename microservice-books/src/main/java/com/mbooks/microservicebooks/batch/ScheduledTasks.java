@@ -44,7 +44,7 @@ public class ScheduledTasks {
                 LocalDate today = LocalDate.now(zone);
 
             if (limitDate.isBefore(today) && borrowing.getReturned() == null) {
-                borrowing.setBorrowingType(borrowingTypeDao.findBorrowingTypeById(4));
+                borrowing.setBorrowingType(borrowingTypeDao.findBorrowingTypeById(4)); //set borrowing as late
                 borrowingDao.save(borrowing);
             }
         }

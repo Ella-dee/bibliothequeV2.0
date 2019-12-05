@@ -139,7 +139,6 @@ public class UserController {
      */
     @PostMapping(value = "/Utilisateurs/MotDePasseReset")
     public Optional<User> findUserByTokenAndSetsNewPassword(@RequestParam String token, @RequestParam String password) {
-        System.out.println("INSIDE USER PROXY, METHOD FOR RESET");
         Optional<User> user = userDao.findByResetToken(token);
         if(!user.isPresent()) {
             throw new NotFoundException("L'utilisateur avec le token " + token+ " est INTROUVABLE.");
