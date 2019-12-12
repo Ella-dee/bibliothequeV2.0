@@ -1,19 +1,16 @@
 package com.mbooks.microservicebooks.controller;
 
+import com.mbooks.microservicebooks.dao.BookService;
 import com.mbooks.microservicebooks.dao.BorrowingDao;
 import com.mbooks.microservicebooks.dao.BorrowingTypeDao;
-import com.mbooks.microservicebooks.dao.WaitingListDao;
 import com.mbooks.microservicebooks.exceptions.InvalidRequestException;
 import com.mbooks.microservicebooks.exceptions.NotFoundException;
 import com.mbooks.microservicebooks.model.Borrowing;
-import com.mbooks.microservicebooks.model.WaitingList;
 import com.mbooks.microservicebooks.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import proxies.MicroserviceMailingProxy;
-
 import javax.validation.Valid;
 import java.net.URI;
 import java.text.SimpleDateFormat;
@@ -30,11 +27,9 @@ public class BorrowingController {
     @Autowired
     private BorrowingDao borrowingDao;
     @Autowired
-    private WaitingListDao waitingListDao;
-    @Autowired
     private BorrowingTypeDao borrowingTypeDao;
     @Autowired
-    private MicroserviceMailingProxy mailingProxy;
+    private BookService bookService;
 
     /**
      * <p>Lists all borrowings</p>
@@ -96,20 +91,7 @@ public class BorrowingController {
         if (borrowingAdded == null) {
             throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
         }
-        //check if there's a waiting list for that book
-        Integer bookReturnedWaitingList = borrowing.getBook().getWaitingList().size();
-        //if there is send an email
-        if (bookReturnedWaitingList>0){
-            //TODO add mailing proxy to book
-            List<WaitingList> list = borrowing.getBook().getWaitingList();
-            ArrayList<Integer> idList = new ArrayList<>();
-            for (WaitingList item: list){
-                idList.add(item.getId());
-            }
-            Collections.sort(idList);
-            WaitingList waitingList = waitingListDao.getOne(idList.get(0));
-            mailingProxy.sendNotifWhenAwaitedBookIsReturned(waitingList.getIdUser(), waitingList.getBook().getId());
-        }
+        bookService.checkForWaitingList(borrowing.getBook());
         return borrowing;
     }
     /**

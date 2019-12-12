@@ -3,28 +3,19 @@ package com.mmailing.microservicemailing.batch;
 import com.mmailing.microservicemailing.beans.BookBean;
 import com.mmailing.microservicemailing.beans.BorrowingBean;
 import com.mmailing.microservicemailing.beans.UserBean;
-import com.mmailing.microservicemailing.beans.WaitingListBean;
-import com.mmailing.microservicemailing.controller.MailSentController;
-import com.mmailing.microservicemailing.dao.MailSentDao;
 import com.mmailing.microservicemailing.dao.MailSentForWaitingListDao;
-import com.mmailing.microservicemailing.dao.MailTypeDao;
+import com.mmailing.microservicemailing.dao.MailSentForWaitingListService;
 import com.mmailing.microservicemailing.mailing.MailService;
-import com.mmailing.microservicemailing.model.MailSent;
 import com.mmailing.microservicemailing.model.MailSentForWaitingList;
 import com.mmailing.microservicemailing.proxies.MicroserviceBooksProxy;
 import com.mmailing.microservicemailing.proxies.MicroserviceUsersProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-
-import static com.mmailing.microservicemailing.controller.MailSentController.sendNotifWhenAwaitedBookIsReturned;
 import static com.mmailing.microservicemailing.utils.DateUtils.*;
 
 /**
@@ -39,11 +30,9 @@ public class ScheduledTasks {
     @Autowired
     private MailService mailService;
     @Autowired
-    private MailSentDao mailSentDao;
+    private MailSentForWaitingListService mailSentForWaitingListService;
     @Autowired
     private MailSentForWaitingListDao mailSentForWaitingListDao;
-    @Autowired
-    private MailTypeDao mailTypeDao;
 
     /**
      * <p>method called when application is ran</p>
@@ -69,10 +58,7 @@ public class ScheduledTasks {
 
                 try{
                     mailService.sendSimpleMessage(user.getEmail(), subject, text);
-                    MailSent newMailSent = prepareModelMailSent(localDateToString(theDateToday()),  user.getId(), book.getId(), borrowing.getId());
-                    newMailSent.setMailType(mailTypeDao.findMailTypeById(2));
-                    mailSentDao.save(newMailSent);
-                }catch (Exception e){
+                 }catch (Exception e){
                     e.printStackTrace();
                 }
             }
@@ -107,9 +93,6 @@ public class ScheduledTasks {
                         "\n\nLa bilibothèque de la ville";
                 try {
                     mailService.sendSimpleMessage(user.getEmail(), subject, text);
-                    MailSent newMailSent = prepareModelMailSent(localDateToString(theDateToday()), user.getId(), book.getId(), borrowing.getId());
-                    newMailSent.setMailType(mailTypeDao.findMailTypeById(1));
-                    mailSentDao.save(newMailSent);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -121,26 +104,13 @@ public class ScheduledTasks {
     }
 
     /**
-     * <p>Prepares the build for a MailSent Model, without the mailtype</p>
-     * @param sentDate
-     * @param idUser
-     * @param idBook
-     * @param idBorrowing
-     * @return model MailSent
-     */
-    public MailSent prepareModelMailSent(String sentDate, Integer idUser, Integer idBook, Integer idBorrowing){
-        MailSent model = new MailSent();
-        model.setSentDate(sentDate);
-        model.setIdUser(idUser);
-        model.setIdBorrowing(idBorrowing);
-        model.setIdBook(idBook);
-        return model;
-    }
-
-    /**
      * <p>method called when application is ran</p>
-     *  <p>when a notification has been sent to a user on a book waiting list, he has 48H to claim it</p>
+     *  <ul><li>a notification has been sent to a user on a book waiting list</li>
+     *  <li>a line in db is created with date/id_book/id_user</li>
+     *  <li>after 48H, line of mail & waitingList are deleted</li>
+     *  <li>if others are waiting mail is sent</li>
      */
+    //TODO  (if book is claimed????)
     @Scheduled(cron="0 0 0 * * *") //Fire at 0am everyday
     public void checkAndSetPriorityForWaitingList(){
         List<MailSentForWaitingList> mailSentForWaitingLists = mailSentForWaitingListDao.findAll();
@@ -154,28 +124,7 @@ public class ScheduledTasks {
 
             //If it's been more than 48H
             if (!sentDate.plusDays(2).isBefore(today)) {
-                //Delete the line for user/book in db
-                booksProxy.cancelWaitingList(mail.getId());
-                //Search if there's other people waiting for this book
-                List<WaitingListBean> list = booksProxy.listWaitingLists();
-                List<WaitingListBean> listForThisBook = new ArrayList<>();
-                for(WaitingListBean item: list){
-                    if(item.getBook().getId() == mail.getIdBook()){
-                        listForThisBook.add(item);
-                    }
-                }
-                //if there is, send a notification to the next in line
-                if (listForThisBook.size()>0){
-                    ArrayList<Integer> idList = new ArrayList<>();
-                    for (WaitingListBean item: listForThisBook){
-                        idList.add(item.getId());
-                    }
-                    Collections.sort(idList);
-                    WaitingListBean waitingList = booksProxy.showWaitingList(idList.get(0));
-                    //Delete from db the initial mail
-                    mailSentForWaitingListDao.delete(mail);
-                    sendNotifWhenAwaitedBookIsReturned(waitingList.getIdUser(), waitingList.getBook().getId());
-                }
+                mailSentForWaitingListService.sendNotifNextInLine(mail);
             }
         }
     }

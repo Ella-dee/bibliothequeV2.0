@@ -10,6 +10,36 @@
     <div class="in-content">
         <h1 class="text-center mb-5 text-capitalize" th:text= "${user.firstName}+' '+${user.lastName}" />
         <div class="row mt-5">
+            <h2 th:text="'Mes réservations'" class="mb-5 mx-auto"/>
+        </div>
+        <td th:if="${awaitedBooks.isEmpty()}">
+            <h4 th:text="'Je n\'ai pas encore réservé de livre'" />
+        </td>
+        <td th:if="${!awaitedBooks.isEmpty()}">
+            <div class="card-group mt-5 offset-md-1">
+                <div th:each="awaitedBook : ${awaitedBooks}" class="card bg-light border-light col-6 col-md-3 ml-3 mr-3 mt-3">
+                    <a th:href="@{Livres/__${awaitedBook.book.id}__}">
+                        <div class="card-header bg-darkened">
+                            <h4 th:text= "${#strings.abbreviate(awaitedBook.book.title, 55)}" />
+                        </div>
+                        <div class="card-body">
+                            <div class="thumbnail text-center mt-2 mb-2">
+                                <img th:src="${awaitedBook.book.bookCover}"  class="card-img-top img-thumbnail" />
+                            </div>
+                        </div>
+                        <div class="card-footer bg-darkened" >
+                            <p class="font-weight-bold" th:text="'Date de retour prévue: '+${awaitedBook.book.closestReturnDate}"/>
+                            <p class="font-weight-bold" th:text="'Personnes sur liste d\'attente: '+${awaitedBook.book.usersWaiting}"/>
+                            <p class="font-weight-bold" th:text="'Ma position sur la liste d\'attente: '+${awaitedBook.userPos}"/>
+                            <input type="button" value="Annuler la réservation"
+                                   onclick="window.location.href='#'; return false;"
+                                   class="btn btn-danger ml-4 ml-sm-0 mb-5 mb-sm-0" />
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </td>
+        <div class="row mt-5">
             <h2 th:text="'Mes emprunts'" class="mb-5 mx-auto"/>
         </div>
         <td th:if="${!borrowings.isEmpty()}">
@@ -31,7 +61,6 @@
                         <span th:if="${borrowing.borrowingType.id eq 4}">
                         <strong><p class="error" th:text="'Emprunt '+${borrowing.borrowingType.type}" /></strong>
                     </span>
-                        </span>
                         <span th:if="${borrowing.borrowingType.id ne 4 && borrowing.borrowingType.id ne 1 }">
                     <p th:text="'Emprunt '+${borrowing.borrowingType.type}" />
                     </span>

@@ -2,6 +2,7 @@ package com.mclientui.microserviceclientui.web.controller;
 
 import com.mclientui.microserviceclientui.beans.BorrowingBean;
 import com.mclientui.microserviceclientui.beans.UserBean;
+import com.mclientui.microserviceclientui.beans.WaitingListBean;
 import com.mclientui.microserviceclientui.exceptions.BadLoginPasswordException;
 import com.mclientui.microserviceclientui.proxies.MicroserviceBooksProxy;
 import com.mclientui.microserviceclientui.proxies.MicroserviceMailingProxy;
@@ -104,6 +105,9 @@ public class ClientUsersController {
                 userBorrowings.add(borrowingBean);
             }
         }
+
+        List<WaitingListBean> userWaitingList= booksProxy.showUserWaitingList(userId);
+        model.addAttribute("awaitedBooks", userWaitingList);
         model.addAttribute("user", user);
         model.addAttribute("borrowings", userBorrowings);
         model.addAttribute("session", session);

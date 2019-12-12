@@ -2,11 +2,12 @@ package com.mbooks.microservicebooks.dao;
 
 import com.mbooks.microservicebooks.model.Book;
 import com.mbooks.microservicebooks.model.Borrowing;
+import com.mbooks.microservicebooks.model.WaitingList;
 import com.mbooks.microservicebooks.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import proxies.MicroserviceMailingProxy;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -18,9 +19,11 @@ import java.util.List;
 @Transactional
 public class BookService {
     @Autowired
-    private BookDao bookDao;
-    @Autowired
     private BorrowingDao borrowingDao;
+    @Autowired
+    private WaitingListDao waitingListDao;
+    @Autowired
+    private MicroserviceMailingProxy mailingProxy;
 
     public void setBookAvailability(Book book){
         boolean availableOrNot = true;
@@ -62,5 +65,25 @@ public class BookService {
         }
         book.setAvailable(availableOrNot);
         book.setAvailableBooksNbr(booksAvailable);
+    }
+
+    /**
+     * <h2>After book is returned, checks if people are waiting for it</h2>
+     * @param book
+     */
+    public void checkForWaitingList(Book book){
+        //check if there's a waiting list for that book
+        Integer bookReturnedWaitingList = book.getWaitingList().size();
+        //if there is send an email
+        if (bookReturnedWaitingList>0){
+            List<WaitingList> list = book.getWaitingList();
+            ArrayList<Integer> idList = new ArrayList<>();
+            for (WaitingList item: list){
+                idList.add(item.getId());
+            }
+            Collections.sort(idList);
+            WaitingList waitingList = waitingListDao.getOne(idList.get(0));
+            mailingProxy.sendNotifWhenAwaitedBookIsReturned(waitingList.getIdUser(), waitingList.getBook().getId());
+        }
     }
 }

@@ -4,12 +4,10 @@ import com.mclientui.microserviceclientui.beans.*;
 import com.mclientui.microserviceclientui.config.FeignConfig;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * <h2>Proxy links clientui to microservice-books</h2>
@@ -21,12 +19,26 @@ public interface MicroserviceBooksProxy {
     @GetMapping(value = "microservice-books/Livres")
     List<BookBean> listBooks();
 
+    @GetMapping(value = "microservice-books/Reservations")
+    List<WaitingListBean> listWaitingLists();
+
+    @GetMapping(value = "microservice-books/Reservations/Utilisateur/{id}")
+    List<WaitingListBean> showUserWaitingList(@PathVariable Integer userId);
+
+    @PostMapping(value = "microservice-books/Reservations/delete/{id}")
+    void cancelWaitingList(@PathVariable Integer id);
+
+    @GetMapping(value = "microservice-books/Reservations/{id}")
+    WaitingListBean showWaitingList(@PathVariable Integer id);
+
+    @GetMapping(value = "microservice-books/Titres")
+    List<String> listBookTitles();
+
     @PostMapping(value = "microservice-books/Livres/rechercheParTitre")
     List<BookBean> searchBooksByTitle(@RequestParam  String title);
 
     @GetMapping( value = "microservice-books/Livres/{id}")
     BookBean showBook(@PathVariable("id") Integer id);
-
 
     @GetMapping(value = "microservice-books/Auteurs")
     List<AuthorBean> listAuthors();
