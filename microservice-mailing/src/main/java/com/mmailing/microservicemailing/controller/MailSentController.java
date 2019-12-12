@@ -2,13 +2,14 @@ package com.mmailing.microservicemailing.controller;
 
 import com.mmailing.microservicemailing.beans.UserBean;
 import com.mmailing.microservicemailing.dao.MailSentDao;
+import com.mmailing.microservicemailing.dao.MailSentForWaitingListDao;
 import com.mmailing.microservicemailing.exceptions.NotFoundException;
 import com.mmailing.microservicemailing.mailing.MailService;
 import com.mmailing.microservicemailing.model.MailSent;
+import com.mmailing.microservicemailing.model.MailSentForWaitingList;
 import com.mmailing.microservicemailing.proxies.MicroserviceUsersProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -18,6 +19,9 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+import static com.mmailing.microservicemailing.utils.DateUtils.localDateToString;
+import static com.mmailing.microservicemailing.utils.DateUtils.theDateToday;
+
 /**
  * <h2>Controller for the MailSent model</h2>
  */
@@ -26,9 +30,11 @@ public class MailSentController {
     @Autowired
     private MailSentDao mailSentDao;
     @Autowired
-    private MicroserviceUsersProxy usersProxy;
+    private static MicroserviceUsersProxy usersProxy;
     @Autowired
-    private MailService mailService;
+    private static MailService mailService;
+    @Autowired
+    private MailSentForWaitingListDao mailSentForWaitingListDao;
 
     /**
      * <p>Lists all reminder mails that were sent</p>
@@ -84,5 +90,22 @@ public class MailSentController {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    @PostMapping(value = "/Utilisateurs/notification_retour")
+    public void  sendNotifWhenAwaitedBookIsReturned(@RequestParam Integer userId, @RequestParam Integer bookId){
+        UserBean user = usersProxy.showUser(userId);
+        String subject = "Un Livre que vous attendez est disponible";
+        String message = "Vous avez la priorité sur ce livre pendant 48H, après ce délai vous serez retiré de la liste d'attente\n";
+        try{
+            mailService.sendSimpleMessage(user.getEmail(), subject, message);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        MailSentForWaitingList mailSentForWaitingList = new MailSentForWaitingList();
+        mailSentForWaitingList.setSentDate(localDateToString(theDateToday()));
+        mailSentForWaitingList.setIdBook(bookId);
+        mailSentForWaitingList.setIdUser(userId);
+        mailSentForWaitingListDao.save(mailSentForWaitingList);
     }
 }
