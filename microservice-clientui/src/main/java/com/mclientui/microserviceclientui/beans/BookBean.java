@@ -15,8 +15,17 @@ public class BookBean {
     private AuthorBean author;
     private Integer availableBooksNbr;
     private Integer nbr;
+    private String closestReturnDate;
 
     public BookBean() {
+    }
+
+    public String getClosestReturnDate() {
+        return closestReturnDate;
+    }
+
+    public void setClosestReturnDate(String closestReturnDate) {
+        this.closestReturnDate = closestReturnDate;
     }
 
     public Integer getNbr() {

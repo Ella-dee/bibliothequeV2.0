@@ -60,7 +60,18 @@ public class Book {
     @Transient
     private int availableBooksNbr;
 
+    @Transient
+    private String closestReturnDate;
+
     public Book() {
+    }
+
+    public String getClosestReturnDate() {
+        return closestReturnDate;
+    }
+
+    public void setClosestReturnDate(String closestReturnDate) {
+        this.closestReturnDate = closestReturnDate;
     }
 
     public Boolean getAvailable() {
