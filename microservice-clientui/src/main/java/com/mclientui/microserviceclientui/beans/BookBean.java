@@ -16,10 +16,19 @@ public class BookBean {
     private Integer availableBooksNbr;
     private Integer nbr;
     private String closestReturnDate;
+    private Integer usersWaiting;
 
     public BookBean() {
     }
 
+
+    public Integer getUsersWaiting() {
+        return usersWaiting;
+    }
+
+    public void setUsersWaiting(Integer usersWaiting) {
+        this.usersWaiting = usersWaiting;
+    }
     public String getClosestReturnDate() {
         return closestReturnDate;
     }

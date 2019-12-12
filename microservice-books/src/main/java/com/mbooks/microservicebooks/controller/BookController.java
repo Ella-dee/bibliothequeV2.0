@@ -47,6 +47,22 @@ public class BookController {
 
 
     /**
+     * <p>Lists all book titles</p>
+     * @return list
+     */
+    @GetMapping(value="/Titres")
+    public List<String> listBookTitles() {
+        List<Book> books = bookDao.findAll();
+        List<String> bookTitles = new ArrayList<>();
+        if(books.isEmpty()) throw new NotFoundException("Aucun livre n'est disponible");
+        for (Book b: books) {
+            bookTitles.add(b.getTitle());
+        }
+        return bookTitles;
+    }
+
+
+    /**
      * <p>Lists all books by titre like %</p>
      * @return list
      */
@@ -94,6 +110,7 @@ public class BookController {
         else {
             Book book = bookDao.findBookById(id);
             bookService.setBookAvailability(book);
+            book.setUsersWaiting(book.getWaitingList().size());
             return book;
         }
     }

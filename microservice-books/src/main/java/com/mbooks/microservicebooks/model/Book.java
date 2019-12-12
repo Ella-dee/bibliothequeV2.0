@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "books")
-@JsonIgnoreProperties(value = {"borrowingList"})
+@JsonIgnoreProperties(value = {"borrowingList", "waitingList"})
 public class Book {
     @Id
     @Column(name="id")
@@ -54,6 +54,9 @@ public class Book {
     @OneToMany(mappedBy="book")
     private List<Borrowing> borrowingList;
 
+    @OneToMany(mappedBy="book")
+    private List<WaitingList> waitingList;
+
     @Transient
     private Boolean available;
 
@@ -63,11 +66,30 @@ public class Book {
     @Transient
     private String closestReturnDate;
 
+    @Transient
+    private Integer usersWaiting;
+
+    public Integer getUsersWaiting() {
+        return usersWaiting;
+    }
+
+    public void setUsersWaiting(Integer usersWaiting) {
+        this.usersWaiting = usersWaiting;
+    }
+
     public Book() {
     }
 
     public String getClosestReturnDate() {
         return closestReturnDate;
+    }
+
+    public List<WaitingList> getWaitingList() {
+        return waitingList;
+    }
+
+    public void setWaitingList(List<WaitingList> waitingList) {
+        this.waitingList = waitingList;
     }
 
     public void setClosestReturnDate(String closestReturnDate) {
