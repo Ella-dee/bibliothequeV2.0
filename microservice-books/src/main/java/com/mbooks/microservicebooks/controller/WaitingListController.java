@@ -1,9 +1,11 @@
 package com.mbooks.microservicebooks.controller;
 
 import com.mbooks.microservicebooks.dao.BookDao;
+import com.mbooks.microservicebooks.dao.BorrowingDao;
 import com.mbooks.microservicebooks.dao.WaitingListDao;
 import com.mbooks.microservicebooks.exceptions.InvalidRequestException;
 import com.mbooks.microservicebooks.exceptions.NotFoundException;
+import com.mbooks.microservicebooks.model.Borrowing;
 import com.mbooks.microservicebooks.model.WaitingList;
 import com.mbooks.microservicebooks.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +26,8 @@ public class WaitingListController {
     @Autowired
     private WaitingListDao waitingListDao;
 
-
-    //TO REMOVE AFTER TEST PURPOSE//
     @Autowired
-    private BookDao bookDao;
-    //END OF REMOVE//
+    private BorrowingDao borrowingDao;
 
 
     /**
@@ -48,10 +47,6 @@ public class WaitingListController {
      */
     @PostMapping(value = "/Reservations/add-userToWaitingList")
     public ResponseEntity<Void> addUserToWaitingList(@Valid @RequestBody WaitingList waitingList) {
-        //TO REMOVE AFTER TEST PURPOSE//
-        waitingList.setBook(bookDao.findBookById(6));
-        //END OF REMOVE//
-
         //waitingList contains from clientUI: idUser, book
         //create userPos if possible:
         //1- look for occurrences with the same book
@@ -62,6 +57,15 @@ public class WaitingListController {
         for (WaitingList list: waitingForThisBook){
             if (list.getIdUser() == waitingList.getIdUser()){
                 throw new InvalidRequestException("Utilisateur déjà sur liste d'attente");
+            }
+        }
+        //2bis - check if user has borrowing with this book already
+        List<Borrowing> borrowingsOfThisBook = borrowingDao.findBorrowingByBook_Id(bookAwaitedId);
+        if (borrowingsOfThisBook.size()>0){
+            for (Borrowing b:borrowingsOfThisBook){
+                if (b.getIdUser().equals(waitingList.getIdUser())){
+                    throw new InvalidRequestException("Utilisateur a déjà un prêt en cours pour ce livre");
+                }
             }
         }
         //3- check if waitingList has enough room for another User
@@ -89,12 +93,29 @@ public class WaitingListController {
      */
     @PostMapping(value = "/Reservations/delete/{id}")
     public void cancelwaitingList(@PathVariable Integer id) {
-        Optional<WaitingList> borrow = waitingListDao.findById(id);
-        if(!borrow.isPresent()) {
+        Optional<WaitingList> waitingList = waitingListDao.findById(id);
+        if(!waitingList.isPresent()) {
             throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
         }
         WaitingList waitingListToDelete = waitingListDao.getOne(id);
+        //TODO etudier si on garde userPos, où si on recalcul par les id des waitingList et Collections.sort()
+        //change userPos if possible:
+        Integer canceledPos = waitingListToDelete.getUserPos();
+        //1- find the book
+        Integer bookAwaitedId = waitingListToDelete.getBook().getId();
+        //2- delete the one to delete
         waitingListDao.delete(waitingListToDelete);
+        //3- find other waitings for this book
+        List<WaitingList> waitingForThisBook = waitingListDao.findWaitingListByBook_Id(bookAwaitedId);
+        //4- if others are waiting reset user positions
+        if (waitingForThisBook.size()>0){
+            for (WaitingList list: waitingForThisBook){
+                //if user is not first in line and canceledPos frees a space: move up
+                if (list.getUserPos() != 1 && canceledPos < list.getUserPos() ){
+                    list.setUserPos(list.getUserPos()-1);
+                    waitingListDao.save(list);
+                }
+            }
     }
 
     /**

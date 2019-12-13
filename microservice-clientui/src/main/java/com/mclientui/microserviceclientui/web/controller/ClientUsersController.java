@@ -1,5 +1,6 @@
 package com.mclientui.microserviceclientui.web.controller;
 
+import com.mclientui.microserviceclientui.beans.BookBean;
 import com.mclientui.microserviceclientui.beans.BorrowingBean;
 import com.mclientui.microserviceclientui.beans.UserBean;
 import com.mclientui.microserviceclientui.beans.WaitingListBean;
@@ -8,21 +9,16 @@ import com.mclientui.microserviceclientui.proxies.MicroserviceBooksProxy;
 import com.mclientui.microserviceclientui.proxies.MicroserviceMailingProxy;
 import com.mclientui.microserviceclientui.proxies.MicroserviceUsersProxy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 /**
  * <h2>Controller linking with microservice-users</h2>
@@ -36,6 +32,7 @@ public class ClientUsersController {
     private MicroserviceBooksProxy booksProxy;
     @Autowired
     private MicroserviceMailingProxy mailingProxy;
+
     /*
      **************************************
      * User login
@@ -61,12 +58,7 @@ public class ClientUsersController {
         HttpSession session = request.getSession();
         try{
             UserBean userToConnect = usersProxy.logUser(userBean.getUserName(), userBean.getPassword());
-            String redirectString = "/Utilisateurs/MonProfil/"+userToConnect.getId();
-            session.setAttribute("loggedInUserEmail", userToConnect.getEmail());
-            session.setAttribute("loggedInUserId", userToConnect.getId());
-            session.setAttribute("loggedInUserRole", userToConnect.getUserRole().getRoleName());
-
-            toBeReturned = "redirect:"+redirectString;
+            toBeReturned = setSessionAttributes(userToConnect, session);
         }catch (Exception e){
             e.printStackTrace();
             System.out.println("FIELDS: "+userBean.getUserName()+" "+userBean.getPassword());
@@ -77,7 +69,7 @@ public class ClientUsersController {
         }
         return toBeReturned;
     }
-
+    //TODO bloquer un livre au pret si une résa en cours
     /**
      * shows details of particular user with its id
      * @param userId
@@ -90,12 +82,7 @@ public class ClientUsersController {
         UserBean user = usersProxy.showUser(userId);
 
         if(!session.getAttribute("loggedInUserId").equals(userId)){
-            System.out.println("User trying to access profile is not the owner of the profile");
-            System.out.println("User is: [id:"
-                    +session.getAttribute("loggedInUserId")+ ", email:"
-                    +session.getAttribute("loggedInUserEmail")+", role:"
-                    +session.getAttribute("loggedInUserRole")+"]");
-            return "redirect:/Accueil";
+            rejectIfSessionNotProfile(session, user);
         }
 
         List<BorrowingBean> borrowingBeanList=booksProxy.listBorrowings();
@@ -107,11 +94,34 @@ public class ClientUsersController {
         }
 
         List<WaitingListBean> userWaitingList= booksProxy.showUserWaitingList(userId);
-        model.addAttribute("awaitedBooks", userWaitingList);
+
         model.addAttribute("user", user);
         model.addAttribute("borrowings", userBorrowings);
+        model.addAttribute("awaitedBooks", userWaitingList);
         model.addAttribute("session", session);
         return "user-details";
+    }
+
+    @RequestMapping(value = "/Reservations/add-userToWaitingList")
+    public String addUserToWaitingList(@ModelAttribute("book")BookBean bookBean, Model model, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        Integer userId = (Integer)session.getAttribute("loggedInUserId");
+        WaitingListBean waitingListBean = new WaitingListBean();
+        waitingListBean.setBook(bookBean);
+        waitingListBean.setIdUser(userId);
+        booksProxy.addUserToWaitingList(waitingListBean);
+        return "redirect:/Livres/"+bookBean.getId();
+    }
+
+    @RequestMapping(value = "/Reservations/delete/{id}")
+    public String cancelWaitingList(@PathVariable Integer id, Model model, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        UserBean user = usersProxy.showUser(booksProxy.showWaitingList(id).getIdUser());
+        if(!session.getAttribute("loggedInUserId").equals(user.getId())){
+            rejectIfSessionNotProfile(session, user);
+        }
+        booksProxy.cancelWaitingList(id);
+        return  "redirect:/Utilisateurs/MonProfil/"+user.getId();
     }
     /*
      **************************************
@@ -213,6 +223,36 @@ public class ClientUsersController {
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public ModelAndView handleMissingParams(MissingServletRequestParameterException ex){
         return new ModelAndView("redirect:/Utilisateurs/connexion");
+    }
+
+    /**
+     * <p>Sets session attributes for a user</p>
+     * @param user
+     * @param session
+     * @return url
+     */
+    public String setSessionAttributes(UserBean user, HttpSession session){
+        String redirectString = "/Utilisateurs/MonProfil/"+user.getId();
+        session.setAttribute("loggedInUserEmail", user.getEmail());
+        session.setAttribute("loggedInUserId", user.getId());
+        session.setAttribute("loggedInUserRole", user.getUserRole().getRoleName());
+        return "redirect:"+redirectString;
+    }
+
+    /**
+     * <p>Send back to homepage if session user Id != profile id</p>
+     * @param session
+     * @param user
+     * @return homepage
+     */
+    public String rejectIfSessionNotProfile(HttpSession session, UserBean user){
+            System.out.println("User trying to access profile is not the owner of the profile");
+            System.out.println("User is: [id:"
+                    +session.getAttribute("loggedInUserId")+ ", email:"
+                    +session.getAttribute("loggedInUserEmail")+", role:"
+                    +session.getAttribute("loggedInUserRole")+"]");
+            return "redirect:/Accueil";
+
     }
 
 }

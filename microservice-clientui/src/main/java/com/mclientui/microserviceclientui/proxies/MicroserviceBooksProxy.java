@@ -25,6 +25,9 @@ public interface MicroserviceBooksProxy {
     @GetMapping(value = "microservice-books/Reservations/Utilisateur/{id}")
     List<WaitingListBean> showUserWaitingList(@PathVariable Integer userId);
 
+    @PostMapping(value = "/Reservations/add-userToWaitingList")
+    void addUserToWaitingList(@RequestParam WaitingListBean waitingListBean);
+
     @PostMapping(value = "microservice-books/Reservations/delete/{id}")
     void cancelWaitingList(@PathVariable Integer id);
 

@@ -31,9 +31,15 @@
                             <p class="font-weight-bold" th:text="'Date de retour prévue: '+${awaitedBook.book.closestReturnDate}"/>
                             <p class="font-weight-bold" th:text="'Personnes sur liste d\'attente: '+${awaitedBook.book.usersWaiting}"/>
                             <p class="font-weight-bold" th:text="'Ma position sur la liste d\'attente: '+${awaitedBook.userPos}"/>
-                            <input type="button" value="Annuler la réservation"
-                                   onclick="window.location.href='#'; return false;"
-                                   class="btn btn-danger ml-4 ml-sm-0 mb-5 mb-sm-0" />
+                            <form th:action="@{/Reservations/delete/__${awaitedBook.id}__}" method="post">
+                                <div class="row">
+                                    <div class="col-sm-6 col-sm-offset-3  mx-auto">
+                                        <input type="submit"
+                                               class="form-control btn btn-lg btn-danger"
+                                               value="Annuler la réservation">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </a>
                 </div>

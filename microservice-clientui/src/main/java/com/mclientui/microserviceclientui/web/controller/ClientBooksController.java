@@ -59,8 +59,20 @@ public class ClientBooksController {
      * @return book-details.html
      */
     @RequestMapping("/Livres/{bookId}")
-    public String bookDetails(@PathVariable Integer bookId, Model model){
+    public String bookDetails(@PathVariable Integer bookId, Model model,HttpServletRequest request){
         BookBean book = booksProxy.showBook(bookId);
+        HttpSession session = request.getSession();
+        if(!session.getAttribute("loggedInUserId").equals(null)) {
+            Boolean isOnUserWaitingList = false;
+            Integer userId = (Integer) session.getAttribute("loggedInUserId");
+            List<WaitingListBean> userWaitingList = booksProxy.showUserWaitingList(userId);
+            for (WaitingListBean w : userWaitingList) {
+                if (w.getBook().getId() == bookId) {
+                    isOnUserWaitingList = true;
+                }
+            }
+            model.addAttribute("isOnUserWaitingList", isOnUserWaitingList);
+        }
         model.addAttribute("book", book);
         return "book-details";
     }
