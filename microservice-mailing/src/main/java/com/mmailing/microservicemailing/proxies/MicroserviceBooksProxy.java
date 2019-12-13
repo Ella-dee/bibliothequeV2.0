@@ -1,6 +1,7 @@
 package com.mmailing.microservicemailing.proxies;
 
 import com.mmailing.microservicemailing.beans.*;
+import com.mmailing.microservicemailing.config.FeignConfig;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,7 @@ import java.util.List;
 /**
  * <h2>Proxy links mailing to microservice-books</h2>
  */
-@FeignClient(name = "zuul-server", contextId = "booksProxyForMailing")
+@FeignClient(name = "zuul-server",  contextId = "booksProxyForMailing", configuration = FeignConfig.class)
 @RibbonClient(name = "microservice-books")
 public interface MicroserviceBooksProxy {
 

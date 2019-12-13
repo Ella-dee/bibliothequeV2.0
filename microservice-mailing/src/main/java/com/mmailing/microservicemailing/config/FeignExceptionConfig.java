@@ -2,6 +2,7 @@ package com.mmailing.microservicemailing.config;
 
 
 import com.mmailing.microservicemailing.exceptions.CustomErrorDecoder;
+import feign.codec.ErrorDecoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class FeignExceptionConfig {
 
     @Bean
-    public CustomErrorDecoder mCustomErrorDecoder(){
+    public ErrorDecoder errorDecoder(){
         return new CustomErrorDecoder();
     }
 }
