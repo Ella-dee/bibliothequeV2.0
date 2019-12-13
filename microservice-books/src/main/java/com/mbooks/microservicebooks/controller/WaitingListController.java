@@ -1,18 +1,16 @@
 package com.mbooks.microservicebooks.controller;
 
-import com.mbooks.microservicebooks.dao.BookDao;
+
 import com.mbooks.microservicebooks.dao.BorrowingDao;
 import com.mbooks.microservicebooks.dao.WaitingListDao;
 import com.mbooks.microservicebooks.exceptions.InvalidRequestException;
 import com.mbooks.microservicebooks.exceptions.NotFoundException;
 import com.mbooks.microservicebooks.model.Borrowing;
 import com.mbooks.microservicebooks.model.WaitingList;
-import com.mbooks.microservicebooks.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
@@ -94,7 +92,7 @@ public class WaitingListController {
     @PostMapping(value = "/Reservations/delete/{id}")
     public void cancelwaitingList(@PathVariable Integer id) {
         Optional<WaitingList> waitingList = waitingListDao.findById(id);
-        if(!waitingList.isPresent()) {
+        if (!waitingList.isPresent()) {
             throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
         }
         WaitingList waitingListToDelete = waitingListDao.getOne(id);
@@ -108,14 +106,15 @@ public class WaitingListController {
         //3- find other waitings for this book
         List<WaitingList> waitingForThisBook = waitingListDao.findWaitingListByBook_Id(bookAwaitedId);
         //4- if others are waiting reset user positions
-        if (waitingForThisBook.size()>0){
-            for (WaitingList list: waitingForThisBook){
+        if (waitingForThisBook.size() > 0) {
+            for (WaitingList list : waitingForThisBook) {
                 //if user is not first in line and canceledPos frees a space: move up
-                if (list.getUserPos() != 1 && canceledPos < list.getUserPos() ){
-                    list.setUserPos(list.getUserPos()-1);
+                if (list.getUserPos() != 1 && canceledPos < list.getUserPos()) {
+                    list.setUserPos(list.getUserPos() - 1);
                     waitingListDao.save(list);
                 }
             }
+        }
     }
 
     /**
@@ -124,7 +123,7 @@ public class WaitingListController {
      * @return the category
      */
     @GetMapping(value = "/Reservations/{id}")
-    public Optional<WaitingList> showwaitingList(@PathVariable Integer id) {
+    public Optional<WaitingList> showWaitingList(@PathVariable Integer id) {
         Optional<WaitingList> list = waitingListDao.findById(id);
         if(!list.isPresent()) {
             throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
@@ -138,7 +137,7 @@ public class WaitingListController {
      * @return the category
      */
     @GetMapping(value = "/Reservations/Utilisateur/{id}")
-    public List<WaitingList> showUserwaitingList(@PathVariable Integer id) {
+    public List<WaitingList> showUserWaitingList(@PathVariable Integer id) {
         List<WaitingList> list = waitingListDao.findWaitingListByIdUser(id);
         if(!list.isEmpty()) {
             throw new NotFoundException("Aucun prêt pur l'id " + id + ".");
