@@ -26,7 +26,7 @@
                     <p class="font-weight-bold" th:text="'Aucun exemplaire disponible'"/>
                     <p class="font-weight-bold" th:text="'Date de retour prévue: '+${book.closestReturnDate}"/>
                     <p class="font-weight-bold" th:text="'Personnes sur liste d\'attente: '+${book.usersWaiting}"/>
-                <td th:if="${session.getAttribute('loggedInUserId')!=null && isOnUserWaitingList==false}" >
+                <td th:if="${sessionExists==true and isOnUserWaitingList==false}" >
                     <form th:action="@{/Reservations/add-userToWaitingList}" method="post" th:object="${book}">
                         <div class="row">
                             <div class="col-sm-6 col-sm-offset-3  mx-auto">
