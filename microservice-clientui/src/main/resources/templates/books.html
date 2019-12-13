@@ -26,6 +26,10 @@
                                         <img th:src="${book.bookCover}"  class="card-img-top img-thumbnail" />
                                     </div>
                                 </div>
+                                <div class="card-footer">
+                                    <span th:if="${book.available==false}" class="badge badge-danger" th:text="'Indisponible'" />
+                                    <span th:unless="${book.available==false}" class="badge badge-info" th:text="'Disponible'" />
+                                </div>
                             </a>
                         </div>
                     </div>

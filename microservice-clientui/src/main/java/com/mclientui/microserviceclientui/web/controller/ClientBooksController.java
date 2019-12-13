@@ -29,6 +29,17 @@ public class ClientBooksController {
     @RequestMapping("/Livres")
     public String listBooks(Model model){
         List<CategoryBean> categories = booksProxy.listCategories();
+        for (CategoryBean c: categories){
+            for (BookBean b:c.getBooks()){
+                Integer avlBks = booksProxy.showBook(b.getId()).getAvailableBooksNbr();
+                if (avlBks<=0){
+                    b.setAvailable(false);
+                }
+                else {
+                    b.setAvailable(true);
+                }
+            }
+        }
         model.addAttribute("categories", categories);
         return "books";
     }
