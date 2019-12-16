@@ -4,10 +4,7 @@ import com.mclientui.microserviceclientui.beans.UserBean;
 import com.mclientui.microserviceclientui.config.FeignConfig;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 /**
  * <h2>Proxy links clientui to microservice-users</h2>

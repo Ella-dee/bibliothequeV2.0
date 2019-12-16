@@ -5,9 +5,7 @@ import com.mclientui.microserviceclientui.config.FeignConfig;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.Optional;
 
 /**
  * <h2>Proxy links clientui to microservice-books</h2>

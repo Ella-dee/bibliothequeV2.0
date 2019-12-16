@@ -79,12 +79,6 @@ h2 {
         font-size: 20px;
         font-weight: bold;
     }
-    h1 .small{
-        font-size: smaller;
-        display: block;
-        margin-top: 1vh;
-        font-weight: normal;
-    }
 
     #moreLink{
         margin-left: 1em;

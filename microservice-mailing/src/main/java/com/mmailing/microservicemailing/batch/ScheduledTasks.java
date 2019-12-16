@@ -110,7 +110,6 @@ public class ScheduledTasks {
      *  <li>after 48H, line of mail & waitingList are deleted</li>
      *  <li>if others are waiting mail is sent</li>
      */
-    //TODO  (if book is claimed????)
     @Scheduled(cron="0 0 0 * * *") //Fire at 0am everyday
     public void checkAndSetPriorityForWaitingList(){
         List<MailSentForWaitingList> mailSentForWaitingLists = mailSentForWaitingListDao.findAll();

@@ -47,7 +47,6 @@ public class BorrowingController {
      * @param borrowing
      * @return responseEntity
      */
-    //TODO gérer la priorité sur l'emprunt d'un livre réserver pendant 48H?
     @PostMapping(value = "/Prets/add-borrowing")
     public ResponseEntity<Void> addBorrowing(@Valid @RequestBody Borrowing borrowing) {
         ZoneId zone = ZoneId.of("Europe/Paris");

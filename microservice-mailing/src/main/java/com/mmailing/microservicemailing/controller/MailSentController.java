@@ -1,7 +1,6 @@
 package com.mmailing.microservicemailing.controller;
 
 import com.mmailing.microservicemailing.beans.UserBean;
-import com.mmailing.microservicemailing.dao.MailSentForWaitingListDao;
 import com.mmailing.microservicemailing.dao.MailSentForWaitingListService;
 import com.mmailing.microservicemailing.mailing.MailService;
 import com.mmailing.microservicemailing.proxies.MicroserviceUsersProxy;

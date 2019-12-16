@@ -1,7 +1,6 @@
 package com.mbooks.microservicebooks.controller;
 
 import com.mbooks.microservicebooks.config.CustomConfigurations;
-import com.mbooks.microservicebooks.dao.BookService;
 import com.mbooks.microservicebooks.dao.CategoryDao;
 import com.mbooks.microservicebooks.exceptions.NotFoundException;
 import com.mbooks.microservicebooks.model.Book;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.ArrayList;
