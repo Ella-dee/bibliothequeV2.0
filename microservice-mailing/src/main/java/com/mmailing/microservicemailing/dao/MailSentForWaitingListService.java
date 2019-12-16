@@ -64,7 +64,11 @@ public class MailSentForWaitingListService {
      */
     public void sendNotif(Integer userId, Integer bookId, String userEmail) {
         String subject = "Un Livre que vous attendez est disponible";
-        String message = "Vous avez la priorité sur ce livre pendant 48H, après ce délai vous serez retiré de la liste d'attente\n";
+        String title = booksProxy.showBook(bookId).getTitle();
+        String message = "Le livre "+title+" est disponible.\n" +
+                "Vous avez la priorité sur ce livre pendant 48H, après ce délai vous serez retiré de la liste d'attente.\n"+
+                "\n\nA bientôt et bonne lecture, " +
+                "\n\nLa bilibothèque de la ville";
         try {
             mailService.sendSimpleMessage(userEmail, subject, message);
         } catch (Exception e) {

@@ -30,6 +30,7 @@ public class BookService {
         String bookRef = book.getRef();
         int notReturnedYet = 0;
         int booksAvailable = book.getNbr();
+
         //list all borrowings for this book
         List<Borrowing> borrowingsByBook = borrowingDao.findBorrowingByBook_Id(book.getId());
         //if there is at least one borrowing with this book ref
@@ -60,8 +61,21 @@ public class BookService {
                 book.setClosestReturnDate(closestReturnDate.format(format));
 
             }
-        } else {
-            availableOrNot=true;
+            //if at least oe has been returned: check if there is a waiting list to set priority for user waiting
+            else {
+                List<WaitingList> waitingLists = book.getWaitingList();
+                if (!waitingLists.isEmpty()) {
+                    availableOrNot = false;
+                    System.out.println("il y a une waiting list: available " + availableOrNot);
+                } else {
+                    availableOrNot = true;
+                    System.out.println("pas de waiting list: available " + availableOrNot);
+                }
+            }
+        }
+        //if no borrowings for this book
+        else {
+                availableOrNot=true;
         }
         book.setAvailable(availableOrNot);
         book.setAvailableBooksNbr(booksAvailable);
@@ -83,7 +97,9 @@ public class BookService {
             }
             Collections.sort(idList);
             WaitingList waitingList = waitingListDao.getOne(idList.get(0));
+            //TODO status 504 gateaway timeout dans postman / mail envoyé quand même
             mailingProxy.sendNotifWhenAwaitedBookIsReturned(waitingList.getUserId(), waitingList.getBook().getId());
+            System.out.println("userid "+waitingList.getUserId()+" bookid "+waitingList.getBook().getId());
         }
     }
 }

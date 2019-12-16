@@ -98,6 +98,9 @@ public class ClientUsersController {
             for (WaitingListBean w : userWaitingList) {
                 BookBean b = booksProxy.showBook(w.getBook().getId());
                 b.setUserPosOnWaitingList(w.getUserPos());
+                if (b.getClosestReturnDate()==null){
+                    b.setClosestReturnDate("Disponible, vous avez 48h pour emprunter ce livre en priorité");
+                }
                 booksInWaiting.add(b);
 
             }
