@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class MailSentController {
     @Autowired
-    private static MicroserviceUsersProxy usersProxy;
+    private  MicroserviceUsersProxy usersProxy;
     @Autowired
-    private static MailService mailService;
+    private  MailService mailService;
     @Autowired
-    private static MailSentForWaitingListService mailSentForWaitingListService;
+    private  MailSentForWaitingListService mailSentForWaitingListService;
 
 
     @PostMapping(value = "/Utilisateurs/forgot-password")

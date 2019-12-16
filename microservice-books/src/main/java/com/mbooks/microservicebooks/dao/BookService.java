@@ -83,7 +83,7 @@ public class BookService {
             }
             Collections.sort(idList);
             WaitingList waitingList = waitingListDao.getOne(idList.get(0));
-            mailingProxy.sendNotifWhenAwaitedBookIsReturned(waitingList.getIdUser(), waitingList.getBook().getId());
+            mailingProxy.sendNotifWhenAwaitedBookIsReturned(waitingList.getUserId(), waitingList.getBook().getId());
         }
     }
 }

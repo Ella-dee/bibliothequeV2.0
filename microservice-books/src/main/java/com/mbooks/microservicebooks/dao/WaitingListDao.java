@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface WaitingListDao extends JpaRepository<WaitingList, Integer> {
-    List<WaitingList> findWaitingListByIdUser(Integer userId);
+    List<WaitingList> findWaitingListByUserId(Integer userId);
     List<WaitingList> findWaitingListByBook_Id(Integer bookId);
 
 }

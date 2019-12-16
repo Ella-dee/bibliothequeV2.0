@@ -1,13 +1,10 @@
 package com.mbooks.microservicebooks.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "waitinglist")
-@JsonSerialize(using= WaitingListSerializer.class)
 public class WaitingList {
     @Id
     @Column(name="id")
@@ -20,7 +17,7 @@ public class WaitingList {
 
     @NotNull
     @Column(name="id_user")
-    private Integer idUser;
+    private Integer userId;
 
     @Column(name = "user_pos")
     private Integer userPos;
@@ -35,7 +32,7 @@ public class WaitingList {
         return "WaitingList{" +
                 "id=" + id +
                 ", book=" + book +
-                ", idUser=" + idUser +
+                ", userId=" + userId +
                 ", userPos=" + userPos +
                 '}';
     }
@@ -56,12 +53,12 @@ public class WaitingList {
         this.book = book;
     }
 
-    public Integer getIdUser() {
-        return idUser;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getUserPos() {

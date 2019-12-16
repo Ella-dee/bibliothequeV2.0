@@ -17,10 +17,18 @@ public class BookBean {
     private Integer nbr;
     private String closestReturnDate;
     private Integer usersWaiting;
+    private Integer userPosOnWaitingList;
 
     public BookBean() {
     }
 
+    public Integer getUserPosOnWaitingList() {
+        return userPosOnWaitingList;
+    }
+
+    public void setUserPosOnWaitingList(Integer userPosOnWaitingList) {
+        this.userPosOnWaitingList = userPosOnWaitingList;
+    }
 
     public Integer getUsersWaiting() {
         return usersWaiting;

@@ -1,9 +1,10 @@
 package com.mbooks.microservicebooks.controller;
 
 
+import com.mbooks.microservicebooks.dao.BookDao;
 import com.mbooks.microservicebooks.dao.BorrowingDao;
 import com.mbooks.microservicebooks.dao.WaitingListDao;
-import com.mbooks.microservicebooks.exceptions.InvalidRequestException;
+import com.mbooks.microservicebooks.exceptions.CannotAddException;
 import com.mbooks.microservicebooks.exceptions.NotFoundException;
 import com.mbooks.microservicebooks.model.Borrowing;
 import com.mbooks.microservicebooks.model.WaitingList;
@@ -11,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +23,8 @@ import java.util.Optional;
 public class WaitingListController {
     @Autowired
     private WaitingListDao waitingListDao;
-
+@Autowired
+private BookDao bookDao;
     @Autowired
     private BorrowingDao borrowingDao;
 
@@ -33,45 +34,45 @@ public class WaitingListController {
      * @return list
      */
     @GetMapping(value="/Reservations")
-    public List<WaitingList> listwaitingLists() {
+    public List<WaitingList> listWaitingLists() {
         List<WaitingList> waitingLists = waitingListDao.findAll();
         if(waitingLists.isEmpty()) throw new NotFoundException("Aucune liste d'attente n'est enregistrée");
         return waitingLists;
     }
     /**
      * <p>adds a new waitingList for book/user in db</p>
-     * @param waitingList
      * @return responseEntity
      */
     @PostMapping(value = "/Reservations/add-userToWaitingList")
-    public ResponseEntity<Void> addUserToWaitingList(@Valid @RequestBody WaitingList waitingList) {
-        //waitingList contains from clientUI: idUser, book
+    public ResponseEntity<WaitingList> addUserToWaitingList(@RequestParam Integer idUser, @RequestParam Integer idBook) {
+        WaitingList waitingList = new WaitingList();
+        waitingList.setBook(bookDao.findBookById(idBook));
+        waitingList.setUserId(idUser);
         //create userPos if possible:
         //1- look for occurrences with the same book
-        Integer bookAwaitedId = waitingList.getBook().getId();
         Integer maxWaitingSize = waitingList.getBook().getNbr()*2;
-        List<WaitingList> waitingForThisBook = waitingListDao.findWaitingListByBook_Id(bookAwaitedId);
+        List<WaitingList> waitingForThisBook = waitingListDao.findWaitingListByBook_Id(idBook);
         //2- check if user is not already in the waitingList
         for (WaitingList list: waitingForThisBook){
-            if (list.getIdUser() == waitingList.getIdUser()){
-                throw new InvalidRequestException("Utilisateur déjà sur liste d'attente");
+            if (list.getUserId() == waitingList.getUserId()){
+                throw new CannotAddException("WaitingList01");
             }
         }
         //2bis - check if user has borrowing with this book already
-        List<Borrowing> borrowingsOfThisBook = borrowingDao.findBorrowingByBook_Id(bookAwaitedId);
+        List<Borrowing> borrowingsOfThisBook = borrowingDao.findBorrowingByBook_Id(idBook);
         if (borrowingsOfThisBook.size()>0){
             for (Borrowing b:borrowingsOfThisBook){
-                if (b.getIdUser().equals(waitingList.getIdUser())){
-                    throw new InvalidRequestException("Utilisateur a déjà un prêt en cours pour ce livre");
+                if (b.getIdUser().equals(waitingList.getUserId())){
+                    throw new CannotAddException("WaitingList02");
                 }
             }
         }
         //3- check if waitingList has enough room for another User
         if (waitingForThisBook.size() >= maxWaitingSize){
-            throw new InvalidRequestException("Liste d'attente déjà trop longue");
+            throw new CannotAddException("WaitingList03");
         }
-        waitingList.setUserPos(waitingForThisBook.size()+1);
         //4- save waitingList to DB
+        waitingList.setUserPos(waitingForThisBook.size()+1);
         WaitingList waitingListAdded =  waitingListDao.save(waitingList);
         if (waitingListAdded == null) {
             return ResponseEntity.noContent().build();
@@ -130,7 +131,6 @@ public class WaitingListController {
         }
         return list;
     }
-
     /**
      * <p>show details of a particular waitingList by its id for a User</p>
      * @param id
@@ -138,10 +138,8 @@ public class WaitingListController {
      */
     @GetMapping(value = "/Reservations/Utilisateur/{id}")
     public List<WaitingList> showUserWaitingList(@PathVariable Integer id) {
-        List<WaitingList> list = waitingListDao.findWaitingListByIdUser(id);
-        if(!list.isEmpty()) {
-            throw new NotFoundException("Aucun prêt pur l'id " + id + ".");
-        }
+        List<WaitingList> list = waitingListDao.findWaitingListByUserId(id);
+
         return list;
     }
 }

@@ -69,7 +69,6 @@ public class ClientUsersController {
         }
         return toBeReturned;
     }
-    //TODO bloquer un livre au pret si une résa en cours
     /**
      * shows details of particular user with its id
      * @param userId
@@ -87,36 +86,33 @@ public class ClientUsersController {
 
         List<BorrowingBean> borrowingBeanList=booksProxy.listBorrowings();
         List<BorrowingBean> userBorrowings = new ArrayList<>();
-        for(BorrowingBean borrowingBean:borrowingBeanList){
-            if(borrowingBean.getIdUser() == userId){
-                userBorrowings.add(borrowingBean);
+        for(BorrowingBean b:borrowingBeanList){
+            if(b.getIdUser() == userId){
+                userBorrowings.add(b);
             }
         }
 
         List<WaitingListBean> userWaitingList= booksProxy.showUserWaitingList(userId);
+        List<BookBean> booksInWaiting = new ArrayList<>();
+        if(!userWaitingList.isEmpty()) {
+            for (WaitingListBean w : userWaitingList) {
+                BookBean b = booksProxy.showBook(w.getBook().getId());
+                b.setUserPosOnWaitingList(w.getUserPos());
+                booksInWaiting.add(b);
 
+            }
+        }
         model.addAttribute("user", user);
         model.addAttribute("borrowings", userBorrowings);
-        model.addAttribute("awaitedBooks", userWaitingList);
+        model.addAttribute("awaitedBooks", booksInWaiting);
         model.addAttribute("session", session);
         return "user-details";
-    }
-
-    @RequestMapping(value = "/Reservations/add-userToWaitingList")
-    public String addUserToWaitingList(@ModelAttribute("book")BookBean bookBean, Model model, HttpServletRequest request){
-        HttpSession session = request.getSession();
-        Integer userId = (Integer)session.getAttribute("loggedInUserId");
-        WaitingListBean waitingListBean = new WaitingListBean();
-        waitingListBean.setBook(bookBean);
-        waitingListBean.setIdUser(userId);
-        booksProxy.addUserToWaitingList(waitingListBean);
-        return "redirect:/Livres/"+bookBean.getId();
     }
 
     @RequestMapping(value = "/Reservations/delete/{id}")
     public String cancelWaitingList(@PathVariable Integer id, Model model, HttpServletRequest request){
         HttpSession session = request.getSession();
-        UserBean user = usersProxy.showUser(booksProxy.showWaitingList(id).getIdUser());
+        UserBean user = usersProxy.showUser(booksProxy.showWaitingList(id).getUserId());
         if(!session.getAttribute("loggedInUserId").equals(user.getId())){
             rejectIfSessionNotProfile(session, user);
         }
@@ -166,21 +162,16 @@ public class ClientUsersController {
      */
     @RequestMapping("/Utilisateurs/forgot-password")
     public String findUserSendLinkForPassword(@ModelAttribute("user") UserBean userBean, ModelMap theModel, HttpServletRequest request) {
-        UserBean userToFind = new UserBean();
+        UserBean userToFind = usersProxy.findUserForPassword(userBean.getEmail());
         String appUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort();
         try{
-            userToFind = usersProxy.findUserForPassword(userBean.getEmail());
-            theModel.addAttribute("successMessage", "Un email a été envoyé à l'adresse indiquée");
+            //TODO génère feign exception 504 (timeout) mais envoie le lien => génère email inconnu
+                mailingProxy.sendLinkForPassword(userToFind.getEmail(), userToFind.getResetToken(), appUrl);
+                theModel.addAttribute("successMessage", "Un email a été envoyé à l'adresse indiquée");
         }catch (Exception e){
             e.printStackTrace();
             System.out.println("EMAIL INPUT = "+userBean.getEmail());
             theModel.addAttribute("errorMessage", "email inconnu");
-        }
-        //TODO le mail est bien envoyé mais renvoi le catch: FeignException: status 500 reading MicroserviceMailingProxy#sendLinkForPassword(String,String,String)
-        try{
-            mailingProxy.sendLinkForPassword(userToFind.getEmail(), userToFind.getResetToken(), appUrl);
-        }catch (Exception e){
-            e.printStackTrace();
         }
         return "password-forgot";
     }

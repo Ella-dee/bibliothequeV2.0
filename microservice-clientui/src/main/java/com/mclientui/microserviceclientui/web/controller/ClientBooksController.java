@@ -67,22 +67,55 @@ public class ClientBooksController {
         BookBean book = booksProxy.showBook(bookId);
         HttpSession session = request.getSession();
         Boolean sessionExists = false;
+        Boolean hasBorrowingRunning = false;
+        Boolean isOnUserWaitingList = false;
         if(session.getAttribute("loggedInUserId")!=null) {
             sessionExists = true;
-            Boolean isOnUserWaitingList = false;
             Integer userId = (Integer) session.getAttribute("loggedInUserId");
-            List<WaitingListBean> userWaitingList = booksProxy.showUserWaitingList(userId);
-            for (WaitingListBean w : userWaitingList) {
-                if (w.getBook().getId() == bookId) {
-                    isOnUserWaitingList = true;
+            //get user waiting lists
+            List<WaitingListBean> waitingListBeanList = booksProxy.showUserWaitingList(userId);
+            if(!waitingListBeanList.isEmpty()) {
+                System.out.println("waiting list for this book exists");
+                for (WaitingListBean w : waitingListBeanList) {
+                    if (w.getUserId() == userId) {
+                        if (w.getBook().getId() == bookId) {
+                            isOnUserWaitingList = true;
+                        }
+                    }
                 }
             }
-            model.addAttribute("isOnUserWaitingList", isOnUserWaitingList);
+            //get user borrowings
+            List<BorrowingBean> borrowingBeanList=booksProxy.listBorrowings();
+            for(BorrowingBean borrowingBean:borrowingBeanList){
+                if(borrowingBean.getIdUser() == userId){
+                    if (borrowingBean.getBook().getId()==bookId){
+                        hasBorrowingRunning = true;
+                    }
+                }
+            }
         }
+
+        model.addAttribute("hasBorrowingRunning", hasBorrowingRunning);
+        model.addAttribute("isOnUserWaitingList", isOnUserWaitingList);
         model.addAttribute("sessionExists", sessionExists);
         model.addAttribute("book", book);
         return "book-details";
     }
+
+    @RequestMapping(value = "/Reservations/Livre/{bookId}/utilisateur-sur-liste")
+    public String addUserToWaitingList(@PathVariable Integer bookId, Model model, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        Integer userId = (Integer)session.getAttribute("loggedInUserId");
+        //try {
+            booksProxy.addUserToWaitingList(userId, bookId);
+       /* }catch (Exception e){
+            if(e instanceof CannotAddException){
+                model.addAttribute("errorMessage", e.getMessage());
+            }
+        }*/
+        return "redirect:/Livres/"+bookId;
+    }
+
     /**
      * <p>Lists all authors</p>
      * @param model

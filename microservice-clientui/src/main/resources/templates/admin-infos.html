@@ -17,7 +17,7 @@
 
         <h2 class="mt-5">Liste des prêts en retard</h2>
         <div th:each="borrowing : ${borrowings}" class="card col-md-4 mt-5">
-                <h5 class="card-header" th:text= "${borrowing.book.title}+' / iduser: '+${borrowing.idUser}"></h5>
+                <h5 class="card-header" th:text= "${borrowing.book.title}+' / iduser: '+${borrowing.userId}"></h5>
         </div>
     </div>
 </div>

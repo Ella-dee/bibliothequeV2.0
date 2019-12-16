@@ -3,7 +3,7 @@ package com.mclientui.microserviceclientui.beans;
 public class WaitingListBean {
     private Integer id;
     private BookBean book;
-    private Integer idUser;
+    private Integer userId;
     private Integer userPos;
 
     public WaitingListBean() {
@@ -14,7 +14,7 @@ public class WaitingListBean {
         return "WaitingListBean{" +
                 "id=" + id +
                 ", book=" + book +
-                ", idUser=" + idUser +
+                ", userId=" + userId +
                 ", userPos=" + userPos +
                 '}';
     }
@@ -36,12 +36,12 @@ public class WaitingListBean {
         this.book = book;
     }
 
-    public Integer getIdUser() {
-        return idUser;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getUserPos() {

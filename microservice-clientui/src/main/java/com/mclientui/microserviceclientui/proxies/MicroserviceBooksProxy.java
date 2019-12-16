@@ -12,7 +12,7 @@ import java.util.Optional;
 /**
  * <h2>Proxy links clientui to microservice-books</h2>
  */
-@FeignClient(name = "zuul-server", contextId = "booksProxy", configuration = FeignConfig.class)
+@FeignClient(name = "zuul-server",  url = "localhost:9004",contextId = "booksProxy", configuration = FeignConfig.class)
 @RibbonClient(name = "microservice-books")
 public interface MicroserviceBooksProxy {
 
@@ -22,11 +22,11 @@ public interface MicroserviceBooksProxy {
     @GetMapping(value = "microservice-books/Reservations")
     List<WaitingListBean> listWaitingLists();
 
-    @GetMapping(value = "microservice-books/Reservations/Utilisateur/{id}")
+    @GetMapping(value = "microservice-books/Reservations/Utilisateur/{userId}")
     List<WaitingListBean> showUserWaitingList(@PathVariable Integer userId);
 
-    @PostMapping(value = "/Reservations/add-userToWaitingList")
-    void addUserToWaitingList(@RequestParam WaitingListBean waitingListBean);
+    @PostMapping(value = "microservice-books/Reservations/add-userToWaitingList")
+    WaitingListBean addUserToWaitingList(@RequestParam Integer idUser, @RequestParam Integer idBook);
 
     @PostMapping(value = "microservice-books/Reservations/delete/{id}")
     void cancelWaitingList(@PathVariable Integer id);

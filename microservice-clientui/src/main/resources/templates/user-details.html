@@ -18,22 +18,22 @@
         <td th:if="${!awaitedBooks.isEmpty()}">
             <div class="card-group mt-5 offset-md-1">
                 <div th:each="awaitedBook : ${awaitedBooks}" class="card bg-light border-light col-6 col-md-3 ml-3 mr-3 mt-3">
-                    <a th:href="@{Livres/__${awaitedBook.book.id}__}">
+                    <a th:href="@{/Livres/__${awaitedBook.id}__}">
                         <div class="card-header bg-darkened">
-                            <h4 th:text= "${#strings.abbreviate(awaitedBook.book.title, 55)}" />
+                            <h4 th:text= "${#strings.abbreviate(awaitedBook.title, 55)}" />
                         </div>
                         <div class="card-body">
                             <div class="thumbnail text-center mt-2 mb-2">
-                                <img th:src="${awaitedBook.book.bookCover}"  class="card-img-top img-thumbnail" />
+                                <img th:src="${awaitedBook.bookCover}"  class="card-img-top img-thumbnail" />
                             </div>
                         </div>
                         <div class="card-footer bg-darkened" >
-                            <p class="font-weight-bold" th:text="'Date de retour prévue: '+${awaitedBook.book.closestReturnDate}"/>
-                            <p class="font-weight-bold" th:text="'Personnes sur liste d\'attente: '+${awaitedBook.book.usersWaiting}"/>
-                            <p class="font-weight-bold" th:text="'Ma position sur la liste d\'attente: '+${awaitedBook.userPos}"/>
+                            <p th:text="'Date de retour prévue: '+${awaitedBook.closestReturnDate}"/>
+                            <p th:text="'Personnes sur liste d\'attente: '+${awaitedBook.usersWaiting}"/>
+                            <p th:text="'Ma position sur la liste d\'attente: '+${awaitedBook.userPosOnWaitingList}"/>
                             <form th:action="@{/Reservations/delete/__${awaitedBook.id}__}" method="post">
                                 <div class="row">
-                                    <div class="col-sm-6 col-sm-offset-3  mx-auto">
+                                    <div class="col-sm-offset-3  mx-auto">
                                         <input type="submit"
                                                class="form-control btn btn-lg btn-danger"
                                                value="Annuler la réservation">

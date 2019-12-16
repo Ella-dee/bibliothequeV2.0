@@ -18,6 +18,12 @@ public class CustomErrorDecoder implements ErrorDecoder {
         try{
             ApiError error = mapper.readValue(reponse.body().asInputStream(), ApiError.class);
             switch (error.getMessage()){
+                case "WaitingList01":
+                    return new CannotAddException("Utilisateur déjà sur liste d'attente");
+                case "WaitingList02":
+                    return new CannotAddException(" Utilisateur a déjà un prêt en cours pour ce livre");
+                case "WaitingList03":
+                    return new CannotAddException("Liste d'attente déjà trop longue");
                 case "User03":
                     return new CannotAddException("");
                 case "User01":
