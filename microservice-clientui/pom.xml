@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.mclientui</groupId>
 	<artifactId>microservice-clientui</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.1-RELEASE</version>
 	<name>microservice-clientui</name>
 	<description>microservice client liant les microservices</description>
 
