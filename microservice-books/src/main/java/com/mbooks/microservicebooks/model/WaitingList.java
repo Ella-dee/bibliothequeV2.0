@@ -22,8 +22,6 @@ public class WaitingList {
     @Column(name = "user_pos")
     private Integer userPos;
 
-
-
     public WaitingList() {
     }
 
