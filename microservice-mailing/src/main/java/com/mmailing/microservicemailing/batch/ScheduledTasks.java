@@ -34,31 +34,33 @@ public class ScheduledTasks {
     @Autowired
     private MailSentForWaitingListDao mailSentForWaitingListDao;
 
+
     /**
      * <p>method called when application is ran</p>
-     *  <p>checks if borrowing status is "late" and renewable, and if so sends mails</p>
+     *  <p>checks if borrowing comes to an end (1 week) and renewable, and if so sends mails</p>
      */
     @Scheduled(cron="0 0 18 * * MON-FRI") //Fire at 6pm every weekday
     public void checkAndSendRenewableBorrowings(){
         List<BorrowingBean> borrowings = booksProxy.listBorrowings();
         for(BorrowingBean borrowing:borrowings) {
             //get info and calls proper mailMessage for borrowings that can be renewed
-            if (borrowing.getBorrowingType().getId() == 4 && borrowing.getRenewed() == false) {
-                UserBean user = usersProxy.showUser(borrowing.getIdUser());
-                BookBean book = booksProxy.showBook(borrowing.getBook().getId());
-                String subject = "Retour du livre " + book.getTitle();
-                String text = "Bonjour "+user.getFirstName()+" "+user.getLastName()+
-                        "\n\nVous avez emprunté le livre '"+book.getTitle()+"' le "+ borrowing.getBorrowed()+"."+
-                        "\nLa date limite de retour était le "+borrowing.getLimitDate()+"."+
-                        "\nVous avez la possibilité de renouveler une fois votre emprunt, pour une durée de 4semaines."+
-                        "\nMerci de bien vouloir vous rendre à la bibliothèque, ou répondre à ce mail, afin d'effectuer "+
-                        "le retour du livre ou la prolongation de l'emprunt."+
-                        "\n\nA bientôt et bonne lecture, "+
-                        "\n\nLa bilibothèque de la ville";
-
+            Date date = convertStringToDateFormat(borrowing.getLimitDate());
+            LocalDate limitDate = convertToLocalDateViaInstant(date);
+            if (theDateToday().minusDays(7)==limitDate && borrowing.getBorrowingType().getId() == 1 && borrowing.getRenewed() == false) {
+             UserBean user = usersProxy.showUser(borrowing.getIdUser());
+                    BookBean book = booksProxy.showBook(borrowing.getBook().getId());
+                    String subject = "Retour du livre " + book.getTitle();
+                    String text = "Bonjour "+user.getFirstName()+" "+user.getLastName()+
+                            "\n\nVous avez emprunté le livre '"+book.getTitle()+"' le "+ borrowing.getBorrowed()+"."+
+                            "\nLa date limite de retour était le "+borrowing.getLimitDate()+"."+
+                            "\nVous avez la possibilité de renouveler une fois votre emprunt, pour une durée de 4semaines."+
+                            "\nMerci de bien vouloir vous rendre à la bibliothèque, ou répondre à ce mail, afin d'effectuer "+
+                            "le retour du livre ou la prolongation de l'emprunt."+
+                            "\n\nA bientôt et bonne lecture, "+
+                            "\n\nLa bilibothèque de la ville";
                 try{
                     mailService.sendSimpleMessage(user.getEmail(), subject, text);
-                 }catch (Exception e){
+                }catch (Exception e){
                     e.printStackTrace();
                 }
             }
@@ -79,7 +81,7 @@ public class ScheduledTasks {
 
         for(BorrowingBean borrowing:borrowings) {
             //get each late borrowing that cannot be renewed
-            if (borrowing.getBorrowingType().getId() == 4 && borrowing.getRenewed() == true) {
+            if (borrowing.getBorrowingType().getId() == 4) {
                 UserBean user = usersProxy.showUser(borrowing.getIdUser());
                 BookBean book = booksProxy.showBook(borrowing.getBook().getId());
                 String subject = "Retour du livre " + book.getTitle();
@@ -102,7 +104,6 @@ public class ScheduledTasks {
             }
         }
     }
-
     /**
      * <p>method called when application is ran</p>
      *  <ul><li>a notification has been sent to a user on a book waiting list</li>
