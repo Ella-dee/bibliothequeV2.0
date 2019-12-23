@@ -1,6 +1,7 @@
 package com.mbooks.microservicebooks.utils;
 
 import com.mbooks.microservicebooks.exceptions.InvalidDateException;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import java.text.ParseException;
@@ -29,9 +30,16 @@ public class DateUtilsTest {
     public void convertStringToDateFormat() {
         DateUtils.convertStringToDateFormat(dateString);
     }
-    @Test(expected = ParseException.class)
+    @Test(expected = AssertionError.class)
     public void convertStringToDateFormatFail() {
-        DateUtils.convertStringToDateFormat("");
+        Date date = new Date();
+        try {
+            date = DateUtils.convertStringToDateFormat("");
+            throw  new ParseException("unparsable", 1);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Assert.assertTrue(date == null);
     }
 
     @Test(expected = Test.None.class)
