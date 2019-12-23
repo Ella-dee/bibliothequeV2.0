@@ -1,4 +1,4 @@
-package com.musers.microserviceusers.model;
+package com.mclientui.microserviceclientui.beans;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,25 +9,14 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class RoleTest {
+public class RoleBeanTest {
 
-    private Role role;
-    private User user;
-    private User user2;
+    private RoleBean role;
 
     @Before
     public void setUp() throws Exception {
-        role = new Role();
-        user = new User();
-        user2 = new User();
-
-        user.setFirstName("Newton");
-        user2.setLastName("Scamender");
-        List<User> userList = new ArrayList<>();
-        userList.add(user);
-
+        role = new RoleBean();
         role.setRoleName("TEST ROLE");
-        role.setUsers(userList);
         role.setId(1);
     }
 
@@ -38,15 +27,6 @@ public class RoleTest {
         role.setId(2);
         Assert.assertEquals((Integer)2, role.getId());
         Assert.assertNotEquals((Integer)1, role.getId());
-    }
-
-    @Test(expected = Test.None.class)
-    public void getUsers() {
-        Assert.assertEquals("[User{id=null, firstName='Newton', lastName='null'}]", role.getUsers().toString());
-        Assert.assertNotEquals(null, role.getUsers().toString());
-        role.getUsers().add(user2);
-        Assert.assertEquals("[User{id=null, firstName='Newton', lastName='null'}, User{id=null, firstName='null', lastName='Scamender'}]", role.getUsers().toString());
-        Assert.assertNotEquals("[User{id=null, firstName='Newton', lastName='null'}]", role.getUsers().toString());
     }
 
     @Test(expected = Test.None.class)

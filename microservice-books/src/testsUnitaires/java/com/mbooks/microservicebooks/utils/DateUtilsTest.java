@@ -1,15 +1,10 @@
 package com.mbooks.microservicebooks.utils;
 
 import com.mbooks.microservicebooks.exceptions.InvalidDateException;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.text.ParseException;
-import java.time.LocalDate;
 import java.util.Date;
-
-import static org.junit.Assert.*;
 
 public class DateUtilsTest {
     private String dateString;

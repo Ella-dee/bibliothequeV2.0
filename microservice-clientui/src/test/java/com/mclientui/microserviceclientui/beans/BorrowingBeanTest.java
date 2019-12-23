@@ -1,31 +1,32 @@
-package com.mbooks.microservicebooks.model;
+package com.mclientui.microserviceclientui.beans;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-public class BorrowingTest {
-    
-    private Borrowing borrowing;
-    private Book book;
-    private Book book2;
-    private BorrowingType borrowingType;
-    private BorrowingType borrowingType2;
+
+public class BorrowingBeanTest {
+
+    private BorrowingBean borrowing;
+    private BookBean book;
+    private BookBean book2;
+    private BorrowingTypeBean borrowingType;
+    private BorrowingTypeBean borrowingType2;
 
     @Before
     public void setUp() throws Exception {
-        borrowing = new Borrowing();
-        book = new Book();
+        borrowing = new BorrowingBean();
+        book = new BookBean();
 
-        book = new Book();
+        book = new BookBean();
         book.setTitle("Les animaux fantastiques");
-        book2 = new Book();
+        book2 = new BookBean();
         book2.setTitle("L'ennui le plus long");
 
-        borrowingType = new BorrowingType();
+        borrowingType = new BorrowingTypeBean();
         borrowingType.setType("Fantastique");
-        borrowingType2 = new BorrowingType();
+        borrowingType2 = new BorrowingTypeBean();
         borrowingType2.setType("Ennuyant");
-        
+
         borrowing.setRenewed(false);
         borrowing.setId(4);
         borrowing.setBorrowed("23/11/2019");
@@ -91,7 +92,7 @@ public class BorrowingTest {
     }
 
     @Test(expected = Test.None.class)
-    public void getBook() {  
+    public void getBook() {
         Assert.assertEquals(book, borrowing.getBook());
         Assert.assertNotEquals(book2, borrowing.getBook());
         borrowing.setBook(book2);
@@ -108,9 +109,4 @@ public class BorrowingTest {
         Assert.assertNotEquals(borrowingType, borrowing.getBorrowingType());
     }
 
-    @Test(expected = Test.None.class)
-    public void toStringT() {
-        Assert.assertEquals("Borrowing{id=null, borrowed=23/11/2019, returned=null}", borrowing.toString());
-        Assert.assertNotEquals("Borrowing{id=1, borrowed=23/11/2019, returned=12/12/2019}", borrowing.toString());
-    }
 }

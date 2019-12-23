@@ -1,22 +1,23 @@
-package com.mbooks.microservicebooks.model;
+package com.mclientui.microserviceclientui.beans;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class WaitingListTest {
-    private WaitingList waitingList;
-    private Book book;
-    private Book book2;
+public class WaitingListBeanTest {
+
+    private WaitingListBean waitingList;
+    private BookBean book;
+    private BookBean book2;
 
     @Before
     public void setUp() throws Exception {
-        book = new Book();
+        book = new BookBean();
         book.setTitle("Les animaux fantastiques");
-        book2 = new Book();
+        book2 = new BookBean();
         book2.setTitle("L'ennui le plus long");
-        
-        waitingList = new WaitingList();
+
+        waitingList = new WaitingListBean();
         waitingList.setUserId(4);
         waitingList.setUserPos(1);
         waitingList.setBook(book);
@@ -60,8 +61,7 @@ public class WaitingListTest {
 
     @Test(expected = Test.None.class)
     public void toStringT() {
-        Assert.assertEquals("WaitingList{id=null, book=Book{id=null, ref='null', title='Les animaux fantastiques'}, userId=4, userPos=1}", waitingList.toString());
-        Assert.assertNotEquals("WaitingList{id=null, book=Book{id=2, ref='null', title='L'ennui le plus long'}, userId=2, userPos=2}", waitingList.toString());
+        Assert.assertEquals("WaitingListBean{id=4, book=BookBean{id=null, ref='null', title='Les animaux fantastiques'}, userId=4, userPos=1}", waitingList.toString());
+        Assert.assertNotEquals("WaitingListBean{id=null, book=BookBean{id=2, ref='null', title='L'ennui le plus long'}, userId=2, userPos=2}", waitingList.toString());
     }
-
 }

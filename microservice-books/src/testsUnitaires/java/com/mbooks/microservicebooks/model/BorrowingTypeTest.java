@@ -36,6 +36,16 @@ public class BorrowingTypeTest {
         borrowingList.add(b);
 
         borrowingType.setBorrowingList(borrowingList);
+        borrowingType.setId(1);
+    }
+
+    @Test(expected = Test.None.class)
+    public void getId() {
+        Assert.assertEquals((Integer)1, borrowingType.getId());
+        Assert.assertNotEquals(null, borrowingType.getId());
+        borrowingType.setId(2);
+        Assert.assertEquals((Integer)2, borrowingType.getId());
+        Assert.assertNotEquals((Integer)1, borrowingType.getId());
     }
 
     @Test(expected = Test.None.class)

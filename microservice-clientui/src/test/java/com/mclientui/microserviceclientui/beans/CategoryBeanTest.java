@@ -1,4 +1,4 @@
-package com.mbooks.microservicebooks.model;
+package com.mclientui.microserviceclientui.beans;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -6,24 +6,23 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+public class CategoryBeanTest {
 
-public class CategoryTest {
+    private CategoryBean cat;
+    private BookBean book;
+    private BookBean book2;
 
-    private Category cat;
-    private Book book;
-    private Book book2;
-    
     @Before
     public void setUp() throws Exception {
-        book = new Book();
+        book = new BookBean();
         book.setTitle("Les animaux fantastiques");
-        book2 = new Book();
+        book2 = new BookBean();
         book2.setTitle("L'ennui le plus long");
 
-        List<Book> bookList = new ArrayList<>();
+        List<BookBean> bookList = new ArrayList<>();
         bookList.add(book);
-        
-        cat = new Category();
+
+        cat = new CategoryBean();
         cat.setName("Fantastique");
         cat.setBooks(bookList);
         cat.setId(1);
@@ -49,16 +48,16 @@ public class CategoryTest {
 
     @Test(expected = Test.None.class)
     public void getBooks() {
-        Assert.assertEquals("[Book{id=null, ref='null', title='Les animaux fantastiques'}]", cat.getBooks().toString());
-        Assert.assertNotEquals("[Book{id=null, ref='null', title='Le flux des particules'}]", cat.getBooks().toString());
+        Assert.assertEquals("[BookBean{id=null, ref='null', title='Les animaux fantastiques'}]", cat.getBooks().toString());
+        Assert.assertNotEquals("[BookBean{id=null, ref='null', title='Le flux des particules'}]", cat.getBooks().toString());
         cat.getBooks().add(book2);
-        Assert.assertEquals("[Book{id=null, ref='null', title='Les animaux fantastiques'}, Book{id=null, ref='null', title='L'ennui le plus long'}]", cat.getBooks().toString());
-        Assert.assertNotEquals("[Book{id=null, ref='null', title='Les animaux fantastiques'}]", cat.getBooks().toString());
+        Assert.assertEquals("[BookBean{id=null, ref='null', title='Les animaux fantastiques'}, BookBean{id=null, ref='null', title='L'ennui le plus long'}]", cat.getBooks().toString());
+        Assert.assertNotEquals("[BookBean{id=null, ref='null', title='Les animaux fantastiques'}]", cat.getBooks().toString());
     }
 
     @Test(expected = Test.None.class)
     public void toStringT() {
-        Assert.assertEquals("Category{id=null, name='Fantastique'}", cat.toString());
-        Assert.assertNotEquals("Category{id=null, name='Ennuyant'}", cat.toString());
+        Assert.assertEquals("CategoryBean{id=1, name='Fantastique'}", cat.toString());
+        Assert.assertNotEquals("CategoryBean{id=null, name='Ennuyant'}", cat.toString());
     }
 }

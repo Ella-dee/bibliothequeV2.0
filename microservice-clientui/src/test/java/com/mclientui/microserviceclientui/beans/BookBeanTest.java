@@ -1,42 +1,40 @@
-package com.mbooks.microservicebooks.model;
+package com.mclientui.microserviceclientui.beans;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@SpringBootTest
-public class BookTest {
+import static org.junit.Assert.*;
 
-    private Book book;
-    private Author author;
-    private Category category;
-    private Category category2;
-    private Borrowing borrowing;
-    private WaitingList waitingList;
+public class BookBeanTest {
+
+    private BookBean book;
+    private AuthorBean author;
+    private CategoryBean category;
+    private CategoryBean category2;
 
     @Before
     public void setUp() throws Exception {
         /* jeu de données */
-        author=new Author();
+        author=new AuthorBean();
         author.setId(2);
         author.setFirstName("Newton");
         author.setLastName("Scamender");
         author.setBirthDate("13/12/1924");
         author.setNationality("Anglaise");
 
-        category=new Category();
+        category=new CategoryBean();
         category.setName("Categorie de Test");
         category.setId(22);
 
-        category2=new Category();
+        category2=new CategoryBean();
         category2.setName("Encore du Test");
         category2.setId(23);
 
-        book = new Book();
+        book = new BookBean();
         book.setTitle("Les animaux fantastiques");
         book.setSynopsis("Niffler arrête de chipper!");
         book.setUsersWaiting(2);
@@ -52,33 +50,15 @@ public class BookTest {
         book.setPages(432);
         book.setCategory(category);
         book.setId(4);
-
-        List<WaitingList> waitingLists = new ArrayList<>();
-        waitingList = new WaitingList();
-        waitingList.setBook(book);
-        waitingList.setUserPos(4);
-        waitingList.setUserId(6);
-        waitingList.setId(8);
-        waitingLists.add(waitingList);
-
-        List<Borrowing> borrowingList = new ArrayList<>();
-        borrowing = new Borrowing();
-        borrowing.setBook(book);
-        borrowing.setBorrowed("21/10/2018");
-        borrowing.setIdUser(3);
-        borrowingList.add(borrowing);
-
-        book.setWaitingList(waitingLists);
-        book.setBorrowingList(borrowingList);
     }
 
     @Test(expected = Test.None.class)
     public void getId() {
-        Assert.assertEquals((Integer)4, book.getUsersWaiting());
-        Assert.assertNotEquals((Integer)2, book.getUsersWaiting());
-        book.setUsersWaiting(2);
-        Assert.assertEquals((Integer)2, book.getUsersWaiting());
-        Assert.assertNotEquals((Integer)4, book.getUsersWaiting());
+        Assert.assertEquals((Integer)4, book.getId());
+        Assert.assertNotEquals((Integer)2, book.getId());
+        book.setId(2);
+        Assert.assertEquals((Integer)2, book.getId());
+        Assert.assertNotEquals((Integer)4, book.getId());
     }
 
     @Test(expected = Test.None.class)
@@ -97,21 +77,6 @@ public class BookTest {
         book.setClosestReturnDate("30/06/2020");
         Assert.assertEquals("30/06/2020", book.getClosestReturnDate());
         Assert.assertNotEquals("24/12/2019", book.getClosestReturnDate());
-    }
-
-    @Test(expected = Test.None.class)
-    public void getWaitingList() {
-        Assert.assertEquals("[WaitingList{id=8, book=Book{id=null, ref='AF2578953HY', title='Les animaux fantastiques'}, userId=6, userPos=4}]", book.getWaitingList().toString());
-        Assert.assertNotEquals(null, book.getWaitingList());
-        List<WaitingList> waitingLists = book.getWaitingList();
-        WaitingList waitingList2 = new WaitingList();
-        waitingList2.setBook(book);
-        waitingList2.setUserPos(1);
-        waitingList2.setUserId(2);
-        waitingList2.setId(3);
-        waitingLists.add(waitingList2);
-        Assert.assertEquals(2, book.getWaitingList().size());
-        Assert.assertNotEquals(1, book.getWaitingList().size());
     }
 
     @Test(expected = Test.None.class)
@@ -134,26 +99,13 @@ public class BookTest {
 
     @Test(expected = Test.None.class)
     public void getAvailableBooksNbr() {
-        Assert.assertEquals(0, book.getAvailableBooksNbr());
-        Assert.assertNotEquals(8, book.getAvailableBooksNbr());
+        Assert.assertEquals((Integer)0, book.getAvailableBooksNbr());
+        Assert.assertNotEquals((Integer)8, book.getAvailableBooksNbr());
         book.setAvailableBooksNbr(1);
-        Assert.assertEquals(1, book.getAvailableBooksNbr());
-        Assert.assertNotEquals(6, book.getAvailableBooksNbr());
+        Assert.assertEquals((Integer)1, book.getAvailableBooksNbr());
+        Assert.assertNotEquals((Integer)6, book.getAvailableBooksNbr());
     }
 
-    @Test(expected = Test.None.class)
-    public void getBorrowingList() {
-        Assert.assertEquals("[Borrowing{id=null, borrowed=21/10/2018, returned=null}]", book.getBorrowingList().toString());
-        Assert.assertNotEquals(null, book.getBorrowingList());
-        List<Borrowing> borrowingList = book.getBorrowingList();
-        Borrowing borrowing2 = new Borrowing();
-        borrowing2.setBook(book);
-        borrowing2.setBorrowed("23/08/2019");
-        borrowing2.setIdUser(2);
-        borrowingList.add(borrowing2);
-        Assert.assertEquals(2, book.getBorrowingList().size());
-        Assert.assertNotEquals(1, book.getBorrowingList().size());
-    }
 
     @Test(expected = Test.None.class)
     public void getSynopsis() {
@@ -232,7 +184,7 @@ public class BookTest {
     public void getAuthor() {
         Assert.assertEquals(author, book.getAuthor());
         Assert.assertNotEquals("Luke", book.getAuthor().getFirstName());
-        Author author2=new Author();
+        AuthorBean author2=new AuthorBean();
         author2.setFirstName("Luke");
         book.setAuthor(author2);
         Assert.assertEquals(author2, book.getAuthor());
@@ -241,7 +193,7 @@ public class BookTest {
 
     @Test(expected = Test.None.class)
     public void toStringT() {
-        Assert.assertEquals("Book{id=null, ref='AF2578953HY', title='Les animaux fantastiques'}", book.toString());
-        Assert.assertNotEquals("Book{id=null, ref='JU873HH', title='Le dernier Jedi'}", book.toString());
+        Assert.assertEquals("BookBean{id=4, ref='AF2578953HY', title='Les animaux fantastiques'}", book.toString());
+        Assert.assertNotEquals("BookBean{id=null, ref='JU873HH', title='Le dernier Jedi'}", book.toString());
     }
 }
