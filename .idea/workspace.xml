@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b98b7ebe-8269-4b3a-b4b2-442ba5ce5d88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/AuthorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/AuthorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BookTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BorrowingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BorrowingTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BorrowingTypeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BorrowingTypeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/CategoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/CategoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/WaitingListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/WaitingListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/utils/DateUtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/utils/DateUtilsTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/config-server/target/" />
     <ignored path="$PROJECT_DIR$/microservice-clientui/target/" />
@@ -54,7 +49,7 @@
     <SUITE FILE_PATH="coverage/bibliothequeV2_0$UserBeanTest.ic" NAME="UserBeanTest Coverage Results" MODIFIED="1577108861434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.mclientui.microserviceclientui.beans.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/bibliothequeV2_0$AuthorBeanTest.ic" NAME="AuthorBeanTest Coverage Results" MODIFIED="1577109069033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/bibliothequeV2_0$AuthorBeanTest.ic" NAME="AuthorBeanTest Coverage Results" MODIFIED="1577112067189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.mclientui.microserviceclientui.beans.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/bibliothequeV2_0$CategoryBeanTest.ic" NAME="CategoryBeanTest Coverage Results" MODIFIED="1577108909308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -72,7 +67,7 @@
     <SUITE FILE_PATH="coverage/bibliothequeV2_0$DateUtilsTest.ic" NAME="DateUtilsTest Coverage Results" MODIFIED="1577097091171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.mbooks.microservicebooks.utils.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/bibliothequeV2_0$BookTest.ic" NAME="BookTest Coverage Results" MODIFIED="1577111800615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/bibliothequeV2_0$BookTest.ic" NAME="BookTest Coverage Results" MODIFIED="1577112007544" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.mbooks.microservicebooks.model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/bibliothequeV2_0$BorrowingTypeBeanTest.ic" NAME="BorrowingTypeBeanTest Coverage Results" MODIFIED="1577108918209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -94,15 +89,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/model/Author.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="93" column="1" lean-forward="true" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/microservice-books/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
@@ -112,6 +98,20 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/utils/DateUtilsTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="37" column="31" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#741#742#0" expanded="true" />
+                <element signature="e#804#805#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BookTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="79">
@@ -223,7 +223,6 @@
         <option value="$PROJECT_DIR$/microservice-books/src/testIntegration/java/com.mbooks/microservicebooks/controller/AuthorControllerTest.java" />
         <option value="$PROJECT_DIR$/microservice-users/src/test/java/com/musers/microserviceusers/model/UserTest.java" />
         <option value="$PROJECT_DIR$/microservice-mailing/src/test/java/com/mmailing/microservicemailing/model/MailSentForWaitingListTest.java" />
-        <option value="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/utils/DateUtilsTest.java" />
         <option value="$PROJECT_DIR$/microservice-users/src/test/java/com/musers/microserviceusers/model/RoleTest.java" />
         <option value="$PROJECT_DIR$/microservice-clientui/src/test/java/com/mclientui/microserviceclientui/beans/RoleBeanTest.java" />
         <option value="$PROJECT_DIR$/microservice-clientui/src/test/java/com/mclientui/microserviceclientui/beans/BorrowingTypeBeanTest.java" />
@@ -241,6 +240,7 @@
         <option value="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/WaitingListTest.java" />
         <option value="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/AuthorTest.java" />
         <option value="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BookTest.java" />
+        <option value="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/utils/DateUtilsTest.java" />
       </list>
     </option>
   </component>
@@ -297,40 +297,6 @@
               <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
               <item name="microservice-books" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="microservice-books" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="microservice-books" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="microservicebooks" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="microservice-books" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="microservicebooks" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="microservice-books" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="testsUnitaires" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -358,86 +324,7 @@
               <item name="testsUnitaires" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="microservicebooks" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="microservice-clientui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="microservice-clientui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="microservice-clientui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="microservice-clientui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="microservice-clientui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="microserviceclientui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="microservice-clientui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="microserviceclientui" type="462c0819:PsiDirectoryNode" />
-              <item name="beans" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="microservice-clientui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="microservice-clientui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="microservice-clientui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="microserviceclientui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="microservice-clientui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="microserviceclientui" type="462c0819:PsiDirectoryNode" />
-              <item name="beans" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
@@ -459,7 +346,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577111907200" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577112807261" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/eureka-server/pom.xml" />
@@ -526,7 +413,22 @@
     </option>
     <option name="contentProportion" value="0.19242658" />
   </component>
-  <component name="RunManager" selected="JUnit.BookTest">
+  <component name="RunManager" selected="JUnit.DateUtilsTest.convertStringToDateFormatFail">
+    <configuration name="AuthorBeanTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="microservice-clientui" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mclientui.microserviceclientui.beans.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.mclientui.microserviceclientui.beans" />
+      <option name="MAIN_CLASS_NAME" value="com.mclientui.microserviceclientui.beans.AuthorBeanTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AuthorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="microservice-books" />
       <extension name="coverage">
@@ -557,32 +459,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BorrowingTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DateUtilsTest.convertStringToDateFormatFail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="microservice-books" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.mbooks.microservicebooks.model.*" />
+          <option name="PATTERN" value="com.mbooks.microservicebooks.utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.mbooks.microservicebooks.model" />
-      <option name="MAIN_CLASS_NAME" value="com.mbooks.microservicebooks.model.BorrowingTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CategoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="microservice-books" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.mbooks.microservicebooks.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.mbooks.microservicebooks.model" />
-      <option name="MAIN_CLASS_NAME" value="com.mbooks.microservicebooks.model.CategoryTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.mbooks.microservicebooks.utils" />
+      <option name="MAIN_CLASS_NAME" value="com.mbooks.microservicebooks.utils.DateUtilsTest" />
+      <option name="METHOD_NAME" value="convertStringToDateFormatFail" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -647,11 +535,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DateUtilsTest.convertStringToDateFormatFail" />
+        <item itemvalue="JUnit.AuthorBeanTest" />
         <item itemvalue="JUnit.BookTest" />
         <item itemvalue="JUnit.AuthorTest" />
         <item itemvalue="JUnit.WaitingListTest" />
-        <item itemvalue="JUnit.CategoryTest" />
-        <item itemvalue="JUnit.BorrowingTest" />
       </list>
     </recent_temporary>
   </component>
@@ -677,20 +565,11 @@
       <workItem from="1576226427010" duration="770000" />
       <workItem from="1576227240036" duration="15326000" />
       <workItem from="1576486379927" duration="2759000" />
-      <workItem from="1577092873112" duration="14802000" />
+      <workItem from="1577092873112" duration="15401000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="BorrowingTest - 2019.12.23 at 15h 33m 47s.xml">
-      <configuration name="BorrowingTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CategoryTest - 2019.12.23 at 15h 34m 10s.xml">
-      <configuration name="CategoryTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CategoryTest - 2019.12.23 at 15h 34m 31s.xml">
-      <configuration name="CategoryTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="WaitingListTest - 2019.12.23 at 15h 34m 40s.xml">
       <configuration name="WaitingListTest" configurationId="JUnit" />
     </history-entry>
@@ -712,9 +591,18 @@
     <history-entry file="AuthorTest - 2019.12.23 at 15h 38m 35s.xml">
       <configuration name="AuthorTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="BookTest - 2019.12.23 at 15h 40m 12s.xml">
+      <configuration name="BookTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AuthorBeanTest - 2019.12.23 at 15h 41m 12s.xml">
+      <configuration name="AuthorBeanTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DateUtilsTest_convertStringToDateFormatFail - 2019.12.23 at 15h 45m 59s.xml">
+      <configuration name="DateUtilsTest.convertStringToDateFormatFail" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71156000" />
+    <option name="totallyTimeSpent" value="71755000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -729,7 +617,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49695122" visible="true" weight="0.28895614" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49695122" visible="true" weight="0.28895614" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -739,7 +627,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3747954" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3747954" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -918,25 +806,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/utils/DateUtilsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#830#831#0" expanded="true" />
-            <element signature="e#893#894#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/beans/AuthorBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/beans/BookBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1074,13 +943,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-books/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/model/Author.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="215">
@@ -1135,6 +997,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/beans/AuthorBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BookTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="78" column="19" selection-start-line="78" selection-start-column="19" selection-end-line="78" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/AuthorTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1145,12 +1024,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BookTest.java">
+    <entry file="file://$PROJECT_DIR$/microservice-books/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="78" column="19" selection-start-line="78" selection-start-column="19" selection-end-line="78" selection-end-column="19" />
+        <state relative-caret-position="119">
+          <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/utils/DateUtilsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="37" column="31" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#741#742#0" expanded="true" />
+            <element signature="e#804#805#0" expanded="true" />
           </folding>
         </state>
       </provider>
