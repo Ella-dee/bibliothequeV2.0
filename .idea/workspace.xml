@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b98b7ebe-8269-4b3a-b4b2-442ba5ce5d88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-books/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/model/WaitingList.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/model/WaitingList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-books/src/test/java/com/mbooks/microservicebooks/MicroserviceBooksApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/MicroserviceBooksApplicationTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/config-server/target/" />
     <ignored path="$PROJECT_DIR$/microservice-clientui/target/" />
@@ -21,10 +18,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/bibliothequeV2_0$BorrowingTest.ic" NAME="BorrowingTest Coverage Results" MODIFIED="1577094367517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.mbooks.microservicebooks.model.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/bibliothequeV2_0$AuthorTest.ic" NAME="AuthorTest Coverage Results" MODIFIED="1576854926880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.mbooks.microservicebooks.model.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/bibliothequeV2_0$BookTest.ic" NAME="BookTest Coverage Results" MODIFIED="1576857695865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/bibliothequeV2_0$BookTest.ic" NAME="BookTest Coverage Results" MODIFIED="1576857738876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.mbooks.microservicebooks.model.*</FILTER>
     </SUITE>
   </component>
@@ -32,21 +32,18 @@
     <option name="myAddOrReplace" value="1" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="185" />
+    <option name="myElementSize" value="181" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="bibliothequeV2.0" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/model/Author.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BorrowingTypeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="277">
+              <caret line="56" column="46" lean-forward="true" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -54,20 +51,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/AuthorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-145">
-              <caret line="66" column="10" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="38" />
+            <state relative-caret-position="328">
+              <caret line="82" column="1" selection-start-line="77" selection-start-column="7" selection-end-line="82" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BookTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="131" column="31" lean-forward="true" selection-start-line="131" selection-start-column="31" selection-end-line="131" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -88,9 +76,13 @@
     <findStrings>
       <find>update</find>
       <find>rib</find>
+      <find>Books</find>
+      <find>getBooks</find>
     </findStrings>
     <replaceStrings>
       <replace>alter</replace>
+      <replace>Book</replace>
+      <replace>getBorrowingList</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -99,8 +91,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/config/FeignExceptionConfig.java" />
-        <option value="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/dao/BookDao.java" />
         <option value="$PROJECT_DIR$/microservice-mailing/src/main/java/com/mmailing/microservicemailing/config/FeignExceptionConfig.java" />
         <option value="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/proxies/MicroserviceMailingProxy.java" />
         <option value="$PROJECT_DIR$/microservice-books/src/main/java/proxies/MicroserviceMailingProxy.java" />
@@ -150,6 +140,8 @@
         <option value="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/AuthorTest.java" />
         <option value="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/model/WaitingList.java" />
         <option value="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BookTest.java" />
+        <option value="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BorrowingTest.java" />
+        <option value="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BorrowingTypeTest.java" />
       </list>
     </option>
   </component>
@@ -181,8 +173,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -326,7 +318,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576857694621" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577095092409" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/eureka-server/pom.xml" />
@@ -345,15 +337,15 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.mbooks.microservicebooks" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.mbooks.microservicebooks.model" />
       <recent name="com.mbooks.microservicebooks.exceptions" />
       <recent name="com.mclientui.microserviceclientui.web.controller" />
       <recent name="com.mmailing.microservicemailing.proxies" />
       <recent name="com.mmailing.microservicemailing.dao" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\F41374\IdeaProjects\bibliothequeV2.0\microservice-clientui\src\main\resources\templates" />
@@ -380,8 +372,8 @@
     </option>
     <option name="contentProportion" value="0.19242658" />
   </component>
-  <component name="RunManager" selected="JUnit.BookTest">
-    <configuration name="AuthorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.BorrowingTypeTest">
+    <configuration name="BorrowingTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="microservice-books" />
       <extension name="coverage">
         <pattern>
@@ -390,13 +382,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.mbooks.microservicebooks.model" />
-      <option name="MAIN_CLASS_NAME" value="com.mbooks.microservicebooks.model.AuthorTest" />
+      <option name="MAIN_CLASS_NAME" value="com.mbooks.microservicebooks.model.BorrowingTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BorrowingTest.toStringT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="microservice-books" />
       <extension name="coverage">
         <pattern>
@@ -405,13 +397,29 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.mbooks.microservicebooks.model" />
-      <option name="MAIN_CLASS_NAME" value="com.mbooks.microservicebooks.model.BookTest" />
+      <option name="MAIN_CLASS_NAME" value="com.mbooks.microservicebooks.model.BorrowingTest" />
+      <option name="METHOD_NAME" value="toStringT" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BorrowingTypeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="microservice-books" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mbooks.microservicebooks.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.mbooks.microservicebooks.model" />
+      <option name="MAIN_CLASS_NAME" value="com.mbooks.microservicebooks.model.BorrowingTypeTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookTest.getBorrowingList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BorrowingTypeTest.getBorrowingList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="microservice-books" />
       <extension name="coverage">
         <pattern>
@@ -420,14 +428,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.mbooks.microservicebooks.model" />
-      <option name="MAIN_CLASS_NAME" value="com.mbooks.microservicebooks.model.BookTest" />
+      <option name="MAIN_CLASS_NAME" value="com.mbooks.microservicebooks.model.BorrowingTypeTest" />
       <option name="METHOD_NAME" value="getBorrowingList" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookTest.getWaitingList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BorrowingTypeTest.toStringT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="microservice-books" />
       <extension name="coverage">
         <pattern>
@@ -436,23 +444,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.mbooks.microservicebooks.model" />
-      <option name="MAIN_CLASS_NAME" value="com.mbooks.microservicebooks.model.BookTest" />
-      <option name="METHOD_NAME" value="getWaitingList" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BookTest.toStringT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="microservice-books" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.mbooks.microservicebooks.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.mbooks.microservicebooks.model" />
-      <option name="MAIN_CLASS_NAME" value="com.mbooks.microservicebooks.model.BookTest" />
+      <option name="MAIN_CLASS_NAME" value="com.mbooks.microservicebooks.model.BorrowingTypeTest" />
       <option name="METHOD_NAME" value="toStringT" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -504,11 +496,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BookTest" />
-        <item itemvalue="JUnit.BookTest.toStringT" />
-        <item itemvalue="JUnit.BookTest.getBorrowingList" />
-        <item itemvalue="JUnit.BookTest.getWaitingList" />
-        <item itemvalue="JUnit.AuthorTest" />
+        <item itemvalue="JUnit.BorrowingTypeTest" />
+        <item itemvalue="JUnit.BorrowingTypeTest.toStringT" />
+        <item itemvalue="JUnit.BorrowingTypeTest.getBorrowingList" />
+        <item itemvalue="JUnit.BorrowingTest" />
+        <item itemvalue="JUnit.BorrowingTest.toStringT" />
       </list>
     </recent_temporary>
   </component>
@@ -534,25 +526,11 @@
       <workItem from="1576226427010" duration="770000" />
       <workItem from="1576227240036" duration="15326000" />
       <workItem from="1576486379927" duration="2759000" />
+      <workItem from="1577092873112" duration="2015000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AuthorTest_getBooks - 2019.12.20 at 16h 09m 41s.xml">
-      <configuration name="AuthorTest.getBooks" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AuthorTest_getBooks - 2019.12.20 at 16h 09m 50s.xml">
-      <configuration name="AuthorTest.getBooks" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AuthorTest_toStringT - 2019.12.20 at 16h 11m 31s.xml">
-      <configuration name="AuthorTest.toStringT" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AuthorTest_toStringT - 2019.12.20 at 16h 12m 53s.xml">
-      <configuration name="AuthorTest.toStringT" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AuthorTest - 2019.12.20 at 16h 13m 54s.xml">
-      <configuration name="AuthorTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="AuthorTest - 2019.12.20 at 16h 15m 32s.xml">
       <configuration name="AuthorTest" configurationId="JUnit" />
     </history-entry>
@@ -568,9 +546,24 @@
     <history-entry file="BookTest - 2019.12.20 at 16h 58m 36s.xml">
       <configuration name="BookTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="BookTest - 2019.12.20 at 17h 01m 41s.xml">
+      <configuration name="BookTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BookTest - 2019.12.20 at 17h 02m 25s.xml">
+      <configuration name="BookTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BorrowingTest_toStringT - 2019.12.23 at 10h 43m 53s.xml">
+      <configuration name="BorrowingTest.toStringT" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BorrowingTest - 2019.12.23 at 10h 45m 18s.xml">
+      <configuration name="BorrowingTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BorrowingTest - 2019.12.23 at 10h 46m 12s.xml">
+      <configuration name="BorrowingTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55837000" />
+    <option name="totallyTimeSpent" value="58369000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -585,7 +578,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49695122" visible="true" weight="0.28441754" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49695122" visible="true" weight="0.28895614" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -611,7 +604,6 @@
       <window_info anchor="bottom" id="Version Control" order="15" />
       <window_info anchor="bottom" id="Run Dashboard" order="16" weight="0.46317512" />
       <window_info anchor="bottom" id="Inspection Results" order="17" weight="0.3289689" />
-      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32980332" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -622,9 +614,10 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Bean Validation" order="9" side_tool="true" weight="0.32980332" />
+      <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.32980332" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49695122" visible="true" weight="0.2753404" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49695122" visible="true" weight="0.28895614" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -659,7 +652,8 @@
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info anchor="right" id="Bean Validation" order="9" side_tool="true" weight="0.32980332" />
+      <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.32980332" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,22 +665,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/model/Borrowing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-79">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-users/src/main/resources/db/migration/V1.4__maj_schema.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-users/src/main/resources/db/migration/V1.2__init_data.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-users/src/main/resources/bootstrap.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/config-server/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1006,16 +984,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/model/Author.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/model/Book.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1627">
@@ -1023,10 +991,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/AuthorTest.java">
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/model/Author.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-145">
-          <caret line="66" column="10" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="38" />
+        <state relative-caret-position="119">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1035,8 +1003,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BookTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="131" column="31" lean-forward="true" selection-start-line="131" selection-start-column="31" selection-end-line="131" selection-end-column="31" />
+        <state relative-caret-position="808">
+          <caret line="69" column="37" lean-forward="true" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/model/Borrowing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="108" column="28" lean-forward="true" selection-start-line="108" selection-start-column="28" selection-end-line="108" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/model/BorrowingType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BorrowingTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1231">
+          <caret line="96" column="9" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/AuthorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="82" column="1" selection-start-line="77" selection-start-column="7" selection-end-line="82" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BorrowingTypeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="56" column="46" lean-forward="true" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
         </state>
       </provider>
     </entry>
