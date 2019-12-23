@@ -74,11 +74,11 @@ public class BookTest {
 
     @Test(expected = Test.None.class)
     public void getId() {
-        Assert.assertEquals((Integer)4, book.getUsersWaiting());
-        Assert.assertNotEquals((Integer)2, book.getUsersWaiting());
-        book.setUsersWaiting(2);
-        Assert.assertEquals((Integer)2, book.getUsersWaiting());
-        Assert.assertNotEquals((Integer)4, book.getUsersWaiting());
+        Assert.assertEquals((Integer)4, book.getId());
+        Assert.assertNotEquals((Integer)2, book.getId());
+        book.setId(2);
+        Assert.assertEquals((Integer)2, book.getId());
+        Assert.assertNotEquals((Integer)4, book.getId());
     }
 
     @Test(expected = Test.None.class)
@@ -101,7 +101,7 @@ public class BookTest {
 
     @Test(expected = Test.None.class)
     public void getWaitingList() {
-        Assert.assertEquals("[WaitingList{id=8, book=Book{id=null, ref='AF2578953HY', title='Les animaux fantastiques'}, userId=6, userPos=4}]", book.getWaitingList().toString());
+        Assert.assertEquals("[WaitingList{id=8, book=Book{id=4, ref='AF2578953HY', title='Les animaux fantastiques'}, userId=6, userPos=4}]", book.getWaitingList().toString());
         Assert.assertNotEquals(null, book.getWaitingList());
         List<WaitingList> waitingLists = book.getWaitingList();
         WaitingList waitingList2 = new WaitingList();
@@ -241,7 +241,7 @@ public class BookTest {
 
     @Test(expected = Test.None.class)
     public void toStringT() {
-        Assert.assertEquals("Book{id=null, ref='AF2578953HY', title='Les animaux fantastiques'}", book.toString());
+        Assert.assertEquals("Book{id=4, ref='AF2578953HY', title='Les animaux fantastiques'}", book.toString());
         Assert.assertNotEquals("Book{id=null, ref='JU873HH', title='Le dernier Jedi'}", book.toString());
     }
 }

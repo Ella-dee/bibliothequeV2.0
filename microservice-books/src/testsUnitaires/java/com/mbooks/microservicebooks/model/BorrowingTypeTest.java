@@ -68,7 +68,7 @@ public class BorrowingTypeTest {
 
     @Test(expected = Test.None.class)
     public void toStringT() {
-        Assert.assertEquals("BorrowingType{id=null, type='Fantastique'}", borrowingType.toString());
+        Assert.assertEquals("BorrowingType{id=1, type='Fantastique'}", borrowingType.toString());
         Assert.assertNotEquals("BorrowingType{id=null, type='Ennuyant'}", borrowingType.toString());
     }
 }

@@ -110,7 +110,7 @@ public class BorrowingTest {
 
     @Test(expected = Test.None.class)
     public void toStringT() {
-        Assert.assertEquals("Borrowing{id=null, borrowed=23/11/2019, returned=null}", borrowing.toString());
+        Assert.assertEquals("Borrowing{id=4, borrowed=23/11/2019, returned=null}", borrowing.toString());
         Assert.assertNotEquals("Borrowing{id=1, borrowed=23/11/2019, returned=12/12/2019}", borrowing.toString());
     }
 }

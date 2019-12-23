@@ -60,7 +60,7 @@ public class WaitingListTest {
 
     @Test(expected = Test.None.class)
     public void toStringT() {
-        Assert.assertEquals("WaitingList{id=null, book=Book{id=null, ref='null', title='Les animaux fantastiques'}, userId=4, userPos=1}", waitingList.toString());
+        Assert.assertEquals("WaitingList{id=4, book=Book{id=null, ref='null', title='Les animaux fantastiques'}, userId=4, userPos=1}", waitingList.toString());
         Assert.assertNotEquals("WaitingList{id=null, book=Book{id=2, ref='null', title='L'ennui le plus long'}, userId=2, userPos=2}", waitingList.toString());
     }
 

@@ -58,7 +58,7 @@ public class CategoryTest {
 
     @Test(expected = Test.None.class)
     public void toStringT() {
-        Assert.assertEquals("Category{id=null, name='Fantastique'}", cat.toString());
+        Assert.assertEquals("Category{id=1, name='Fantastique'}", cat.toString());
         Assert.assertNotEquals("Category{id=null, name='Ennuyant'}", cat.toString());
     }
 }

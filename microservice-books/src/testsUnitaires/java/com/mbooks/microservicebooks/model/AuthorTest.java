@@ -36,6 +36,15 @@ public class AuthorTest {
         author.setBooks(bookList);
     }
 
+
+    @Test(expected = Test.None.class)
+    public void getId() {
+        Assert.assertEquals((Integer)2, author.getId());
+        Assert.assertNotEquals((Integer)1, author.getId());
+        author.setId(4);
+        Assert.assertEquals((Integer)4, author.getId());
+        Assert.assertNotEquals((Integer)2, author.getId());
+    }
     @Test (expected = Test.None.class)
     public void getSetFirstName() {
          Assert.assertEquals("Newton", author.getFirstName());
