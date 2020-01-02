@@ -112,7 +112,7 @@ public class ClientUsersController {
         return "user-details";
     }
 
-    @RequestMapping(value = "/Reservations/delete/{id}")
+    @RequestMapping(value = "/Reservations/{id}/delete")
     public String cancelWaitingList(@PathVariable Integer id, Model model, HttpServletRequest request){
         HttpSession session = request.getSession();
         UserBean user = usersProxy.showUser(booksProxy.showWaitingList(id).getUserId());

@@ -50,7 +50,7 @@ public class MailSentForWaitingListService {
             //Delete from db the initial mail
             mailSentForWaitingListDao.delete(mail);
             //send
-            sendNotif(waitingList.getIdUser(), waitingList.getBook().getId(), usersProxy.showUser(waitingList.getIdUser()).getEmail());
+            sendNotif(waitingList.getIdUser(), waitingList.getBook().getId(), usersProxy.showUser(waitingList.getIdUser()).getEmail(), usersProxy.showUser(waitingList.getIdUser()).getFirstName());
         }
     }
 
@@ -62,10 +62,11 @@ public class MailSentForWaitingListService {
      * @param bookId
      * @param userEmail
      */
-    public void sendNotif(Integer userId, Integer bookId, String userEmail) {
+    public void sendNotif(Integer userId, Integer bookId, String userEmail, String firstName) {
         String subject = "Un Livre que vous attendez est disponible";
         String title = booksProxy.showBook(bookId).getTitle();
-        String message = "Le livre "+title+" est disponible.\n" +
+        String message = "Bonjour "+firstName+"\n" +
+                "Le livre "+title+" est disponible.\n" +
                 "Vous avez la priorité sur ce livre pendant 48H, après ce délai vous serez retiré de la liste d'attente.\n"+
                 "\n\nA bientôt et bonne lecture, " +
                 "\n\nLa bilibothèque de la ville";

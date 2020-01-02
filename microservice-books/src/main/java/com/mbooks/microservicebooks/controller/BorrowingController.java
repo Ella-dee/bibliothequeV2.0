@@ -8,6 +8,7 @@ import com.mbooks.microservicebooks.exceptions.NotFoundException;
 import com.mbooks.microservicebooks.model.Borrowing;
 import com.mbooks.microservicebooks.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -48,7 +49,7 @@ public class BorrowingController {
      * @return responseEntity
      */
     @PostMapping(value = "/Prets/add-borrowing")
-    public ResponseEntity<Void> addBorrowing(@Valid @RequestBody Borrowing borrowing) {
+    public ResponseEntity<Borrowing> addBorrowing(@Valid @RequestBody Borrowing borrowing) {
         ZoneId zone = ZoneId.of("Europe/Paris");
         LocalDate today = LocalDate.now(zone);
         LocalDate oneMonthLater = today.plusMonths( 1 );
@@ -56,42 +57,14 @@ public class BorrowingController {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         borrowing.setBorrowed(today.format(format));
         borrowing.setLimitDate(oneMonthLater.format(format));
+        borrowing.setBorrowingType(borrowingTypeDao.findBorrowingTypeById(1));
+        borrowing.setRenewed(false);
 
         Borrowing borrowingAdded =  borrowingDao.save(borrowing);
         if (borrowingAdded == null) {
             return ResponseEntity.noContent().build();
         }
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(borrowingAdded.getId())
-                .toUri();
-        return ResponseEntity.created(location).build();
-    }
-    /**
-     * <h2>Not needed for user application => for employees application</h2>
-     * <p>sets a borrowing in db to returned</p>
-     * @param id
-     * @return borrowing
-     */
-    @PostMapping(value = "/Prets/{id}/return")
-    public Borrowing returnBorrowing(@PathVariable Integer id) {
-        Optional<Borrowing> borrow = borrowingDao.findById(id);
-        if(!borrow.isPresent()) {
-            throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
-        }
-        Borrowing borrowing = borrowingDao.findBorrowingById(id);
-        ZoneId zone = ZoneId.of("Europe/Paris");
-        LocalDate today = LocalDate.now(zone);
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        borrowing.setReturned(today.format(format));
-        borrowing.setBorrowingType(borrowingTypeDao.findBorrowingTypeById(2));
-        Borrowing borrowingAdded =  borrowingDao.save(borrowing);
-        if (borrowingAdded == null) {
-            throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
-        }
-        bookService.checkForWaitingList(borrowing.getBook());
-        return borrowing;
+        return  new ResponseEntity<Borrowing>(borrowingAdded, HttpStatus.CREATED);
     }
     /**
      * <p>show details of a particular borrowing by its id</p>
@@ -107,6 +80,19 @@ public class BorrowingController {
         return borrow;
     }
 
+    /**
+     * <p>show details of a particular borrowing by its id</p>
+     * @param id
+     * @return the category
+     */
+    @GetMapping(value = "/Prets/Utilisateur/{id}")
+    public List<Borrowing> showUserBorrowing(@PathVariable Integer id) {
+        List<Borrowing> borrowed = borrowingDao.findBorrowingByIdUser(id);
+        if(borrowed.isEmpty()) {
+            throw new NotFoundException("Aucun prêt pour l'id " + id + ".");
+        }
+        return borrowed;
+    }
     /**
      * <p>show details of a particular borrowing by its id</p>
      * @param id
@@ -139,17 +125,46 @@ public class BorrowingController {
         }
         return borrowingAdded;
     }
+
     /**
-     * <p>show details of a particular borrowing by its id</p>
+     * <h2>Not needed for user application => for employees application</h2>
+     * <p>sets a borrowing in db to returned</p>
      * @param id
-     * @return the category
+     * @return borrowing
      */
-    @GetMapping(value = "/Prets/Utilisateur/{id}")
-    public List<Borrowing> showUserBorrowing(@PathVariable Integer id) {
-        List<Borrowing> borrowed = borrowingDao.findBorrowingByIdUser(id);
-        if(!borrowed.isEmpty()) {
-            throw new NotFoundException("Aucun prêt pur l'id " + id + ".");
+    @PostMapping(value = "/Prets/{id}/return")
+    public Borrowing returnBorrowing(@PathVariable Integer id) {
+        Optional<Borrowing> borrow = borrowingDao.findById(id);
+        if(!borrow.isPresent()) {
+            throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
         }
-        return borrowed;
+        Borrowing borrowing = borrowingDao.findBorrowingById(id);
+        ZoneId zone = ZoneId.of("Europe/Paris");
+        LocalDate today = LocalDate.now(zone);
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        borrowing.setReturned(today.format(format));
+        borrowing.setBorrowingType(borrowingTypeDao.findBorrowingTypeById(2));
+        Borrowing borrowingAdded =  borrowingDao.save(borrowing);
+        if (borrowingAdded == null) {
+            throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
+        }
+        bookService.checkForWaitingList(borrowing.getBook());
+        return borrowing;
     }
+
+    /**
+     * <h2>Not needed for user application => for employees/test application</h2>
+     * <p>deletes borrowing from db</p>
+     * @param id
+     * @return responseEntity
+     */
+    @PostMapping(value = "/Prets/{id}/delete")
+    public void deleteUser(@PathVariable  Integer id) {
+        Optional<Borrowing> borrowing = borrowingDao.findById(id);
+        if (!borrowing.isPresent()) {
+            throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
+        }
+        borrowingDao.delete(borrowingDao.findById(id).get());
+    }
+
 }

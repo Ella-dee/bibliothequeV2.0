@@ -6,6 +6,7 @@ import com.mbooks.microservicebooks.exceptions.NotFoundException;
 import com.mbooks.microservicebooks.model.Book;
 import com.mbooks.microservicebooks.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -49,17 +50,12 @@ public class CategoryController {
      * @return responseEntity
      */
     @PostMapping(value = "/Genres")
-    public ResponseEntity<Void> addCategory(@Valid @RequestBody Category category) {
+    public ResponseEntity<Category> addCategory(@Valid @RequestBody Category category) {
         Category categoryAdded =  categoryDao.save(category);
         if (categoryAdded == null) {
             return ResponseEntity.noContent().build();
         }
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(categoryAdded.getId())
-                .toUri();
-        return ResponseEntity.created(location).build();
+        return  new ResponseEntity<Category>(categoryAdded, HttpStatus.CREATED);
     }
 
     /**

@@ -5,6 +5,7 @@ import com.mbooks.microservicebooks.dao.BorrowingTypeDao;
 import com.mbooks.microservicebooks.exceptions.NotFoundException;
 import com.mbooks.microservicebooks.model.BorrowingType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -38,17 +39,12 @@ public class BorrowingTypeController {
      * @return responseEntity
      */
     @PostMapping(value = "/TypesDePrets")
-    public ResponseEntity<Void> addBorrowingType(@Valid @RequestBody BorrowingType borrowingType) {
+    public ResponseEntity<BorrowingType> addBorrowingType(@Valid @RequestBody BorrowingType borrowingType) {
         BorrowingType borrowingAdded =  borrowingTypeDao.save(borrowingType);
         if (borrowingAdded == null) {
             return ResponseEntity.noContent().build();
         }
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(borrowingAdded.getId())
-                .toUri();
-        return ResponseEntity.created(location).build();
+        return  new ResponseEntity<BorrowingType>(borrowingAdded, HttpStatus.CREATED);
     }
     /**
      * <p>show details of a particular borrowingType by its id</p>

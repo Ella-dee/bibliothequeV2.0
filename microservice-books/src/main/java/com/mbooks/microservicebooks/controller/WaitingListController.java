@@ -9,6 +9,7 @@ import com.mbooks.microservicebooks.exceptions.NotFoundException;
 import com.mbooks.microservicebooks.model.Borrowing;
 import com.mbooks.microservicebooks.model.WaitingList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -77,12 +78,7 @@ private BookDao bookDao;
         if (waitingListAdded == null) {
             return ResponseEntity.noContent().build();
         }
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(waitingListAdded.getId())
-                .toUri();
-        return ResponseEntity.created(location).build();
+        return new ResponseEntity<WaitingList>(waitingListAdded, HttpStatus.CREATED);
     }
 
     /**

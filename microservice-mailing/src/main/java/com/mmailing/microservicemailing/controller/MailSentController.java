@@ -35,6 +35,6 @@ public class MailSentController {
     @PostMapping(value = "/Utilisateurs/notification_retour")
     public void  sendNotifWhenAwaitedBookIsReturned(@RequestParam Integer userId, @RequestParam Integer bookId){
         UserBean user = usersProxy.showUser(userId);
-        mailSentForWaitingListService.sendNotif(userId, bookId, user.getEmail());
+        mailSentForWaitingListService.sendNotif(userId, bookId, user.getEmail(), user.getFirstName());
     }
 }

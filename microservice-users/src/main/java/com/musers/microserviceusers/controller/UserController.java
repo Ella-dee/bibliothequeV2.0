@@ -51,6 +51,21 @@ public class UserController {
         return new ResponseEntity<User>(userAdded, HttpStatus.CREATED);
     }
 
+    /**
+     * <h2>Not needed for user application => for employees application</h2>
+     * <p>deletes user from db</p>
+     * @param id
+     * @return responseEntity
+     */
+    @PostMapping(value = "/Utilisateurs/{id}/delete")
+    public void deleteUser(@PathVariable  Integer id) {
+        Optional<User> user = userDao.findById(id);
+        if (!user.isPresent()) {
+            throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
+        }
+        userDao.delete(userDao.findById(id).get());
+    }
+
 
     /**
      * <p>shows details of a particular user by its id</p>
