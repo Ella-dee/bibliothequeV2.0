@@ -99,7 +99,8 @@ public class BookService {
             }
             Collections.sort(idList);
             WaitingList waitingList = waitingListDao.getOne(idList.get(0));
-            //TODO status 504 gateaway timeout dans postman / mail envoyé quand même
+            //TODO status status 404 reading MicroserviceMailingProxy#sendNotifWhenAwaitedBookIsReturned(Integer,Integer)
+            // dans postman  / mail envoyé quand même
             mailingProxy.sendNotifWhenAwaitedBookIsReturned(waitingList.getUserId(), waitingList.getBook().getId());
             System.out.println("userid "+waitingList.getUserId()+" bookid "+waitingList.getBook().getId());
         }

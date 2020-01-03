@@ -87,13 +87,12 @@ private BookDao bookDao;
      * @return waitingList
      */
     @PostMapping(value = "/Reservations/delete/{id}")
-    public void cancelwaitingList(@PathVariable Integer id) {
+    public void cancelWaitingList(@PathVariable Integer id) {
         Optional<WaitingList> waitingList = waitingListDao.findById(id);
         if (!waitingList.isPresent()) {
             throw new NotFoundException("L'item avec l'id " + id + " est INTROUVABLE.");
         }
         WaitingList waitingListToDelete = waitingListDao.getOne(id);
-        //TODO etudier si on garde userPos, où si on recalcul par les id des waitingList et Collections.sort()
         //change userPos if possible:
         Integer canceledPos = waitingListToDelete.getUserPos();
         //1- find the book

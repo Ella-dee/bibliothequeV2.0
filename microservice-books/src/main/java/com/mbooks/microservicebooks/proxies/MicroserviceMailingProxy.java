@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "zuul-server", url = "localhost:9004",contextId = "mailingProxy", configuration = FeignConfig.class)
 @RibbonClient(name = "microservice-mailing")
 public interface MicroserviceMailingProxy {
-    @PostMapping(value = "microservice-mailing/Utilisateurs/notification_retour")
+    @PostMapping(value = "microservice-mailing/Utilisateurs/notification-retour")
     void sendNotifWhenAwaitedBookIsReturned(@RequestParam Integer userId, @RequestParam Integer bookId);
 }

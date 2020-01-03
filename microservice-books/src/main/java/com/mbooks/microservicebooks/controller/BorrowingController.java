@@ -26,11 +26,9 @@ import java.util.*;
  */
 @RestController
 public class BorrowingController {
-    @Autowired//For test puroses
-    private BookDao bookDao;
-
-
-
+    //For test puroses
+    //@Autowired
+    //private BookDao bookDao;
     @Autowired
     BorrowingDao borrowingDao;
     @Autowired
@@ -57,8 +55,7 @@ public class BorrowingController {
     @PostMapping(value = "/Prets/add-borrowing")
     public ResponseEntity<Borrowing> addBorrowing(@Valid @RequestBody Borrowing borrowing) {
         //For test purposes
-        borrowing.setBook(bookDao.findBookById(1));
-
+        //borrowing.setBook(bookDao.findBookById(1));
 
         ZoneId zone = ZoneId.of("Europe/Paris");
         LocalDate today = LocalDate.now(zone);
