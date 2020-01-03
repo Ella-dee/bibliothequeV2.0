@@ -3,14 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="b98b7ebe-8269-4b3a-b4b2-442ba5ce5d88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BookController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BorrowingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BorrowingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BorrowingTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BorrowingTypeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/WaitingListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/WaitingListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/dao/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/dao/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/dao/CategoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/dao/CategoryDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/beans/BookBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/beans/BookBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientBooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientBooksController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientUsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-mailing/src/main/java/com/mmailing/microservicemailing/controller/MailSentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-mailing/src/main/java/com/mmailing/microservicemailing/controller/MailSentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-mailing/src/main/java/com/mmailing/microservicemailing/dao/MailSentForWaitingListService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-mailing/src/main/java/com/mmailing/microservicemailing/dao/MailSentForWaitingListService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-users/src/main/java/com/musers/microserviceusers/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-users/src/main/java/com/musers/microserviceusers/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-clientui/src/main/resources/templates/book-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-clientui/src/main/resources/templates/book-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-clientui/src/main/resources/templates/user-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-clientui/src/main/resources/templates/user-details.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/config-server/target/" />
     <ignored path="$PROJECT_DIR$/microservice-clientui/target/" />
@@ -109,53 +111,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/microservice-users/src/main/java/com/musers/microserviceusers/controller/UserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="50" column="58" lean-forward="true" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BorrowingController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1209">
-              <caret line="166" column="40" selection-start-line="166" selection-start-column="40" selection-end-line="166" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/WaitingListController.java">
+        <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientBooksController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="90" column="72" selection-start-line="90" selection-start-column="72" selection-end-line="93" selection-end-column="9" />
+              <caret line="34" column="65" selection-start-line="34" selection-start-column="65" selection-end-line="34" selection-end-column="65" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BookTest.java">
+        <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/CategoryController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="78" column="19" selection-start-line="78" selection-start-column="19" selection-end-line="78" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-102">
+              <caret line="25" column="54" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/AuthorTest.java">
+        <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BookController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="37" selection-start-line="13" selection-start-column="2" selection-end-line="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1343">
+              <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="24" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -193,6 +171,7 @@
       <find>pack</find>
       <find>borrowing</find>
       <find>dele</find>
+      <find>TEST</find>
     </findStrings>
     <replaceStrings>
       <replace>alter</replace>
@@ -216,13 +195,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/utils/ControllerUtils.java" />
-        <option value="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/model/Author.java" />
-        <option value="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/exceptions/ApiError.java" />
-        <option value="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/dao/AuthorDao.java" />
-        <option value="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/model/AuthorSerializer.java" />
-        <option value="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BookController.java" />
-        <option value="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientController.java" />
         <option value="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/proxies/MicroserviceUsersProxy.java" />
         <option value="$PROJECT_DIR$/zuul-server/src/main/java/com/mzuul/zuulserver/filters/ResponseFilter.java" />
         <option value="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/filters/RestrictionAdminFilterConfig.java" />
@@ -258,15 +230,22 @@
         <option value="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/model/BookTest.java" />
         <option value="$PROJECT_DIR$/microservice-books/src/testsUnitaires/java/com/mbooks/microservicebooks/utils/DateUtilsTest.java" />
         <option value="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BorrowingTypeController.java" />
-        <option value="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/CategoryController.java" />
-        <option value="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientUsersController.java" />
-        <option value="$PROJECT_DIR$/microservice-clientui/src/main/resources/templates/user-details.html" />
         <option value="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/WaitingListController.java" />
-        <option value="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/proxies/MicroserviceBooksProxy.java" />
         <option value="$PROJECT_DIR$/microservice-users/src/main/java/com/musers/microserviceusers/controller/UserController.java" />
         <option value="$PROJECT_DIR$/microservice-mailing/src/main/java/com/mmailing/microservicemailing/controller/MailSentController.java" />
         <option value="$PROJECT_DIR$/microservice-mailing/src/main/java/com/mmailing/microservicemailing/dao/MailSentForWaitingListService.java" />
+        <option value="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/proxies/MicroserviceBooksProxy.java" />
+        <option value="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/beans/BookBean.java" />
+        <option value="$PROJECT_DIR$/microservice-clientui/src/main/resources/templates/user-details.html" />
+        <option value="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientUsersController.java" />
+        <option value="$PROJECT_DIR$/microservice-clientui/src/main/resources/templates/book-details.html" />
         <option value="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BorrowingController.java" />
+        <option value="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BookController.java" />
+        <option value="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/dao/BookService.java" />
+        <option value="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/dao/CategoryDao.java" />
+        <option value="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/dao/CategoryService.java" />
+        <option value="$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/CategoryController.java" />
+        <option value="$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientBooksController.java" />
       </list>
     </option>
   </component>
@@ -298,8 +277,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -355,6 +334,26 @@
             <path>
               <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
               <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="microservice-books" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="microservicebooks" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="microservice-books" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="microservicebooks" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
               <item name="microservice-clientui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -386,6 +385,26 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="microserviceclientui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="microservice-clientui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="microserviceclientui" type="462c0819:PsiDirectoryNode" />
+              <item name="beans" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="microservice-clientui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="microserviceclientui" type="462c0819:PsiDirectoryNode" />
+              <item name="proxies" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
@@ -396,6 +415,23 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="microserviceclientui" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="microservice-clientui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bibliothequeV2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="microservice-clientui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bibliothequeV2.0" type="b2602c69:ProjectViewProjectNode" />
@@ -457,7 +493,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577979246160" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578048370271" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/eureka-server/pom.xml" />
@@ -480,9 +516,23 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\F41374\IdeaProjects\bibliothequeV2.0\microservice-books\src\testIntegration\java\com.mbooks" />
+      <recent name="C:\Users\F41374\IdeaProjects\bibliothequeV2.0\microservice-books\src\testsUnitaires\java\com\mbooks\microservicebooks" />
+      <recent name="C:\Users\F41374\IdeaProjects\bibliothequeV2.0\microservice-books\src\testIntegration\java\com\mbooks" />
+      <recent name="C:\Users\F41374\IdeaProjects\bibliothequeV2.0\microservice-books\src\testIntegration\java\com\mbooks\controller" />
+      <recent name="C:\Users\F41374\IdeaProjects\bibliothequeV2.0\microservice-books\src\testIntegration\java\com\mbooks\controller\microservicebooks" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.mbooks.microservicebooks" />
       <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.mbooks.microservicebooks.dao" />
+      <recent name="" />
+      <recent name="microservicebooks.controller" />
+      <recent name="com.mbooks.microservicebooks.model" />
+      <recent name="com.mbooks.microservicebooks.exceptions" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\F41374\IdeaProjects\bibliothequeV2.0\microservice-books\src\testIntegration\resources" />
@@ -490,20 +540,6 @@
       <recent name="C:\Users\F41374\IdeaProjects\bibliothequeV2.0\microservice-clientui\src\main\resources\templates" />
       <recent name="C:\Users\F41374\IdeaProjects\bibliothequeV2.0\microservice-books" />
       <recent name="C:\Users\F41374\IdeaProjects\bibliothequeV2.0\microservice-books\src\main\resources\db\migration" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="" />
-      <recent name="microservicebooks.controller" />
-      <recent name="com.mbooks.microservicebooks.model" />
-      <recent name="com.mbooks.microservicebooks.exceptions" />
-      <recent name="com.mclientui.microserviceclientui.web.controller" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\F41374\IdeaProjects\bibliothequeV2.0\microservice-books\src\testIntegration\java\com.mbooks" />
-      <recent name="C:\Users\F41374\IdeaProjects\bibliothequeV2.0\microservice-books\src\testsUnitaires\java\com\mbooks\microservicebooks" />
-      <recent name="C:\Users\F41374\IdeaProjects\bibliothequeV2.0\microservice-books\src\testIntegration\java\com\mbooks" />
-      <recent name="C:\Users\F41374\IdeaProjects\bibliothequeV2.0\microservice-books\src\testIntegration\java\com\mbooks\controller" />
-      <recent name="C:\Users\F41374\IdeaProjects\bibliothequeV2.0\microservice-books\src\testIntegration\java\com\mbooks\controller\microservicebooks" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -524,7 +560,7 @@
     </option>
     <option name="contentProportion" value="0.19242658" />
   </component>
-  <component name="RunManager" selected="Spring Boot.MicroserviceBooksApplication">
+  <component name="RunManager" selected="Spring Boot.MicroserviceClientuiApplication">
     <configuration name="AuthorBeanTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="microservice-clientui" />
       <extension name="coverage">
@@ -675,6 +711,7 @@
       <workItem from="1576227240036" duration="15326000" />
       <workItem from="1576486379927" duration="2759000" />
       <workItem from="1577092873112" duration="15401000" />
+      <workItem from="1578038992216" duration="9275000" />
     </task>
     <servers />
   </component>
@@ -711,7 +748,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85790000" />
+    <option name="totallyTimeSpent" value="96485000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -724,9 +761,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49695122" visible="true" weight="0.30257186" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49695122" visible="true" weight="0.30711043" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -750,7 +786,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="13" />
       <window_info anchor="bottom" id="Database Changes" order="14" />
       <window_info anchor="bottom" id="Version Control" order="15" />
-      <window_info anchor="bottom" id="Run Dashboard" order="16" weight="0.46317512" />
+      <window_info active="true" anchor="bottom" id="Run Dashboard" order="16" visible="true" weight="0.46317512" />
       <window_info anchor="bottom" id="Inspection Results" order="17" weight="0.3289689" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -813,65 +849,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/beans/BorrowingBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/beans/BorrowingTypeBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-users/src/test/java/com/musers/microserviceusers/model/UserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="106" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-users/src/test/java/com/musers/microserviceusers/model/RoleTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="58" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/beans/RoleBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/beans/CategoryBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/test/java/com/mclientui/microserviceclientui/beans/BorrowingTypeBeanTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-49">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/beans/WaitingListBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="40" lean-forward="true" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/microservice-clientui/src/test/java/com/mclientui/microserviceclientui/beans/WaitingListBeanTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="31">
@@ -988,13 +965,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/model/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/beans/AuthorBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
@@ -1075,13 +1045,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BookController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-372">
-          <caret line="66" column="19" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/microservice-books/src/main/resources/db/migration/V1.2__init_data.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-153" />
@@ -1108,39 +1071,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/CategoryController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="57" column="45" selection-start-line="57" selection-start-column="45" selection-end-line="57" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientBooksController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/resources/templates/book-details.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-357" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/resources/templates/user-details.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="33" column="60" lean-forward="true" selection-start-line="33" selection-start-column="60" selection-end-line="33" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/proxies/MicroserviceBooksProxy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="28" column="58" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/microservice-books/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="529">
@@ -1152,20 +1082,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientUsersController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1632">
-          <caret line="114" column="48" selection-start-line="114" selection-start-column="48" selection-end-line="114" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/WaitingListController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="90" column="72" selection-start-line="90" selection-start-column="72" selection-end-line="93" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1185,15 +1101,142 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/microservice-users/src/main/java/com/musers/microserviceusers/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
+        <state relative-caret-position="-1545">
           <caret line="50" column="58" lean-forward="true" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.8.RELEASE/spring-web-5.1.8.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/proxies/MicroserviceUsersProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/beans/BookBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
+          <folding>
+            <element signature="e#717#718#0" expanded="true" />
+            <element signature="e#776#777#0" expanded="true" />
+            <element signature="e#826#827#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientUsersController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="118" column="73" selection-start-line="118" selection-start-column="73" selection-end-line="118" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/resources/templates/user-details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="33" column="86" selection-start-line="33" selection-start-column="86" selection-end-line="33" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/resources/templates/book-details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/resources/templates/books.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="14" column="66" lean-forward="true" selection-start-line="14" selection-start-column="66" selection-end-line="14" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/model/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-824">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/config/CustomConfigurations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BorrowingController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1209">
-          <caret line="166" column="40" selection-start-line="166" selection-start-column="40" selection-end-line="166" selection-end-column="40" />
+        <state relative-caret-position="170">
+          <caret line="59" column="48" selection-start-line="59" selection-start-column="48" selection-end-line="59" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/WaitingListController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="122" column="48" selection-start-line="122" selection-start-column="33" selection-end-line="122" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/dao/BookService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="73" column="59" selection-start-line="73" selection-start-column="59" selection-end-line="73" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/dao/CategoryDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/proxies/MicroserviceBooksProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="49" selection-start-line="49" selection-end-line="50" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/dao/CategoryService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/CategoryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="25" column="54" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-books/src/main/java/com/mbooks/microservicebooks/controller/BookController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1343">
+          <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="24" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microservice-clientui/src/main/java/com/mclientui/microserviceclientui/web/controller/ClientBooksController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="34" column="65" selection-start-line="34" selection-start-column="65" selection-end-line="34" selection-end-column="65" />
         </state>
       </provider>
     </entry>

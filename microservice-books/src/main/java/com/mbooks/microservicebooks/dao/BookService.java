@@ -30,7 +30,7 @@ public class BookService {
         String bookRef = book.getRef();
         int notReturnedYet = 0;
         int booksAvailable = book.getNbr();
-
+        int available = booksAvailable;
         //list all borrowings for this book
         List<Borrowing> borrowingsByBook = borrowingDao.findBorrowingByBook_Id(book.getId());
         //if there is at least one borrowing with this book ref
@@ -41,17 +41,19 @@ public class BookService {
                     notReturnedYet++;
                 }
             }
-            //available books minus those borrowed that have not been returned
-            booksAvailable -= notReturnedYet;
+            available=booksAvailable - notReturnedYet;
             //if all borrowed books with this ref have not been returned, then this book is not available
-            if (notReturnedYet >= borrowingsByBook.size()) {
+            if (available == 0) {
                 availableOrNot=false;
                 //looks for the closest return date possible:
                 //1 - Get all string dates in date array
                 ArrayList<LocalDate> allDates = new ArrayList<>();
                 for (Borrowing borrowing: borrowingsByBook){
-                    Date stringToDate = DateUtils.convertStringToDateFormat(borrowing.getLimitDate());
-                    allDates.add(DateUtils.convertToLocalDateViaInstant(stringToDate));
+                    //If the borrowing has not been returned yet
+                    if(borrowing.getReturned() == null) {
+                        Date stringToDate = DateUtils.convertStringToDateFormat(borrowing.getLimitDate());
+                        allDates.add(DateUtils.convertToLocalDateViaInstant(stringToDate));
+                    }
                 }
                 //2 - Sort dates in order and get first date
                 Collections.sort(allDates);
@@ -61,15 +63,15 @@ public class BookService {
                 book.setClosestReturnDate(closestReturnDate.format(format));
 
             }
-            //if at least oe has been returned: check if there is a waiting list to set priority for user waiting
+            //if at least one has been returned: check if there is a waiting list to set priority for user waiting
             else {
                 List<WaitingList> waitingLists = book.getWaitingList();
                 if (!waitingLists.isEmpty()) {
                     availableOrNot = false;
-                    System.out.println("il y a une waiting list: available " + availableOrNot);
+                    System.out.println(book.getTitle()+" a une waiting list: available " + availableOrNot);
                 } else {
                     availableOrNot = true;
-                    System.out.println("pas de waiting list: available " + availableOrNot);
+                    System.out.println(book.getTitle()+" a pas de waiting list: available " + availableOrNot);
                 }
             }
         }
@@ -78,7 +80,7 @@ public class BookService {
                 availableOrNot=true;
         }
         book.setAvailable(availableOrNot);
-        book.setAvailableBooksNbr(booksAvailable);
+        book.setAvailableBooksNbr(available);
     }
 
     /**

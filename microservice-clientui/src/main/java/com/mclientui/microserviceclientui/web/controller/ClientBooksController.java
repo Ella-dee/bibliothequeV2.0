@@ -31,13 +31,7 @@ public class ClientBooksController {
         List<CategoryBean> categories = booksProxy.listCategories();
         for (CategoryBean c: categories){
             for (BookBean b:c.getBooks()){
-                Integer avlBks = booksProxy.showBook(b.getId()).getAvailableBooksNbr();
-                if (avlBks<=0){
-                    b.setAvailable(false);
-                }
-                else {
-                    b.setAvailable(true);
-                }
+                b.setAvailable(booksProxy.showBook(b.getId()).getAvailable());
             }
         }
         model.addAttribute("categories", categories);

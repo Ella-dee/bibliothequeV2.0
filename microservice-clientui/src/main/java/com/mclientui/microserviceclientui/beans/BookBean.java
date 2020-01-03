@@ -18,8 +18,17 @@ public class BookBean {
     private String closestReturnDate;
     private Integer usersWaiting;
     private Integer userPosOnWaitingList;
+    private Integer waitingListId;
 
     public BookBean() {
+    }
+
+    public Integer getWaitingListId() {
+        return waitingListId;
+    }
+
+    public void setWaitingListId(Integer waitingListId) {
+        this.waitingListId = waitingListId;
     }
 
     public Integer getUserPosOnWaitingList() {

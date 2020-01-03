@@ -31,7 +31,7 @@
                             <p th:text="'Date de retour prévue: '+${awaitedBook.closestReturnDate}"/>
                             <p th:text="'Personnes sur liste d\'attente: '+${awaitedBook.usersWaiting}"/>
                             <p th:text="'Ma position sur la liste d\'attente: '+${awaitedBook.userPosOnWaitingList}"/>
-                            <form th:action="@{/Reservations/delete/__${awaitedBook.id}__}" method="post">
+                            <form th:action="@{/Reservations/delete/__${awaitedBook.waitingListId}__}" method="post">
                                 <div class="row">
                                     <div class="col-sm-offset-3  mx-auto">
                                         <input type="submit"

@@ -1,5 +1,6 @@
 package com.mbooks.microservicebooks.controller;
 
+import com.mbooks.microservicebooks.dao.BookDao;
 import com.mbooks.microservicebooks.dao.BookService;
 import com.mbooks.microservicebooks.dao.BorrowingDao;
 import com.mbooks.microservicebooks.dao.BorrowingTypeDao;
@@ -25,8 +26,13 @@ import java.util.*;
  */
 @RestController
 public class BorrowingController {
+    @Autowired//For test puroses
+    private BookDao bookDao;
+
+
+
     @Autowired
-    private BorrowingDao borrowingDao;
+    BorrowingDao borrowingDao;
     @Autowired
     private BorrowingTypeDao borrowingTypeDao;
     @Autowired
@@ -50,6 +56,10 @@ public class BorrowingController {
      */
     @PostMapping(value = "/Prets/add-borrowing")
     public ResponseEntity<Borrowing> addBorrowing(@Valid @RequestBody Borrowing borrowing) {
+        //For test purposes
+        borrowing.setBook(bookDao.findBookById(1));
+
+
         ZoneId zone = ZoneId.of("Europe/Paris");
         LocalDate today = LocalDate.now(zone);
         LocalDate oneMonthLater = today.plusMonths( 1 );

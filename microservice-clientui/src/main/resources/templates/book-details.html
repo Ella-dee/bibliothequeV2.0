@@ -19,18 +19,20 @@
                 <td th:if="${book.availableBooksNbr > 1 and book.available==true}">
                     <p class="font-weight-bold mr-4" th:text="${book.availableBooksNbr}+' exemplaires disponibles'"/>
                 </td>
-                <td th:if="${book.available==true}">
+                <td th:if="${book.availableBooksNbr == 1 and book.available==true}">
                     <p class="font-weight-bold" th:text="${book.availableBooksNbr}+' exemplaire disponible'"/>
                 </td>
                 <td th:if="${book.available==false}">
                     <p class="font-weight-bold" th:text="'Aucun exemplaire disponible'"/>
-                <td th:if="${book.closestReturnDate==null}">
+
+                </td>
+                <td th:if="${book.available==false and book.closestReturnDate==null}">
                     <p class="font-weight-bold" th:text="'En attente de prêt par réservation (48h)'"/>
                 </td>
-                <td th:if="${book.closestReturnDate!=null}">
+                <td th:if="${book.available==false and book.closestReturnDate!=null}">
                     <p class="font-weight-bold" th:text="'Date de retour prévue: '+${book.closestReturnDate}"/>
+                    <p class="font-weight-bold" th:text="'Personnes sur liste d\'attente: '+${book.usersWaiting}"/>
                 </td>
-                <p class="font-weight-bold" th:text="'Personnes sur liste d\'attente: '+${book.usersWaiting}"/>
                 <td th:if="${errorMessage ne null}">
                     <div class="alert alert-danger">
                         <span  th:text="${errorMessage}"/>

@@ -98,6 +98,7 @@ public class ClientUsersController {
             for (WaitingListBean w : userWaitingList) {
                 BookBean b = booksProxy.showBook(w.getBook().getId());
                 b.setUserPosOnWaitingList(w.getUserPos());
+                b.setWaitingListId(w.getId());
                 if (b.getClosestReturnDate()==null){
                     b.setClosestReturnDate("Disponible, vous avez 48h pour emprunter ce livre en priorité");
                 }
@@ -112,11 +113,13 @@ public class ClientUsersController {
         return "user-details";
     }
 
-    @RequestMapping(value = "/Reservations/{id}/delete")
-    public String cancelWaitingList(@PathVariable Integer id, Model model, HttpServletRequest request){
+    @RequestMapping(value = "/Reservations/delete/{id}")
+    public String cancelWaitingList(@PathVariable Integer id, HttpServletRequest request){
         HttpSession session = request.getSession();
-        UserBean user = usersProxy.showUser(booksProxy.showWaitingList(id).getUserId());
+        WaitingListBean waitingListBean = booksProxy.showWaitingList(id);
+        UserBean user = usersProxy.showUser(waitingListBean.getUserId());
         if(!session.getAttribute("loggedInUserId").equals(user.getId())){
+            System.out.println("Profile user id is: "+user.getId());
             rejectIfSessionNotProfile(session, user);
         }
         booksProxy.cancelWaitingList(id);

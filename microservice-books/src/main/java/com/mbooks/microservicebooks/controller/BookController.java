@@ -67,6 +67,9 @@ public class BookController {
     @PostMapping("/Livres/rechercheParTitre")
     public List<Book> searchBooksByTitle(String title){
         List<Book> books = bookDao.findBooksByTitleContainingIgnoreCase(title);
+        for (Book b:books){
+            bookService.setBookAvailability(b);
+        }
         return books;
     }
     /**
