@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * <h2>Proxy links clientui to microservice-books</h2>
  */
-@FeignClient(name = "zuul-server",  url = "localhost:9004",contextId = "booksProxy", configuration = FeignConfig.class)
+@FeignClient(name = "zuul-server", contextId = "booksProxy", configuration = FeignConfig.class)
 @RibbonClient(name = "microservice-books")
 public interface MicroserviceBooksProxy {
 
